@@ -9,7 +9,10 @@ alias rmh="rm -rf ~/.zsh_history"
 alias rc="nano ~/.zshrc && source ~/.zshrc"
 alias work="cd ~/Desktop/"
 alias vsc="open . -a 'Visual studio code'"
-alias push="git push origin develop"
+alias pushd="git push origin develop"
+alias pushn="git push origin nohemife"
+alias gsd="git switch develop"
+alias gsn="git switch nohemife"
 
 TAG=1.0.0
 
@@ -49,6 +52,10 @@ function fixformat() {
 	clang-format -i *.c *.h
 	clang-format -n *.c *.h
 	# rm .clang-format
+}
+
+function vdb() {
+	cp ~/.school_resources_for_peer/vscode vscode
 }
 
 function peer() {
