@@ -1,1 +1,0 @@
-export PATH="/Users/nohemife/homebrew/bin:$PATH"
