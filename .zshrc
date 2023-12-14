@@ -38,12 +38,12 @@ function init_setup() {
 	then
 		mkdir ~/.school_resources_for_peer
 	fi
-	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.school_resources_for_peer/.zshrc
-	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clang-format > ~/.school_resources_for_peer/.clang-format
-	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clean.sh > ~/.school_resources_for_peer/.clean.sh
-	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clear.sh > ~/.school_resources_for_peer/.clear.sh
-	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/README_RU.md > ~/.school_resources_for_peer/README_RU.md
-	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/vscode > ~/.school_resources_for_peer/vscode
+	cURL -l https://github.com/nohemife/script_s21_school/blob/main/.zshrc > ~/.school_resources_for_peer/.zshrc
+	cURL -l https://github.com/nohemife/script_s21_school/blob/main/.clang-format > ~/.school_resources_for_peer/.clang-format
+	cURL -l https://github.com/nohemife/script_s21_school/blob/main/.clean.sh > ~/.school_resources_for_peer/.clean.sh
+	cURL -l https://github.com/nohemife/script_s21_school/blob/main/.clear.sh > ~/.school_resources_for_peer/.clear.sh
+	cURL -l https://github.com/nohemife/script_s21_school/blob/main/README_RU.md > ~/.school_resources_for_peer/README_RU.md
+	cURL -l https://github.com/nohemife/script_s21_school/blob/main/vscode > ~/.school_resources_for_peer/vscode
 
 }
 
@@ -81,18 +81,18 @@ function brewinstall() {
 	# brew install lcov
 }
 function mybrew() {
-	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/homebrew > ~/homebrew
-	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zprofile > ~/.zprofile
-	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.bash_profile > ~/.bash_profile
+	cURL -l https://github.com/nohemife/script_s21_school/blob/main/homebrew > ~/homebrew
+	cURL -l https://github.com/nohemife/script_s21_school/blob/main/.zprofile > ~/.zprofile
+	cURL -l https://github.com/nohemife/script_s21_school/blob/main/.bash_profile > ~/.bash_profile
 }
 function NR() {
-	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.zshrc
+	cURL -l https://github.com/nohemife/script_s21_school/blob/main/.zshrc > ~/.zshrc
 	restart
 }
 
 function readme() {
 	cat ~/.school_resources_for_peer/README_RU.md
-	# cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/README_RU.md
+	# cURL -l https://github.com/nohemife/script_s21_school/blob/main/README_RU.md
 }
 
 # Add Homebrew's executable directory to the front of the PATH

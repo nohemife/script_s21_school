@@ -41,3 +41,5 @@
 
 ## rc
 ### открывает скрипт, позволяющий вам его изменить и автоматически сохранить после
+
+ curl https://raw.githubusercontent.com/curl/curl/master/README.md
