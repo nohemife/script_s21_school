@@ -40,7 +40,9 @@ function init_setup() {
 	fi
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.school_resources_for_peer/.zshrc
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clang-format > ~/.school_resources_for_peer/.clang-format
+	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/clean.sh > ~/.school_resources_for_peer/clean.sh
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clean.sh > ~/.school_resources_for_peer/.clean.sh
+	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/clear.sh > ~/.school_resources_for_peer/clear.sh
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clear.sh > ~/.school_resources_for_peer/.clear.sh
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/README_RU.md > ~/.school_resources_for_peer/README_RU.md
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/vscode > ~/.school_resources_for_peer/vscode
