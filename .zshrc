@@ -44,7 +44,7 @@ function init_setup() {
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clear.sh > ~/.school_resources_for_peer/.clear.sh
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/README_RU.md > ~/.school_resources_for_peer/README_RU.md
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/vscode > ~/.school_resources_for_peer/vscode
-
+	reset
 }
 
 function fixformat() {
