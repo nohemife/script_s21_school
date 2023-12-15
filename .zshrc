@@ -93,15 +93,17 @@ function NR() {
 	restart
 }
 
-function readme() {
+function helpme() {
 	cat ~/.school_resources_for_peer/helpme.md
-	# cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/README_RU.md
+}
+
+function readme() {
+	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/README_RU.md
 }
 
 function die() {
 	rm -rf ~/.zshrc
 	rm -rf ~/.school_resources_for_peer
-	# rm -rf ~/.zshrc
 }
 
 # Add Homebrew's executable directory to the front of the PATH
