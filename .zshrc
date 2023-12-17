@@ -68,6 +68,10 @@ function vdb() {
 	cp ~/.school_resources_for_peer/vscode vscode
 }
 
+function grind() {
+	cp ~/.school_resources_for_peer/Valgrind Valgrind
+}
+
 function peer() {
 	if [ ! -d "~/Desktop/peer_review_dir" ]; then
 		mkdir ~/Desktop/peer_review_dir
@@ -90,11 +94,6 @@ function memс() {
 function brewinstall() {
 	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh
 	# brew install lcov
-}
-function mybrew() {
-	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/homebrew > ~/homebrew
-	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zprofile > ~/.zprofile
-	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.bash_profile > ~/.bash_profile
 }
 function NR() {
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.zshrc
