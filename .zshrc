@@ -41,17 +41,22 @@ function init_setup() {
 		mkdir ~/.school_resources_for_peer/Valgrind
 	fi
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.school_resources_for_peer/.zshrc
+	
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clang-format > ~/.school_resources_for_peer/.clang-format
+
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/clean.sh > ~/.school_resources_for_peer/clean.sh
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clean.sh > ~/.school_resources_for_peer/.clean.sh
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/clear.sh > ~/.school_resources_for_peer/clear.sh
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clear.sh > ~/.school_resources_for_peer/.clear.sh
+
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/vscode/launch.json > ~/.school_resources_for_peer/vscode/launch.json
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/vscode/tasks.json > ~/.school_resources_for_peer/vscode/tasks.json
+
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/Valgrind/Dockerfile > ~/.school_resources_for_peer/Valgrind/Dockerfile
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/Valgrind/run.sh > ~/.school_resources_for_peer/Valgrind/run.sh
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/Valgrind/start.sh > ~/.school_resources_for_peer/Valgrind/start.sh
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/cleandoc.sh > ~/.school_resources_for_peer/cleandoc.sh
+
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/helpme.md > ~/.school_resources_for_peer/helpme.md
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/README.md > ~/.school_resources_for_peer/README.md
 	reset
