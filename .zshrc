@@ -101,6 +101,10 @@ function NR() {
 	restart
 }
 
+function cleandoc() {
+	sh ~/.school_resources_for_peer/cleandoc.sh
+}
+
 function helpme() {
 	cat ~/.school_resources_for_peer/helpme.md
 }
