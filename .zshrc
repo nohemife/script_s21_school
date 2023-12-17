@@ -70,6 +70,7 @@ function peer() {
 		rm -rf *
 	fi
 	git clone -b develop $1
+	open . -a 'Visual studio code'
 }
 
 function mem() {
