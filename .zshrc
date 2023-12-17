@@ -37,6 +37,8 @@ function init_setup() {
 	if [ ! -d "~/.school_resources_for_peer" ]
 	then
 		mkdir ~/.school_resources_for_peer
+		mkdir ~/.school_resources_for_peer/vscode
+		mkdir ~/.school_resources_for_peer/Valgrind
 	fi
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.school_resources_for_peer/.zshrc
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clang-format > ~/.school_resources_for_peer/.clang-format
