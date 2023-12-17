@@ -53,7 +53,7 @@ function init_setup() {
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/Valgrind/start.sh > ~/.school_resources_for_peer/Valgrind/start.sh
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/cleandoc.sh > ~/.school_resources_for_peer/cleandoc.sh
 	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/helpme.md > ~/.school_resources_for_peer/helpme.md
-	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/README_RU.md > ~/.school_resources_for_peer/README_RU.md
+	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/README.md > ~/.school_resources_for_peer/README.md
 	reset
 }
 
