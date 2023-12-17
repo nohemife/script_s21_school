@@ -59,8 +59,8 @@ function init_setup() {
 
 function fixformat() {
 	cp ~/.school_resources_for_peer/.clang-format .clang-format
-	clang-format -i *.c *.h
-	clang-format -n *.c *.h
+	.clang-format -i *.c *.h
+	.clang-format -n *.c *.h
 	# rm .clang-format
 }
 
