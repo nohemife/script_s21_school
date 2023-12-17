@@ -109,7 +109,7 @@ function helpme() {
 }
 
 function readme() {
-	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/README_RU.md
+	open "https://github.com/nohemife/script_s21_school/tree/main"
 }
 
 function die() {
