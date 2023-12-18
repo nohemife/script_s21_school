@@ -70,11 +70,16 @@ function fixformat() {
 }
 
 function vdb() {
-	cp ~/.school_resources_for_peer/vscode vscode
+	mkdir vscode
+	cp ~/.school_resources_for_peer/vscode/launch.json vscode/launch.json
+	cp ~/.school_resources_for_peer/vscode/tasks.json vscode/tasks.json
 }
 
 function grind() {
-	cp ~/.school_resources_for_peer/Valgrind Valgrind
+	mkdir Valgrind
+	cp ~/.school_resources_for_peer/Valgrind/Dockerfile Valgrind/Dockerfile
+	cp ~/.school_resources_for_peer/Valgrind/run.sh Valgrind/run.sh
+	cp ~/.school_resources_for_peer/Valgrind/start.sh Valgrind/start.sh
 }
 
 function peer() {
