@@ -106,7 +106,7 @@ function brewinstall() {
 	# brew install lcov
 }
 function NR() {
-	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.zshrc
+	cURL -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.zshrc ; source ~/.zshrc ;  init_setup
 	restart
 }
 
