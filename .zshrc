@@ -70,9 +70,9 @@ function fixformat() {
 }
 
 function vdb() {
-	mkdir vscode
-	cp ~/.school_resources_for_peer/vscode/launch.json vscode/launch.json
-	cp ~/.school_resources_for_peer/vscode/tasks.json vscode/tasks.json
+	mkdir .vscode
+	cp ~/.school_resources_for_peer/vscode/launch.json .vscode/launch.json
+	cp ~/.school_resources_for_peer/vscode/tasks.json .vscode/tasks.json
 }
 
 function grind() {
