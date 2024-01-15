@@ -60,6 +60,7 @@ function init_setup() {
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/helpme.md > ~/.school_resources_for_peer/helpme.md
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/README.md > ~/.school_resources_for_peer/README.md
 	reset
+
 }
 
 function fixformat() {
@@ -73,8 +74,8 @@ function fixformat() {
 
 function vdb() {
 	mkdir .vscode
-	cp ~/.school_resources_for_peer/vscode/launch.json .vscode/launch.json
-	cp ~/.school_resources_for_peer/vscode/tasks.json .vscode/tasks.json
+	cp ~/.school_resources_for_peer/.vscode/launch.json .vscode/launch.json
+	cp ~/.school_resources_for_peer/.vscode/tasks.json .vscode/tasks.json
 }
 
 function grind() {
@@ -104,8 +105,13 @@ function memс() {
       sh ~/.school_resources_for_peer/clear.sh
 }
 function brewinstall() {
-	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh
+	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
+	reset | bash
+	brew tap LouisBrunner/valgrind | bash
+	brew install --HEAD LouisBrunner/valgrind/valgrind | bash
+	# curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh
 	# brew install lcov
+	# brew install check
 }
 function NR() {
 	die
@@ -130,5 +136,5 @@ function die() {
 	rm -rf ~/.school_resources_for_peer
 }
 
-# Add Homebrew's executable directory to the front of the PATH
-export PATH="/Users/nohemife/homebrew/bin:$PATH"
+# Load Homebrew config script
+source $HOME/.brewconfig.zsh
