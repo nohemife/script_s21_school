@@ -107,9 +107,6 @@ function memс() {
 function brewinstall() {
 	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
 	reset | bash
-	brew tap LouisBrunner/valgrind | bash
-	brew install --HEAD LouisBrunner/valgrind/valgrind | bash
-	# curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh
 	# brew install lcov
 	# brew install check
 }
