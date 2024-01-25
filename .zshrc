@@ -116,8 +116,8 @@ function NR() {
 	restart
 }
 
-function cleandoc() {
-	sh ~/.school_resources_for_peer/cleandoc.sh
+function linkdoc() {
+	sh ~/.school_resources_for_peer/linkdoc.sh
 }
 
 function helpme() {
