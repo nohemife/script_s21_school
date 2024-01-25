@@ -64,8 +64,10 @@ function init_setup() {
 }
 
 function fixformat() {
-	clang-format -style=google -i test_s21/*.c *.c *.h
-	clang-format -style=google -n test_s21/*.c *.c *.h
+	clang-format -style=google -n *.c *.h
+	sleep 1
+	clang-format -style=google -i *.c *.h
+	clang-format -style=google -n *.c *.h
 	# cp ~/.school_resources_for_peer/.clang-format .clang-format
 	# .clang-format -i *.c *.h
 	# .clang-format -n *.c *.h
@@ -116,8 +118,12 @@ function NR() {
 	restart
 }
 
-function linkdoc() {
+function lndoc() {
 	sh ~/.school_resources_for_peer/linkdoc.sh
+}
+
+function aptdoc() {
+	sh ~/.school_resources_for_peer/aptdoc.sh
 }
 
 function helpme() {
