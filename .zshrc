@@ -57,6 +57,7 @@ function init_setup() {
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/Valgrind/start.sh > ~/.school_resources_for_peer/Valgrind/start.sh
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/linkdoc.sh > ~/.school_resources_for_peer/linkdoc.sh
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/aptdoc.sh > ~/.school_resources_for_peer/aptdoc.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/aptdoc.txt > ~/.school_resources_for_peer/aptdoc.txt
 
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/helpme.md > ~/.school_resources_for_peer/helpme.md
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/README.md > ~/.school_resources_for_peer/README.md
@@ -124,9 +125,9 @@ function lndoc() {
 }
 
 function aptdoc() {
-	sh ~/.school_resources_for_peer/aptdoc.sh
+	cat aptdoc.txt | pbcopy
+	# sh ~/.school_resources_for_peer/aptdoc.sh
 }
-
 function helpme() {
 	cat ~/.school_resources_for_peer/helpme.md
 }
