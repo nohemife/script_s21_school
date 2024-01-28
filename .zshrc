@@ -125,7 +125,8 @@ function lndoc() {
 }
 
 function aptdoc() {
-	cat aptdoc.txt | pbcopy
+	cat ~/.school_resources_for_peer/aptdoc.txt | pbcopy
+	# cat aptdoc.txt | pbcopy
 	# sh ~/.school_resources_for_peer/aptdoc.sh
 }
 function helpme() {
