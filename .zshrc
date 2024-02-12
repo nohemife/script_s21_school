@@ -45,9 +45,9 @@ function init_setup() {
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clang-format > ~/.school_resources_for_peer/.clang-format
 
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/clean.sh > ~/.school_resources_for_peer/clean.sh
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clean.sh > ~/.school_resources_for_peer/.clean.sh
+	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clean.sh > ~/.school_resources_for_peer/.clean.sh
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/clear.sh > ~/.school_resources_for_peer/clear.sh
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clear.sh > ~/.school_resources_for_peer/.clear.sh
+	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clear.sh > ~/.school_resources_for_peer/.clear.sh
 
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.vscode/launch.json > ~/.school_resources_for_peer/.vscode/launch.json
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.vscode/tasks.json > ~/.school_resources_for_peer/.vscode/tasks.json
@@ -105,14 +105,13 @@ function mem() {
       sh ~/.school_resources_for_peer/clean.sh
 }
 
-function memс() {
-      sh ~/.school_resources_for_peer/clear.sh
-}
 function brewinstall() {
 	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
-	reset | bash
-	# brew install lcov
-	# brew install check
+	reset
+	brew install lcov
+	brew install check
+	sleep 1
+	reset
 }
 function NR() {
 	die

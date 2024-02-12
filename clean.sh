@@ -21,10 +21,11 @@
   echo 3 - 🍺 Install Homebrew              #blue
   echo 4 -  Update Homebrew Directory    #magenta
   echo 5 - 🦜 Shake your booty            #yellow
+  echo 6 - [ CLEAR CASHE ]            #yellow
   echo q - ❌ Quit
   echo ------------------------------------------
   read OPTION
-  while [ "$OPTION" != 0 ] && [ "$OPTION" != 1 ] && [ "$OPTION" != 2 ] && [ "$OPTION" != 3 ] && [ "$OPTION" != 4 ] && [ "$OPTION" != 5 ] && [ "$OPTION" != q ]
+  while [ "$OPTION" != 0 ] && [ "$OPTION" != 1 ] && [ "$OPTION" != 2 ] && [ "$OPTION" != 3 ] && [ "$OPTION" != 4 ] && [ "$OPTION" != 5 ] && [ "$OPTION" != 6 ] && [ "$OPTION" != q ]
     do
       sleep 0.2
       echo 'Please, follow to the available options'
@@ -232,6 +233,14 @@
   fi
 
 # from slack_general
+
+# ----- FUN SCRIPT ----- #
+  if [ "$OPTION" == 6 ]
+    then
+    echo $YELLOW"----- PREPARE FOR THE SHOW -----"$RESET
+    sleep 1
+    sh ~/.school_resources_for_peer/clear.sh
+  fi
 
 # #!/bin/bash
 # find ~/ -name ".DS_Store" -print -delete 2> /dev/null
