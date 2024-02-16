@@ -65,7 +65,7 @@ function init_setup() {
 
 function menu() {
 	chmod +x ~/.school_resources_for_peer/main.sh
-	sh ~/.school_resources_for_peer/main.sh
+	bash ~/.school_resources_for_peer/main.sh
 }
 
 function fixformat() {
