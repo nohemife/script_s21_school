@@ -118,11 +118,12 @@ function peer() {
 		mkdir ~/Desktop/peer_review_dir
 	fi
 	cd ~/Desktop/peer_review_dir
-	if (( $2 == 1 )); then
-		# rm -rf *
-		mv $2 $2_$(date +"%Y-%m-%d")
-	fi
+	# if (( $2 == 1 )); then
+	# 	# rm -rf *
+	# 	mv $2 $2_$(date +"%Y-%m-%d")
+	# fi
 	git clone -b develop $1
+	mv $2 $2_$(date +"%Y-%m-%d")
 	open . -a 'Visual studio code'
 }
 
