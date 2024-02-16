@@ -290,12 +290,6 @@ function brewinstall {
 	reset
 }
 
-function NR {
-    die
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.zshrc ; source ~/.zshrc ;  init_setup
-    reset
-}
-
 function helpme {
 	cat ~/.school_resources_for_peer/helpme.md
 }
@@ -314,7 +308,8 @@ while true; do
                 # Main Code
                 if [ "$line" == "Update script" ]
                     then
-                    NR
+                    die
+	                curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.zshrc ; source ~/.zshrc ;  init_setup
                     break
                 # elif [ "$line" == "Process Stats" ]
                 #     then
