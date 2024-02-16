@@ -69,25 +69,26 @@ function menu() {
 }
 
 function fixformat() {
-	if [ -f *.c ]; then
-		clang-format -style=google -n *.c
-	fi
-	if [ -f *.h ]; then
-		clang-format -style=google -n *.h
+	#shopt -s nullglob  # Эта команда говорит о том, что пустые шаблоны должны раскрываться в пустой список, а не сами шаблоны
+	files=(*.c *.h */*.c */*.h */*/*.c */*/*.h)  # Получаем список всех файлов с расширением .c в указанной директории
+
+	if [ ${#files[@]} -ne 0 ]; then
+    	# printf '%s\n' "${files[@]}"
+		clang-format -style=google -n ${files[@]}
 	fi
 	sleep 1
-	if [ -f *.c ]; then
-		clang-format -style=google -i *.c
+	if [ ${#files[@]} -ne 0 ]; then
+    	# printf '%s\n' "${files[@]}"
+		clang-format -style=google -i ${files[@]}
 	fi
-	if [ -f *.h ]; then
-		clang-format -style=google -i *.h
+	if [ ${#files[@]} -ne 0 ]; then
+    	# printf '%s\n' "${files[@]}"
+		clang-format -style=google -n ${files[@]}
 	fi
-	if [ -f *.c ]; then
-		clang-format -style=google -n *.c
-	fi
-	if [ -f *.h ]; then
-		clang-format -style=google -n *.h
-	fi
+	# v3.0
+	# if [ -f *.h ]; then
+	# 	clang-format -style=google -n *.h
+	# fi
 	# v2.0
 	# clang-format -style=google -n *.c *.h
 	# sleep 1
