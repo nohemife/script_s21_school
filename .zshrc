@@ -66,10 +66,31 @@ function init_setup() {
 }
 
 function fixformat() {
-	clang-format -style=google -n *.c *.h
+	if [ -f *.c ]; then
+		clang-format -style=google -n *.c
+	fi
+	if [ -f *.h ]; then
+		clang-format -style=google -n *.h
+	fi
 	sleep 1
-	clang-format -style=google -i *.c *.h
-	clang-format -style=google -n *.c *.h
+	if [ -f *.c ]; then
+		clang-format -style=google -i *.c
+	fi
+	if [ -f *.h ]; then
+		clang-format -style=google -i *.h
+	fi
+	if [ -f *.c ]; then
+		clang-format -style=google -n *.c
+	fi
+	if [ -f *.h ]; then
+		clang-format -style=google -n *.h
+	fi
+	# v2.0
+	# clang-format -style=google -n *.c *.h
+	# sleep 1
+	# clang-format -style=google -i *.c *.h
+	# clang-format -style=google -n *.c *.h
+	# v1.0
 	# cp ~/.school_resources_for_peer/.clang-format .clang-format
 	# .clang-format -i *.c *.h
 	# .clang-format -n *.c *.h
@@ -95,7 +116,8 @@ function peer() {
 	fi
 	cd ~/Desktop/peer_review_dir
 	if (( $2 == 1 )); then
-		rm -rf *
+		# rm -rf *
+		mv $2 $2_$(date +"%Y-%m-%d")
 	fi
 	git clone -b develop $1
 	open . -a 'Visual studio code'
