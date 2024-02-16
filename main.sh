@@ -340,3 +340,8 @@ in
 		echo 'Exit item selected'
 		;;
 esac
+
+https://yandex.ru/search/?clid=9582&text=bash+сделать+интерактивное+меню+с+перемещением+по+пунктам&l10n=ru&lr=213
+https://www.bobby.sh/how-to-create-an-interactive-menu-in-bash
+https://github.com/bobbyiliev/introduction-to-bash-scripting/blob/main/ebook/en/content/016-creating-an-interactive-menu-in-bash.md
+https://codeahoy.com/learn/introtobash/ch14/
