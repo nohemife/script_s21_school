@@ -37,9 +37,10 @@ function init_setup() {
 	then
 		mkdir ~/.school_resources_for_peer
 		mkdir ~/.school_resources_for_peer/.vscode
-		mkdir ~/.school_resources_for_peer/Valgrind
+		# mkdir ~/.school_resources_for_peer/Valgrind
 	fi
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.school_resources_for_peer/.zshrc
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/main.sh > ~/.school_resources_for_peer/main.sh
 	
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clang-format > ~/.school_resources_for_peer/.clang-format
 
