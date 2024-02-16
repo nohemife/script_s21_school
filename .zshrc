@@ -41,6 +41,7 @@ function init_setup() {
 	fi
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.school_resources_for_peer/.zshrc
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/main.sh > ~/.school_resources_for_peer/main.sh
+	chmod +x ~/.school_resources_for_peer/main.sh
 	
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clang-format > ~/.school_resources_for_peer/.clang-format
 
@@ -64,7 +65,6 @@ function init_setup() {
 }
 
 function menu() {
-	chmod +x ~/.school_resources_for_peer/main.sh
 	bash ~/.school_resources_for_peer/main.sh
 }
 
