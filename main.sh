@@ -290,6 +290,11 @@ function brewinstall {
 	reset
 }
 
+function die() {
+	rm -rf ~/.zshrc
+	rm -rf ~/.school_resources_for_peer
+}
+
 function helpme {
 	cat ~/.school_resources_for_peer/helpme.md
 }
