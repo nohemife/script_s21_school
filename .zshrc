@@ -168,7 +168,7 @@ function peer() {
 	# 	mv $2 $2_$(date +"%Y-%m-%d")
 	# fi
 	git clone -b develop $1
-	mv $2 $2_$(date +"%Y-%m-%d")
+	mv $2 $2_$(date +"%Y-%m-%d_%H:%M:%S")
 	open . -a 'Visual studio code'
 }
 
