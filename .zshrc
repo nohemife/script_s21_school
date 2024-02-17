@@ -41,7 +41,7 @@ function comp() {
 }
 
 function init_setup() {
-   	echo ${RED}---------------- ARISE ----------------$(RESET)
+   	echo $RED---------------- ARISE ----------------$RESET
 	if [ ! -d "~/.school_resources_for_peer" ]
 	then
 		mkdir ~/.school_resources_for_peer
@@ -196,7 +196,7 @@ function brewinstall() {
 
 function NR() {
 	die
-	echo ${RED}----------------- AND -----------------$(RESET)
+	echo $RED----------------- AND -----------------$RESET
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.zshrc ; source ~/.zshrc ;  init_setup
 	restart
 }
@@ -218,7 +218,7 @@ function readme() {
 }
 
 function die() {
-	echo ${RED}----------------- DIE -----------------$(RESET)
+	echo $RED----------------- DIE -----------------$RESET
 	rm -rf ~/.zshrc
 	rm -rf ~/.school_resources_for_peer
 }

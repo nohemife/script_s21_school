@@ -291,7 +291,7 @@ function brewinstall {
 }
 
 function die() {
-	echo ----------------- DIE -----------------
+	echo $RED----------------- DIE -----------------$RESET
 	rm -rf ~/.zshrc
 	rm -rf ~/.school_resources_for_peer
 }
@@ -315,7 +315,7 @@ while true; do
                 if [ "$line" == "Update script" ]
                     then
                     die
-                	echo ----------------- AND -----------------
+                	echo $RED----------------- AND -----------------$RESET
 	                curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.zshrc ; source ~/.zshrc ;  init_setup
                     break
                 # elif [ "$line" == "Process Stats" ]
