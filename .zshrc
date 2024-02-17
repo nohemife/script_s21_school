@@ -33,7 +33,7 @@ function comp() {
 }
 
 function init_setup() {
-   	echo ---------------- ARISE ----------------
+   	echo ${COLOR_DIR}---------------- ARISE ----------------
 	if [ ! -d "~/.school_resources_for_peer" ]
 	then
 		mkdir ~/.school_resources_for_peer
@@ -188,7 +188,7 @@ function brewinstall() {
 
 function NR() {
 	die
-	echo ----------------- AND -----------------
+	echo ${COLOR_DIR}----------------- AND -----------------
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.zshrc ; source ~/.zshrc ;  init_setup
 	restart
 }
@@ -199,7 +199,6 @@ function lndoc() {
 
 function aptdoc() {
 	cat ~/.school_resources_for_peer/aptdoc.txt | pbcopy
-	# cat aptdoc.txt | pbcopy
 }
 
 function helpme() {
@@ -211,7 +210,7 @@ function readme() {
 }
 
 function die() {
-	echo ----------------- DIE -----------------
+	echo ${COLOR_DIR}----------------- DIE -----------------
 	rm -rf ~/.zshrc
 	rm -rf ~/.school_resources_for_peer
 }
