@@ -16,6 +16,14 @@ alias gsn="git switch nohemife"
 
 TAG=1.0.0
 
+# ----- VARIABLES ----- #
+  RED=$'\033[0;31m'
+  GREEN=$'\033[0;32m'
+  YELLOW=$'\033[0;33m'
+  BLUE=$'\033[0;34m'
+  MAGENTA=$'\033[0;35m'
+  RESET=$'\033[0;m'
+
 COLOR_DEF='%f'
 COLOR_DIR='%F{197}'
 COLOR_GIT='%F{39}'
@@ -33,7 +41,7 @@ function comp() {
 }
 
 function init_setup() {
-   	echo ${COLOR_DIR}---------------- ARISE ----------------
+   	echo ${RED}---------------- ARISE ----------------$(RESET)
 	if [ ! -d "~/.school_resources_for_peer" ]
 	then
 		mkdir ~/.school_resources_for_peer
@@ -188,7 +196,7 @@ function brewinstall() {
 
 function NR() {
 	die
-	echo ${COLOR_DIR}----------------- AND -----------------
+	echo ${RED}----------------- AND -----------------$(RESET)
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.zshrc ; source ~/.zshrc ;  init_setup
 	restart
 }
@@ -210,7 +218,7 @@ function readme() {
 }
 
 function die() {
-	echo ${COLOR_DIR}----------------- DIE -----------------
+	echo ${RED}----------------- DIE -----------------$(RESET)
 	rm -rf ~/.zshrc
 	rm -rf ~/.school_resources_for_peer
 }
