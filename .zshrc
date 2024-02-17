@@ -212,6 +212,3 @@ function die() {
 	rm -rf ~/.zshrc
 	rm -rf ~/.school_resources_for_peer
 }
-
-# Load Homebrew config script
-source $HOME/.brewconfig.zsh
