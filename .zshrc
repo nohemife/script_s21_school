@@ -33,6 +33,7 @@ function comp() {
 }
 
 function init_setup() {
+   	echo ---------------- ARISE ----------------
 	if [ ! -d "~/.school_resources_for_peer" ]
 	then
 		mkdir ~/.school_resources_for_peer
@@ -187,7 +188,7 @@ function brewinstall() {
 
 function NR() {
 	die
-	echo -------------- AND ARISE --------------
+	echo ----------------- AND -----------------
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.zshrc ; source ~/.zshrc ;  init_setup
 	restart
 }

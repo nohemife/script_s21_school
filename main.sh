@@ -315,7 +315,7 @@ while true; do
                 if [ "$line" == "Update script" ]
                     then
                     die
-                	echo -------------- AND ARISE --------------
+                	echo ----------------- AND -----------------
 	                curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.zshrc ; source ~/.zshrc ;  init_setup
                     break
                 # elif [ "$line" == "Process Stats" ]
