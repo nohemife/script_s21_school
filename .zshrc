@@ -193,6 +193,7 @@ function mem() {
 
 function brewinstall() {
 	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
+	restart
 	reset
 	brew install lcov
 	brew install check
