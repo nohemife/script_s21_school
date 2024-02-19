@@ -26,8 +26,10 @@ menu=(
 "Exit"
 )
 
+TAG=$(cat ~/.school_resources_for_peer/.zshrc | grep TAG)
 # ASCII Art generated: https://patorjk.com/software/taag/#p=display&f=Ivrit&t=Console%20-%20Menu
 logo=(
+"                                                                       $TAG"
 "   ____                      _                __  __                   "
 "  / ___|___  _ __  ___  ___ | | ___          |  \/  | ___ _ __  _   _  "
 " | |   / _ \| '_ \/ __|/ _ \| |/ _ \  _____  | |\/| |/ _ \ '_ \| | | | "
@@ -61,6 +63,7 @@ function show-menu {
         echo "${logo[$i]}"
         ((current_row++))
     done
+    # printf $TAG
 
     # Menu
     for i in "${!menu[@]}"; do
@@ -373,6 +376,11 @@ while true; do
             if [[ $selected -lt $(( ${#menu[@]} - 1 )) ]]; then
                 selected=$((selected+1))
             fi
+        ;;
+        "Q"|"q")
+         # exit
+            reset
+            exit
         ;;
     esac
 done
