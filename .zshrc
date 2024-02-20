@@ -78,6 +78,7 @@ function menu() {
 	bash ~/.school_resources_for_peer/main.sh
 }
 
+	# cppcheck --enable=all --suppress=missingIncludeSystem ./*.c *.h ./test_s21/*.c ./test_s21/*.h
 function fixformat() {
 	# files_array=($(find . -type f \( -name "*.c" -o -name "*.h" \)))
 	files_array=($(find . -type f \( -name "*.c" -o -name "*.h" -o -name "*.cpp" \)))
