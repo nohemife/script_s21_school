@@ -79,7 +79,8 @@ function menu() {
 }
 
 function fixformat() {
-	files_array=($(find . -type f \( -name "*.c" -o -name "*.h" \)))
+	# files_array=($(find . -type f \( -name "*.c" -o -name "*.h" \)))
+	files_array=($(find . -type f \( -name "*.c" -o -name "*.h" -o -name "*.cpp" \)))
 	# Создаем отдельный массив для обработанных файлов
 	processed_files=()
 
