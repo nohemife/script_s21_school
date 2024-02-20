@@ -193,10 +193,9 @@ function mem() {
 
 function brewinstall() {
 	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
-	restart
-	reset
-	brew install lcov
-	brew install check
+	restart && reset
+	osascript -e 'tell app "Terminal" to do script "brew install lcov && brew install gcovr && brew install check && exit"'
+	# brew install lcov && brew install gcovr && brew install check
 	sleep 1
 	reset
 }
