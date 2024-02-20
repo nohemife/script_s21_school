@@ -173,9 +173,8 @@ function peer() {
 		mkdir ~/Desktop/peer_review_dir
 	fi
 	cd ~/Desktop/peer_review_dir
-	# git clone -b develop $1
-    git clone $1 
-
+	git clone -b develop $1
+    # git clone $1 
 	project_name=$(echo "$1" | sed 's/^.*\///; s/\.git$//')
 	# printf $project_name
 	# printf '\n'
@@ -230,3 +229,6 @@ function die() {
 	rm -rf ~/.zshrc
 	rm -rf ~/.school_resources_for_peer
 }
+
+# Load Homebrew config script
+source $HOME/.brewconfig.zsh
