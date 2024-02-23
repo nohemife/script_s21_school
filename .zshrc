@@ -8,7 +8,7 @@ alias //="cd -"
 alias ff="fixformat"
 alias rmh="rm -rf ~/.zsh_history"
 alias rc="nano ~/.zshrc && source ~/.zshrc"
-alias work="cd ~/Desktop/"
+alias work="cd echo $(git rev-parse --show-toplevel)"
 alias vsc="open . -a 'Visual studio code'"
 alias pushd="git push origin develop"
 alias pushn="git push origin nohemife"
@@ -158,9 +158,10 @@ function fixformat() {
 }
 
 function vdb() {
-	mkdir .vscode
-	cp ~/.school_resources_for_peer/.vscode/launch.json .vscode/launch.json
-	cp ~/.school_resources_for_peer/.vscode/tasks.json .vscode/tasks.json
+	workdir = echo $(git rev-parse --show-toplevel)/
+	mkdir $(workdir).vscode
+	cp ~/.school_resources_for_peer/.vscode/launch.json $(workdir).vscode/launch.json
+	cp ~/.school_resources_for_peer/.vscode/tasks.json $(workdir).vscode/tasks.json
 }
 
 function grind() {
