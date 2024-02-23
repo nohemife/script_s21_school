@@ -158,10 +158,11 @@ function fixformat() {
 }
 
 function vdb() {
-	workdir=$(echo $(git rev-parse --show-toplevel)/)
-	mkdir $(workdir).vscode
-	cp ~/.school_resources_for_peer/.vscode/launch.json $(workdir).vscode/launch.json
-	cp ~/.school_resources_for_peer/.vscode/tasks.json $(workdir).vscode/tasks.json
+	workdir=$(git rev-parse --show-toplevel)/
+  	# printf $(git rev-parse --show-toplevel)/
+	mkdir $workdir.vscode
+	cp ~/.school_resources_for_peer/.vscode/launch.json $workdir.vscode/launch.json
+	cp ~/.school_resources_for_peer/.vscode/tasks.json $workdir.vscode/tasks.json
 }
 
 function grind() {
