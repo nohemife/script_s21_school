@@ -167,7 +167,7 @@ function vdb() {
 	cp ~/.school_resources_for_peer/.vscode/tasks.json $workdir.vscode/tasks.json
 	else
 	prog=$(echo $GREEN"vdb!"$RESET)
-	printf $RED"File exists! Use command: > $prog <"$RESET
+	printf $RED"File exists! Use command: > $prog < '\n'"$RESET
 	fi
 }
 
