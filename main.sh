@@ -17,7 +17,7 @@ menu=(
 "Memory space information"
 "Clear the memory"
 "[ CLEAR ALL CASHE ]"
-"install brew+lcov+check"
+"install test libs"
 "Docker link"
 "Docker copy apt"
 "Docker link + copy apt"
@@ -285,12 +285,15 @@ function clear_cashe {
 
 function brewinstall {
 	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
-	# reset
-	brew install lcov
-	# brew install gcovr
+	restart && reset
+	osascript -e 'tell app "Terminal" to do script "brew install check && brew install lcov && brew install gcovr && brew install googletest && exit && kill -9 $(echo $$)"'
 	brew install check
-	sleep 1
-	reset
+	brew install lcov
+	brew install gcovr
+	brew install googletest
+	# sleep 1
+	kill -9 $(echo $$)
+	# reset
 }
 
 function die() {
@@ -338,7 +341,7 @@ while true; do
                 elif [ "$line" == "[ CLEAR ALL CASHE ]" ]
                     then
                     clear_cashe
-				elif [ "$line" == "install brew+lcov+check" ]
+				elif [ "$line" == "install test libs" ]
                     then
                     brewinstall
 					break

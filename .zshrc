@@ -160,6 +160,20 @@ function fixformat() {
 function vdb() {
 	workdir=$(git rev-parse --show-toplevel)/
   	# printf $(git rev-parse --show-toplevel)/
+	if [ ! -d "$workdir.vscode" ]
+	then
+	mkdir $workdir.vscode
+	cp ~/.school_resources_for_peer/.vscode/launch.json $workdir.vscode/launch.json
+	cp ~/.school_resources_for_peer/.vscode/tasks.json $workdir.vscode/tasks.json
+	else
+	printf $RED"File exists! Use command "vdb!""$RESET
+	fi
+}
+
+function vdb!() {
+	workdir=$(git rev-parse --show-toplevel)/
+  	# printf $(git rev-parse --show-toplevel)/
+	rm -rf $workdir.vscode
 	mkdir $workdir.vscode
 	cp ~/.school_resources_for_peer/.vscode/launch.json $workdir.vscode/launch.json
 	cp ~/.school_resources_for_peer/.vscode/tasks.json $workdir.vscode/tasks.json
@@ -198,9 +212,12 @@ function mem() {
 function brewinstall() {
 	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
 	restart && reset
-	osascript -e 'tell app "Terminal" to do script "brew install lcov && brew install gcovr && brew install check && exit && kill -9 $(echo $$)"'
-	# brew install lcov && brew install gcovr && brew install check
-	sleep 1
+	osascript -e 'tell app "Terminal" to do script "brew install check && brew install lcov && brew install gcovr && brew install googletest && exit && kill -9 $(echo $$)"'
+	brew install check
+	brew install lcov
+	brew install gcovr
+	brew install googletest
+	# sleep 1
 	kill -9 $(echo $$)
 	# reset
 }
