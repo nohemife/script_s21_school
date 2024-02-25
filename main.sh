@@ -287,8 +287,8 @@ function clear_cashe {
 function brewinstall() {
 	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
 	restart && reset
-	# osascript -e 'tell app "Terminal" to do script "brew install check && brew install lcov && brew install gcovr && brew install googletest && killall iTerm2 && killall Terminal"'
-	osascript -e 'tell app "iTerm2" to do script "brew install check && brew install lcov && brew install gcovr && brew install googletest && killall Terminal && killall iTerm2"'
+	osascript -e 'tell app "Terminal" to do script "brew install check && brew install lcov && brew install gcovr && brew install googletest && killall iTerm2 && killall Terminal"'
+	# osascript -e 'tell app "iTerm2" to do script "brew install check && brew install lcov && brew install gcovr && brew install googletest && killall Terminal && killall iTerm2"'
 	# brew install check
 	# brew install lcov
 	# brew install gcovr
