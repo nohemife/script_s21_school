@@ -162,7 +162,7 @@ echo $RED"----- CLEARING THE SPACE -----"$RESET
     rm -rf ~/Library/Application\ Support/BraveSoftware/Brave-Browser/Default/Service\ Worker/CacheStorage/
     df -h | grep Users | awk '{print $2 " = " $3 " + "  $4}'
     echo '----------------------'
-    echo "Clean Success"
+    echo $GREEN"Clean Success"$RESET
 
     rm -rf ~/Desktop/Presentation.pdf
     # rm -rf ~/Documents/*
@@ -235,7 +235,7 @@ echo $RED"----- CLEARING THE SPACE -----"$RESET
     echo $RED"before:\n"$RESET${before}$RESET
     df -h | grep Users | awk '{print $2 " = " $3 " + "  $4}'
     sleep 1
-    echo DONE
+    echo $GREEN DONE $RESET
 }
 
 function clear_cashe {
@@ -281,10 +281,10 @@ function clear_cashe {
     rm -rf ~/Library/Application\ Support/Code/User/workspaceStorage/
     rm -rf ~/.Trash/
     #brew cleanup && echo "clean complete"
-    echo $GREEN"clean complete"$RESET
+    echo $GREEN"Clean complete"$RESET
 }
 
-function brewinstall {
+function brew_install {
 	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
 	restart && reset
 	osascript -e 'tell app "Terminal" to do script "brew install check && brew install lcov && brew install gcovr && brew install googletest && exit && kill -9 $(echo $$)"'
@@ -347,7 +347,7 @@ while true; do
                     clear_cashe
 				elif [ "$line" == "install test libs" ]
                     then
-                    brewinstall
+                    brew_install
 					break
                 elif [ "$line" == "Docker link" ]
                     then
