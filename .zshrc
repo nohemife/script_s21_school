@@ -216,6 +216,7 @@ dir=$(echo $(git rev-parse --show-toplevel))
 sql=$(echo $dir | grep -io sql)
 # if [$dir]; then
 if [[ $sql =~ ^[Ss][Qq][Ll]$ ]]; then
+echo $GREEN"Find $sql project: $dir"$RESET '\n'
 # Пример исполнения скрипта: sql 5 12
 # 5 - day / день
 # 12 - exercise / количество заданий
@@ -227,7 +228,6 @@ zle -R
 read 2
 # echo $1
 # echo $2
-echo $GREEN"Find $sql project: $dir"$RESET '\n'
 cd $dir/src
 
 # if [ ! -d "$dir/src/ex" ]; then
