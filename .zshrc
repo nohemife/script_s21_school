@@ -242,7 +242,7 @@ do
 	# echo ex0$i
 	if [ ! -d "ex0$i" ]; then
 		mkdir ex0$i
-		echo $GREEN"Directory ex$i create!"$RESET
+		echo $GREEN"Directory ex0$i create!"$RESET
 	else
 		echo $RED"Directory ex0$i exists!"$RESET
 	fi
