@@ -26,6 +26,21 @@ menu=(
 "Exit"
 )
 
+# menu=(
+# "Update script           "
+# # "Process Stats"
+# "Memory space information"
+# "Clear the memory        "
+# "[ CLEAR ALL CASHE ]     "
+# "install test libs       "
+# "Docker link             "
+# "Docker copy apt         "
+# "Docker link + copy apt  "
+# "README                  "
+# "parrot.live             "
+# "Exit                    "
+# )
+
 TAG=$(cat ~/.school_resources_for_peer/.zshrc | grep TAG)
 # ASCII Art generated: https://patorjk.com/software/taag/#p=display&f=Ivrit&t=Console%20-%20Menu
 logo=(
