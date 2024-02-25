@@ -50,7 +50,7 @@ parse_git_branch() {
 # -------------------------------------------------------------------------- init setup
 
 function init_setup() {
-   	echo $RED---------------- ARISE ----------------$RESET
+ 	echo $RED---------------- ARISE ----------------$RESET
 	if [ ! -d "~/.school_resources_for_peer" ]
 	then
 		mkdir ~/.school_resources_for_peer
@@ -174,7 +174,7 @@ function fixformat() {
 
 function vdb() {
 	workdir=$(git rev-parse --show-toplevel)/
-  	# printf $(git rev-parse --show-toplevel)
+	# printf $(git rev-parse --show-toplevel)
 	# echo $(git -c alias.root='!pwd' root)
 	# echo $(git rev-parse --show-cdup)
 	if [ ! -d "$workdir.vscode" ]
@@ -190,7 +190,7 @@ function vdb() {
 
 function vdb!() {
 	workdir=$(git rev-parse --show-toplevel)/
-  	# printf $(git rev-parse --show-toplevel)
+	# printf $(git rev-parse --show-toplevel)
 	# echo $(git -c alias.root='!pwd' root)
 	# echo $(git rev-parse --show-cdup)
 	rm -rf $workdir.vscode
@@ -224,7 +224,7 @@ echo "Enter day: "
 zle -R 
 read 1
 echo "Enter exercise: "
-zle -R  
+zle -R
 read 2
 # echo $1
 # echo $2
@@ -234,10 +234,13 @@ cd $dir/src
 i=0
 while [ $i -le $2 ]
 do
-  if [[ $1 -lt 10 ]]; then
-	null=$(echo 0)
+	if [[ $1 -lt 10 ]]; then
+		null=$(echo 0)
+	else
+		null=""
+	fi
 	# echo $null
-  fi
+
   if [[ $i -lt 10 ]]; then
 	# echo ex0$i
 	if [ ! -d "ex0$i" ]; then
@@ -270,7 +273,7 @@ do
   ((i++))
 done
 echo '\n'
-echo $GREEN"Create dir and file: src/ex**/day**_ex**.sql"$RESET
+echo $GREEN"Create dir and file: src/ex[0-$2]/day$null$1_ex[0-$2].sql"$RESET
 # fi
 else
 	echo $RED"No SQL project"$RESET
