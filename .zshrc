@@ -39,7 +39,7 @@ setopt PROMPT_SUBST
 export PROMPT='${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}${NEWLINE}%% '
 
 parse_git_branch() {
-    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
+	git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
 }
 
 # function comp() {
@@ -78,7 +78,7 @@ function init_setup() {
 
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/helpme.md > ~/.school_resources_for_peer/helpme.md
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/README.md > ~/.school_resources_for_peer/README.md
-    sleep 1
+	sleep 1
 	echo $GREEN"Install complete! Enjoy!"$RESET
 	reset
 }
@@ -103,39 +103,39 @@ function fixformat() {
 
 	# Обходим каждый элемент в files_array, обрабатываем и добавляем в processed_files
 	for file in "${files_array[@]}"; do
-    	processed_file="${file/$dir_to_remove/}"  # Удаляем часть директории из пути
-    	processed_files+=("$processed_file")  # Добавляем обработанный файл в массив
+		processed_file="${file/$dir_to_remove/}"  # Удаляем часть директории из пути
+		processed_files+=("$processed_file")  # Добавляем обработанный файл в массив
 	done
 
 	# # Выводим список обработанных файлов
 	# echo "Обработанные файлы:"
 	# for file in "${processed_files[@]}"; do
-    # 	echo "$file"
+	# 	echo "$file"
 	# done
 
 	# # Пример использования обработанных файлов
 	# for processed_file in "${processed_files[@]}"; do
-    # 	if [ -f "$processed_file" ]; then
-    #     	echo "$processed_file существует"
-    #     # Здесь можно проводить дополнительные действия с каждым обработанным файлом
-    # 	fi
+	# 	if [ -f "$processed_file" ]; then
+	#	 	echo "$processed_file существует"
+	#	 # Здесь можно проводить дополнительные действия с каждым обработанным файлом
+	# 	fi
 	# done
 	
 	if [ ${#processed_files[@]} -ne 0 ]; then
-    	# printf '%s\n' "${processed_files[@]}"
+		# printf '%s\n' "${processed_files[@]}"
 		echo ---------------- CHECK ----------------
 		# printf '\n'
 		clang-format -style=google -n ${processed_files[@]}
 	fi
 	sleep 1
 	if [ ${#processed_files[@]} -ne 0 ]; then
-    	# printf '%s\n' "${processed_files[@]}"
+		# printf '%s\n' "${processed_files[@]}"
 		echo ----------------- FIX -----------------
 		# printf '\n'
 		clang-format -style=google -i ${processed_files[@]}
 	fi
 	if [ ${#processed_files[@]} -ne 0 ]; then
-    	# printf '%s\n' "${processed_files[@]}"
+		# printf '%s\n' "${processed_files[@]}"
 		echo ---------------- CHECK ----------------
 		# printf '\n'
 		clang-format -style=google -n ${processed_files[@]}
@@ -155,8 +155,8 @@ function fixformat() {
 	# dir_to_remove="./"
 	# # Цикл для обработки каждого элемента массива files
 	# for ((i=0; i<${#files[@]}; i++)); do
-    # # Используем подстроку для удаления части строки с путем к директории
-    # 	files[$i]=${files[$i]#"$dir_to_remove"}
+	# # Используем подстроку для удаления части строки с путем к директории
+	# 	files[$i]=${files[$i]#"$dir_to_remove"}
 	# done
 	# v2.0
 	# clang-format -style=google -n *.c *.h
@@ -208,6 +208,86 @@ function grind() {
 	cp ~/.school_resources_for_peer/Valgrind/start.sh Valgrind/start.sh
 }
 
+# -------------------------------------------------------------------------- sql
+
+function sql() {
+# Пример исполнения скрипта: sql 5 12
+# 5 - day / день
+# 12 - exercise / количество заданий
+echo "Enter day: "
+zle -R 
+read 1
+echo "Enter exercise: "
+zle -R  
+read 2
+# echo $1
+# echo $2
+
+dir=$(echo $(git rev-parse --show-toplevel))
+sql=$(echo $dir | grep -io sql)
+# if [$dir]; then
+if [[ $sql =~ ^[Ss][Qq][Ll]$ ]]; then
+echo $GREEN"Find $sql project: $dir"$RESET '\n'
+cd $dir/src
+
+# if [ ! -d "$dir/src/ex" ]; then
+i=0
+while [ $i -le $2 ]
+do
+  if [[ $1 -lt 10 ]]; then
+	null=$(echo 0)
+	# echo $null
+  fi
+  if [[ $i -lt 10 ]]; then
+	# echo ex0$i
+	if [ ! -d "ex0$i" ]; then
+		mkdir ex0$i
+		echo $GREEN"Directory ex$i create!"$RESET
+	else
+		echo $RED"Directory ex0$i exists!"$RESET
+	fi
+	if [ ! -f "ex0$i/day$null$1_ex0$i.sql" ]; then
+		touch ex0$i/day$null$1_ex0$i.sql
+		echo $GREEN"File ex0$i/day$null$1_ex0$i.sql create!"$RESET
+	else
+		echo $RED"File ex0$i/day$null$1_ex0$i.sql exists!"$RESET
+	fi
+  else
+	# echo ex$i
+	if [ ! -d "ex$i" ]; then
+		mkdir ex$i
+		echo $GREEN"Directory ex$i create!"$RESET
+	else
+		echo $RED"Directory ex$i exists!"$RESET
+	fi
+	if [ ! -f "ex$i/day$null$1_ex$i.sql" ]; then
+		touch ex$i/day$null$1_ex$i.sql
+		echo $GREEN"File ex$i/day$null$1_ex$i.sql create!"$RESET
+	else
+		echo $RED"File ex$i/day$null$1_ex$i.sql exists!"$RESET
+	fi
+  fi
+  ((i++))
+done
+echo '\n'
+echo $GREEN"Create dir and file: src/ex**/day**_ex**.sql"$RESET
+# fi
+else
+	echo $RED"No SQL project"$RESET
+fi
+}
+
+# -------------------------------------------------------------------------- git clone
+
+function gclone() {
+	cd ~/
+	git clone $1
+	project_name=$(echo "$1" | sed 's/^.*\///; s/\.git$//')
+	cd $project_name
+	git checkout -b develop
+	open . -a 'Visual studio code'
+}
+
 # -------------------------------------------------------------------------- peer review
 
 function peer() {
@@ -216,7 +296,7 @@ function peer() {
 	fi
 	cd ~/Desktop/peer_review_dir
 	git clone -b develop $1
-    # git clone $1 
+	# git clone $1 
 	project_name=$(echo "$1" | sed 's/^.*\///; s/\.git$//')
 	# printf $project_name
 	# printf '\n'
@@ -232,7 +312,7 @@ function peer() {
 # -------------------------------------------------------------------------- mem
 
 function mem() {
-      sh ~/.school_resources_for_peer/clean.sh
+	  sh ~/.school_resources_for_peer/clean.sh
 }
 
 # -------------------------------------------------------------------------- brew \ libs
@@ -245,13 +325,13 @@ function brewinstall() {
 	# brew install lcov
 	# brew install gcovr
 	# brew install googletest
-    # echo $TERM
+	# echo $TERM
 
-    # killall Terminal 
-    # killall iTerm2
-    # pkill -a -f Terminal
-    # pkill -a -f iTerm2
-    # killall Terminal && killall iTerm2
+	# killall Terminal 
+	# killall iTerm2
+	# pkill -a -f Terminal
+	# pkill -a -f iTerm2
+	# killall Terminal && killall iTerm2
 	# ps -o 'ppid=' -p $$
 	# ps -p $$ -o comm=
 	# w -h | grep $(whoami) | awk '{ print $1 " at " $2 " from " $3; }'
@@ -308,3 +388,14 @@ function die() {
 source $HOME/.brewconfig.zsh
 
 # -------------------------------------------------------------------------- END
+
+fun() {
+    # Вывод строки-приглашения перед запросом ввода
+    zle -R "Введите свое имя: "
+   
+    # Сохранение введенного значения в переменную 1
+    read 1
+
+    # Использование введенной переменной 1
+    echo "Привет, ${1}! Добро пожаловать в функцию."
+}
