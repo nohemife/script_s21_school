@@ -240,16 +240,24 @@ function mem() {
 function brewinstall() {
 	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
 	restart && reset
-	osascript -e 'tell app "Terminal" to do script "brew install check && brew install lcov && brew install gcovr && brew install googletest && exit && kill -9 $(echo $$)"'
+	# osascript -e 'tell app "Terminal" to do script "brew install check && brew install lcov && brew install gcovr && brew install googletest && killall iTerm2 && killall Terminal"'
+	osascript -e 'tell app "iTerm2" to do script "brew install check && brew install lcov && brew install gcovr && brew install googletest && killall Terminal && killall iTerm2"'
 	# brew install check
 	# brew install lcov
 	# brew install gcovr
 	# brew install googletest
     # echo $TERM
-    # terminal killall
-    # pkill -a Terminal
+
+    # killall Terminal 
+    # killall iTerm2
+    # pkill -a -f Terminal
+    # pkill -a -f iTerm2
+    # killall Terminal && killall iTerm2
+	# ps -o 'ppid=' -p $$
+	# ps -p $$ -o comm=
+	# w -h | grep $(whoami) | awk '{ print $1 " at " $2 " from " $3; }'
 	# sleep 1
-	kill -9 $(echo $$)
+	# kill -9 $(echo $$)
 	# reset
 }
 
