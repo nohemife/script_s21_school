@@ -287,10 +287,13 @@ function brewinstall {
 	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
 	restart && reset
 	osascript -e 'tell app "Terminal" to do script "brew install check && brew install lcov && brew install gcovr && brew install googletest && exit && kill -9 $(echo $$)"'
-	brew install check
-	brew install lcov
-	brew install gcovr
-	brew install googletest
+	# brew install check
+	# brew install lcov
+	# brew install gcovr
+	# brew install googletest
+    # echo $TERM
+    # terminal killall
+    # pkill -a Terminal
 	# sleep 1
 	kill -9 $(echo $$)
 	# reset

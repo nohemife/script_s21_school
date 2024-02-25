@@ -1,3 +1,5 @@
+# -------------------------------------------------------------------------- alias
+
 alias restart="source ~/.zshrc"
 alias gw="gcc -Wall -Wextra -Werror"
 alias gwd="gcc -Wall -Wextra -Werror -g"
@@ -15,7 +17,11 @@ alias pushn="git push origin nohemife"
 alias gsd="git switch develop"
 alias gsn="git switch nohemife"
 
+# -------------------------------------------------------------------------- TAG version
+
 TAG=1.0.0
+
+# -------------------------------------------------------------------------- color \ parse
 
 # ----- VARIABLES ----- #
   RED=$'\033[0;31m'
@@ -36,10 +42,12 @@ parse_git_branch() {
     git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
 }
 
-function comp() {
-	gcc -Wall -Wextra -Werror "$1.c" -o "$1.o"
-	./"$1.o"
-}
+# function comp() {
+# 	gcc -Wall -Wextra -Werror "$1.c" -o "$1.o"
+# 	./"$1.o"
+# }
+
+# -------------------------------------------------------------------------- init setup
 
 function init_setup() {
    	echo $RED---------------- ARISE ----------------$RESET
@@ -70,13 +78,18 @@ function init_setup() {
 
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/helpme.md > ~/.school_resources_for_peer/helpme.md
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/README.md > ~/.school_resources_for_peer/README.md
+    sleep 1
+	echo $GREEN"Install complete! Enjoy!"$RESET
 	reset
-
 }
+
+# -------------------------------------------------------------------------- console menu
 
 function menu() {
 	bash ~/.school_resources_for_peer/main.sh
 }
+
+# -------------------------------------------------------------------------- format google
 
 	# cppcheck --enable=all --suppress=missingIncludeSystem ./*.c *.h ./test_s21/*.c ./test_s21/*.h
 function fixformat() {
@@ -157,9 +170,13 @@ function fixformat() {
 	# rm .clang-format
 }
 
+# -------------------------------------------------------------------------- VS debug
+
 function vdb() {
 	workdir=$(git rev-parse --show-toplevel)/
-  	# printf $(git rev-parse --show-toplevel)/
+  	# printf $(git rev-parse --show-toplevel)
+	# echo $(git -c alias.root='!pwd' root)
+	# echo $(git rev-parse --show-cdup)
 	if [ ! -d "$workdir.vscode" ]
 	then
 	mkdir $workdir.vscode
@@ -173,12 +190,16 @@ function vdb() {
 
 function vdb!() {
 	workdir=$(git rev-parse --show-toplevel)/
-  	# printf $(git rev-parse --show-toplevel)/
+  	# printf $(git rev-parse --show-toplevel)
+	# echo $(git -c alias.root='!pwd' root)
+	# echo $(git rev-parse --show-cdup)
 	rm -rf $workdir.vscode
 	mkdir $workdir.vscode
 	cp ~/.school_resources_for_peer/.vscode/launch.json $workdir.vscode/launch.json
 	cp ~/.school_resources_for_peer/.vscode/tasks.json $workdir.vscode/tasks.json
 }
+
+# -------------------------------------------------------------------------- old valgrind
 
 function grind() {
 	mkdir Valgrind
@@ -186,6 +207,8 @@ function grind() {
 	cp ~/.school_resources_for_peer/Valgrind/run.sh Valgrind/run.sh
 	cp ~/.school_resources_for_peer/Valgrind/start.sh Valgrind/start.sh
 }
+
+# -------------------------------------------------------------------------- peer review
 
 function peer() {
 	if [ ! -d "~/Desktop/peer_review_dir" ]; then
@@ -206,22 +229,31 @@ function peer() {
 	open . -a 'Visual studio code'
 }
 
+# -------------------------------------------------------------------------- mem
+
 function mem() {
       sh ~/.school_resources_for_peer/clean.sh
 }
+
+# -------------------------------------------------------------------------- brew \ libs
 
 function brewinstall() {
 	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
 	restart && reset
 	osascript -e 'tell app "Terminal" to do script "brew install check && brew install lcov && brew install gcovr && brew install googletest && exit && kill -9 $(echo $$)"'
-	brew install check
-	brew install lcov
-	brew install gcovr
-	brew install googletest
+	# brew install check
+	# brew install lcov
+	# brew install gcovr
+	# brew install googletest
+    # echo $TERM
+    # terminal killall
+    # pkill -a Terminal
 	# sleep 1
 	kill -9 $(echo $$)
 	# reset
 }
+
+# -------------------------------------------------------------------------- NEW RELISE
 
 function NR() {
 	die
@@ -230,21 +262,31 @@ function NR() {
 	restart
 }
 
+# -------------------------------------------------------------------------- link docker
+
 function lndoc() {
 	sh ~/.school_resources_for_peer/linkdoc.sh
 }
+
+# -------------------------------------------------------------------------- apt docker
 
 function aptdoc() {
 	cat ~/.school_resources_for_peer/aptdoc.txt | pbcopy
 }
 
+# -------------------------------------------------------------------------- helpme
+
 function helpme() {
 	cat ~/.school_resources_for_peer/helpme.md
 }
 
+# -------------------------------------------------------------------------- readme
+
 function readme() {
 	open "https://github.com/nohemife/script_s21_school/tree/main"
 }
+
+# -------------------------------------------------------------------------- die
 
 function die() {
 	echo $RED----------------- DIE -----------------$RESET
@@ -252,5 +294,9 @@ function die() {
 	rm -rf ~/.school_resources_for_peer
 }
 
+# -------------------------------------------------------------------------- brew link
+
 # Load Homebrew config script
 source $HOME/.brewconfig.zsh
+
+# -------------------------------------------------------------------------- END
