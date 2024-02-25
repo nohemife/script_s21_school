@@ -240,6 +240,7 @@ echo $RED"----- CLEARING THE SPACE -----"$RESET
 
 function clear_cashe {
     echo $RED"----- CLEARING CASHE -----"$RESET
+    echo $RED"------ DESTROY  ALL ------"$RESET
     find ~/ -name ".DS_Store" -print -delete 2> /dev/null
     find ~/ -name "**.42_cache_bak**" -print -delete 2> /dev/null
     rm -rf ~/.zcompdump*
