@@ -299,7 +299,7 @@ function clear_cashe {
     echo $GREEN"Clean complete"$RESET
 }
 
-function brewinstall() {
+function brew_install() {
 	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
 	restart && reset
 	osascript -e 'tell app "Terminal" to do script "brew install check && brew install lcov && brew install gcovr && brew install googletest && killall iTerm2 && killall Terminal"'
