@@ -202,6 +202,7 @@ function vdb() {
 	cat ~/.school_resources_for_peer/.vscode/launch.json | sed $(echo 's/a.out/'"$file"'/') > $workdir.vscode/launch.json 
 	# cp ~/.school_resources_for_peer/.vscode/launch.json $workdir.vscode/launch.json
 	cp ~/.school_resources_for_peer/.vscode/tasks.json $workdir.vscode/tasks.json
+	echo "Путь к исполняемому файлу: $GREEN$workdir"src/$file"$RESET"
 	else
 	prog=$(echo $GREEN vdb!)
 	printf $RED"File exists! Use command: $prog "$RESET
@@ -233,6 +234,8 @@ function vdb!() {
 	cat ~/.school_resources_for_peer/.vscode/launch.json | sed $(echo 's/a.out/'"$file"'/') > $workdir.vscode/launch.json 
 	# cp ~/.school_resources_for_peer/.vscode/launch.json $workdir.vscode/launch.json
 	cp ~/.school_resources_for_peer/.vscode/tasks.json $workdir.vscode/tasks.json
+	echo "Путь к исполняемому файлу: $GREEN$workdir"src/$file"$RESET"
+
 }
 
 # -------------------------------------------------------------------------- old valgrind
