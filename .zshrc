@@ -173,6 +173,20 @@ function fixformat() {
 
 # -------------------------------------------------------------------------- VS debug
 
+# function vdb() {
+# 	workdir=$(git rev-parse --show-toplevel)/
+#   	# printf $(git rev-parse --show-toplevel)/
+# 	if [ ! -d "$workdir.vscode" ]
+# 	then
+# 	mkdir $workdir.vscode
+# 	cp ~/.school_resources_for_peer/.vscode/launch.json $workdir.vscode/launch.json
+# 	cp ~/.school_resources_for_peer/.vscode/tasks.json $workdir.vscode/tasks.json
+# 	else
+# 	prog=$(echo $GREEN vdb!)
+# 	printf $RED"File exists! Use command: $prog "$RESET
+# 	fi
+# }
+
 function vdb() {
 	workdir=$(git rev-parse --show-toplevel)/
 	# printf $(git rev-parse --show-toplevel)
@@ -180,8 +194,13 @@ function vdb() {
 	# echo $(git rev-parse --show-cdup)
 	if [ ! -d "$workdir.vscode" ]
 	then
+	echo "Путь к исполняемому файлу: $workdir"src/"$GREEN"a.out""$RESET
+	echo "Введи имя своего исполняемого файла: "
+	zle -R 
+	read file
 	mkdir $workdir.vscode
-	cp ~/.school_resources_for_peer/.vscode/launch.json $workdir.vscode/launch.json
+	cat ~/.school_resources_for_peer/.vscode/launch.json | sed $(echo 's/a.out/'"$file"'/') > $workdir.vscode/launch.json 
+	# cp ~/.school_resources_for_peer/.vscode/launch.json $workdir.vscode/launch.json
 	cp ~/.school_resources_for_peer/.vscode/tasks.json $workdir.vscode/tasks.json
 	else
 	prog=$(echo $GREEN vdb!)
@@ -189,14 +208,30 @@ function vdb() {
 	fi
 }
 
+# function vdb!() {
+# 	workdir=$(git rev-parse --show-toplevel)/
+# 	# printf $(git rev-parse --show-toplevel)
+# 	# echo $(git -c alias.root='!pwd' root)
+# 	# echo $(git rev-parse --show-cdup)
+# 	rm -rf $workdir.vscode
+# 	mkdir $workdir.vscode
+# 	cp ~/.school_resources_for_peer/.vscode/launch.json $workdir.vscode/launch.json
+# 	cp ~/.school_resources_for_peer/.vscode/tasks.json $workdir.vscode/tasks.json
+# }
+
 function vdb!() {
 	workdir=$(git rev-parse --show-toplevel)/
 	# printf $(git rev-parse --show-toplevel)
 	# echo $(git -c alias.root='!pwd' root)
 	# echo $(git rev-parse --show-cdup)
 	rm -rf $workdir.vscode
+	echo "Путь к исполняемому файлу: $workdir"src/"$GREEN"a.out""$RESET
+	echo "Введи имя своего исполняемого файла: "
+	zle -R 
+	read file
 	mkdir $workdir.vscode
-	cp ~/.school_resources_for_peer/.vscode/launch.json $workdir.vscode/launch.json
+	cat ~/.school_resources_for_peer/.vscode/launch.json | sed $(echo 's/a.out/'"$file"'/') > $workdir.vscode/launch.json 
+	# cp ~/.school_resources_for_peer/.vscode/launch.json $workdir.vscode/launch.json
 	cp ~/.school_resources_for_peer/.vscode/tasks.json $workdir.vscode/tasks.json
 }
 
