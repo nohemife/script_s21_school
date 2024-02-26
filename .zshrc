@@ -22,6 +22,7 @@ alias gsn="git switch nohemife"
 
 TAG=1.0.0
 
+
 # -------------------------------------------------------------------------- color \ parse
 
 # ----- VARIABLES ----- #
@@ -59,6 +60,7 @@ function init_setup() {
 		# mkdir ~/.school_resources_for_peer/Valgrind
 	fi
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.school_resources_for_peer/.zshrc
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt > ~/.school_resources_for_peer/date.txt
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/main.sh > ~/.school_resources_for_peer/main.sh
 	chmod +x ~/.school_resources_for_peer/main.sh
 	

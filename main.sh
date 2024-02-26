@@ -41,9 +41,11 @@ menu=(
 # "Exit                    "
 # )
 
-TAG=$(cat ~/.school_resources_for_peer/.zshrc | grep TAG)
+TAG=$(cat ~/.school_resources_for_peer/.zshrc | grep TAG=)
+UPDATE=$(cat ~/.school_resources_for_peer/date.txt)
 # ASCII Art generated: https://patorjk.com/software/taag/#p=display&f=Ivrit&t=Console%20-%20Menu
 logo=(
+"                                                                       $UPDATE"
 "                                                                       $TAG"
 "   ____                      _                __  __                   "
 "  / ___|___  _ __  ___  ___ | | ___          |  \/  | ___ _ __  _   _  "
