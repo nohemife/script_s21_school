@@ -6,7 +6,7 @@ build:
 
 backup:
 	@cp ~/.zshrc ~/.zshrc_$(shell date +"%Y-%m-%d_%H-%M-%S")
-	@echo "\033[0;32mbackup success"
+	@echo "\033[0;32mbackup success\033[0;m"
 
 git: backup
 	git add .
