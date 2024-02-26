@@ -201,7 +201,7 @@ function vdb() {
 	zle -R 
 	read file
 	mkdir $workdir.vscode
-	cat ~/.school_resources_for_peer/.vscode/launch.json | sed $(echo 's/a.out/'"$file"'/') > $workdir.vscode/launch.json 
+	cat ~/.school_resources_for_peer/.vscode/launch.json | sed $(echo 's|a.out|'"$file"'|') > $workdir.vscode/launch.json 
 	# cp ~/.school_resources_for_peer/.vscode/launch.json $workdir.vscode/launch.json
 	cp ~/.school_resources_for_peer/.vscode/tasks.json $workdir.vscode/tasks.json
 	echo "Путь к исполняемому файлу: $workdir"src/"$GREEN$file"$RESET
@@ -233,7 +233,7 @@ function vdb!() {
 	zle -R 
 	read file
 	mkdir $workdir.vscode
-	cat ~/.school_resources_for_peer/.vscode/launch.json | sed $(echo 's/a.out/'"$file"'/') > $workdir.vscode/launch.json 
+	cat ~/.school_resources_for_peer/.vscode/launch.json | sed $(echo 's|a.out|'"$file"'|') > $workdir.vscode/launch.json 
 	# cp ~/.school_resources_for_peer/.vscode/launch.json $workdir.vscode/launch.json
 	cp ~/.school_resources_for_peer/.vscode/tasks.json $workdir.vscode/tasks.json
 	echo "Путь к исполняемому файлу: $workdir"src/"$GREEN$file"$RESET
