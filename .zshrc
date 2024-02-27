@@ -360,14 +360,14 @@ dir=$(echo $(git rev-parse --show-toplevel))
 # if [$dir]; then
 sql=$(echo $dir | grep -ic sql_)
 if [[ $sql -eq 1 ]]; then
-echo $GREEN"Find $sql project: $dir"$RESET '\n'
+echo $GREEN"Find SQL project: $dir"$RESET '\n'
 # Пример исполнения скрипта: sql 5 12
 # 5 - day / день
 # 12 - exercise / количество заданий
-echo "Enter day: "
+echo "Введи номер дня: "
 zle -R 
 read 1
-echo "Enter exercise: "
+echo "Введи количество заданий: "
 zle -R
 read 2
 # echo $1
