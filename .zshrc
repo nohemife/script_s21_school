@@ -283,9 +283,11 @@ function grind() {
 function sql() {
 
 dir=$(echo $(git rev-parse --show-toplevel))
-sql=$(echo $dir | grep -io sql)
+# sql=$(echo $dir | grep -io sql)
+# if [[ $sql =~ ^[Ss][Qq][Ll]$ ]]; then
 # if [$dir]; then
-if [[ $sql =~ ^[Ss][Qq][Ll]$ ]]; then
+sql=$(echo $dir | grep -ic sql)
+if [[ $sql -eq 1 ]]; then
 echo $GREEN"Find $sql project: $dir"$RESET '\n'
 # Пример исполнения скрипта: sql 5 12
 # 5 - day / день
