@@ -42,6 +42,22 @@ NEW=$(echo $?)
 # reset
 if [ $NEW -eq 1 ]; then
 # printf $NEW'\n'
+i=0
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+RESET=$(tput sgr0)
+
+while [ $i -ne 6 ]
+do
+    clear
+    sleep 0.2
+    if [ $((i % 2)) -eq 0 ]; then
+        echo "${RED}[ NEW VERSION AVAILABLE! ENTER COMMAND ${GREEN}NR${RED} TO UPDATE! ]${RESET}"
+        sleep 0.4
+    fi
+    i=$((i+1))  # Арифметическое выражение для инкремента переменной i
+done
+reset
 echo "$RED [ NEW VERSION AVAILABLE! ENTER COMMAND$GREEN NR$RED TO UPDATE! ]$RESET"
 fi
 
