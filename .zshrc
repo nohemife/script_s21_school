@@ -82,13 +82,13 @@ do
     clear
     sleep 0.2
     if [ $((i % 2)) -eq 0 ]; then
-        echo "${RED}[ NEW VERSION AVAILABLE! ENTER COMMAND ${GREEN}NR${RED} TO UPDATE! ] DATE: $UPDATE${RESET}" 
+        echo "${RED}[ NEW VERSION AVAILABLE! DATE: ${GREEN}$UPDATE${RED} TO UPDATE! ] ${RESET}"
         sleep 0.4
     fi
     i=$((i+1))
 done
 reset
-echo "$RED [ NEW VERSION AVAILABLE! ENTER COMMAND$GREEN NR$RED TO UPDATE! ] DATE: $UPDATE$RESET" 
+echo "${RED}[ NEW VERSION AVAILABLE! DATE: ${GREEN}$UPDATE${RED} TO UPDATE! ] ${RESET}"
 rm -rf ~/.school_resources_for_peer/update.txt 
 echo "Пропустить текущее обновление "ESC""
 echo "Обновить скрипт до новой версии [ y / n ]: "
