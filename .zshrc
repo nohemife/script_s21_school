@@ -107,6 +107,8 @@ while true; do
 		die
 		echo $RED----------------- AND -----------------$RESET
 		curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.zshrc ; source ~/.zshrc ;  init_setup
+		reset
+		break
 		restart
         ;;
         "N"|"n"|"NO"|"no"|"No"|"nO")
