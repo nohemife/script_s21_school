@@ -106,6 +106,7 @@ while true; do
 		# break
 		die
 		echo $RED----------------- AND -----------------$RESET
+		curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt > ~/.school_resources_for_peer/date.txt
 		curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.zshrc ; source ~/.zshrc ;  init_setup
 		reset
 		break
