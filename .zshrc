@@ -60,6 +60,7 @@ done
 reset
 echo "$RED [ NEW VERSION AVAILABLE! ENTER COMMAND$GREEN NR$RED TO UPDATE! ]$RESET"
 fi
+rm -rf ~/.school_resources_for_peer/update.txt 
 
 # -------------------------------------------------------------------------- parse branch
 
