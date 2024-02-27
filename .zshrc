@@ -47,20 +47,21 @@ RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
 RESET=$(tput sgr0)
 
+UPDATE=$(cat ~/.school_resources_for_peer/update.txt)
 while [ $i -ne 6 ]
 do
     clear
     sleep 0.2
     if [ $((i % 2)) -eq 0 ]; then
-        echo "${RED}[ NEW VERSION AVAILABLE! ENTER COMMAND ${GREEN}NR${RED} TO UPDATE! ]${RESET}"
+        echo "${RED}[ NEW VERSION AVAILABLE! ENTER COMMAND ${GREEN}NR${RED} TO UPDATE! ] DATE: $UPDATE${RESET}" 
         sleep 0.4
     fi
     i=$((i+1))  # Арифметическое выражение для инкремента переменной i
 done
 reset
-echo "$RED [ NEW VERSION AVAILABLE! ENTER COMMAND$GREEN NR$RED TO UPDATE! ]$RESET"
-fi
+echo "$RED [ NEW VERSION AVAILABLE! ENTER COMMAND$GREEN NR$RED TO UPDATE! ] DATE: $UPDATE$RESET" 
 rm -rf ~/.school_resources_for_peer/update.txt 
+fi
 
 # -------------------------------------------------------------------------- parse branch
 
