@@ -22,6 +22,16 @@ alias gsn="git switch nohemife"
 
 TAG=1.0.0
 
+# -------------------------------------------------------------------------- color
+
+# ----- VARIABLES ----- #
+RED=$'\033[0;31m'
+GREEN=$'\033[0;32m'
+YELLOW=$'\033[0;33m'
+BLUE=$'\033[0;34m'
+MAGENTA=$'\033[0;35m'
+RESET=$'\033[0;m'
+
 # -------------------------------------------------------------------------- autoupdate
 
 {
@@ -35,15 +45,7 @@ if [ $NEW -eq 1 ]; then
 echo "$RED [ NEW VERSION AVAILABLE! ENTER COMMAND$GREEN NR$RED TO UPDATE! ]$RESET"
 fi
 
-# -------------------------------------------------------------------------- color \ parse
-
-# ----- VARIABLES ----- #
-RED=$'\033[0;31m'
-GREEN=$'\033[0;32m'
-YELLOW=$'\033[0;33m'
-BLUE=$'\033[0;34m'
-MAGENTA=$'\033[0;35m'
-RESET=$'\033[0;m'
+# -------------------------------------------------------------------------- parse branch
 
 COLOR_DEF='%f'
 COLOR_DIR='%F{197}'
