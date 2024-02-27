@@ -22,6 +22,18 @@ alias gsn="git switch nohemife"
 
 TAG=1.0.0
 
+# -------------------------------------------------------------------------- autoupdate
+
+{
+curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt > ~/.school_resources_for_peer/update.txt 
+diff -q ~/.school_resources_for_peer/date.txt ~/.school_resources_for_peer/update.txt 
+} &> /dev/null
+NEW=$(echo $?)
+# reset
+if [ $NEW -eq 1 ]; then
+# printf $NEW'\n'
+echo "$RED [ NEW VERSION AVAILABLE! ENTER COMMAND$GREEN NR$RED TO UPDATE! ]$RESET"
+fi
 
 # -------------------------------------------------------------------------- color \ parse
 
