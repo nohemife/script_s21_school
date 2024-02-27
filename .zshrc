@@ -302,6 +302,9 @@ zle -R
 read 2
 # echo $1
 # echo $2
+if [ ! -d "$dir/src" ]; then
+	mkdir $dir/src
+fi
 cd $dir/src
 
 # if [ ! -d "$dir/src/ex" ]; then
