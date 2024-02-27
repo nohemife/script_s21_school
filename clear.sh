@@ -11,8 +11,8 @@ rm -rfv ~/Library/Application\ Support/Slack/Service\ Worker/CacheStorage
 rm -rfv ~/Library/Application\ Support/Code/User/workspaceStorage
 rm -rf ~/Library/Caches/*
 rm -rf ~/Library/42_cache
-find ~/ -name ".DS_Store" -print -delete 2> /dev/null
-find ~/ -name "**.42_cache_bak**" -print -delete 2> /dev/null
+find ~/ -name ".DS_Store" -print -delete 2>/dev/null
+find ~/ -name "**.42_cache_bak**" -print -delete 2>/dev/null
 rm -rf ~/.zcompdump*
 rm -rf .Trash/*
 rm -rf ~/Library/Application\ Support/Slack/Service\ Worker/CacheStorage/
@@ -42,7 +42,7 @@ rm -rf ~/Library/Application\ Support/Code/Cache/
 rm -rf ~/Library/Application\ Support/Code/CachedExtensionVSIXs/
 rm -rf ~/Library/Application\ Support/Code/Code\ Cache/
 rm -rf ~/Library/Application\ Support/Google/Chrome/Default/Service\ Worker/CacheStorage/
-rm -rf  ~/Library/Application\ Support/Google/Chrome/Default/Service\ Worker/ScriptCache/
+rm -rf ~/Library/Application\ Support/Google/Chrome/Default/Service\ Worker/ScriptCache/
 rm -rf ~/Library/Application\ Support/Google/Chrome/ShaderCache/GPUCache/
 rm -rf ~/Library/Application\ Support/Code/CachedExtensions/
 rm -rf ~/Library/Application\ Support/Code/logs/
@@ -55,8 +55,8 @@ rm -rfv ~/Library/Application\ Support/Slack/Cache/*
 rm -rfv ~/Library/Application\ Support/Slack/Service\ Worker/CacheStorage/*
 rm -rfv ~/Library/Group\ Containers/6N38VWS5BX.ru.keepcoder.Telegram/account-570841890615083515/postbox/*
 rm -rfv ~/Library/Caches
-find ~/ -name ".DS_Store" -print -delete 2> /dev/null
-find ~/ -name "**.42_cache_bak**" -print -delete 2> /dev/null
+find ~/ -name ".DS_Store" -print -delete 2>/dev/null
+find ~/ -name "**.42_cache_bak**" -print -delete 2>/dev/null
 rm -rf ~/.zcompdump*
 rm -rf .Trash/*
 rm -rf ~/Library/Application\ Support/Slack/Service\ Worker/CacheStorage/
@@ -81,12 +81,12 @@ rm -rf ~/Library/Application\ Support/zoom.us/AutoUpdater
 rm -rf ~/Library/Application\ Support/Google/Chrome/BrowserMetrics/.
 rm -rf ~/Library/Application\ Support/Google/Chrome/BrowserMetrics-spare.pma
 rm -rf ~/Library/Application\ Support/Google/Chrome/GrShaderCache/GPUCache/
-rm -rf ~/Library/Application\ Support/Google/Chrome/Default/Local\ Extension  Settings/cjpalhdlnbpafiamejdnhcphjbkeiagm/lost
+rm -rf ~/Library/Application\ Support/Google/Chrome/Default/Local\ Extension Settings/cjpalhdlnbpafiamejdnhcphjbkeiagm/lost
 rm -rf ~/Library/Application\ Support/Code/Cache/
 rm -rf ~/Library/Application\ Support/Code/CachedExtensionVSIXs/
 rm -rf ~/Library/Application\ Support/Code/Code\ Cache/
 rm -rf ~/Library/Application\ Support/Google/Chrome/Default/Service\ Worker/CacheStorage/
-rm -rf  ~/Library/Application\ Support/Google/Chrome/Default/Service\ Worker/ScriptCache/
+rm -rf ~/Library/Application\ Support/Google/Chrome/Default/Service\ Worker/ScriptCache/
 rm -rf ~/Library/Application\ Support/Google/Chrome/ShaderCache/GPUCache/
 rm -rf ~/Library/Application\ Support/Code/CachedExtensions/
 rm -rf ~/Library/Application\ Support/Code/logs/
@@ -265,4 +265,3 @@ echo -en "\033[31mSpace for the space!\n\033[0m"
 free_space=$(df -h | grep 'lallison' | awk '{print $4}')
 echo -en "\033[32m${free_space} are available now\n\033[0m"
 df -h ~
-

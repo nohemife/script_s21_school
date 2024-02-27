@@ -4,26 +4,26 @@
 # Apache License 2.0
 
 # ----- VARIABLES ----- #
-  RED=$'\033[0;31m'
-  GREEN=$'\033[0;32m'
-  YELLOW=$'\033[0;33m'
-  BLUE=$'\033[0;34m'
-  MAGENTA=$'\033[0;35m'
-  RESET=$'\033[0;m'
+RED=$'\033[0;31m'
+GREEN=$'\033[0;32m'
+YELLOW=$'\033[0;33m'
+BLUE=$'\033[0;34m'
+MAGENTA=$'\033[0;35m'
+RESET=$'\033[0;m'
 
 menu=(
-"Update script"
-# "Process Stats"
-"Memory space information"
-"Clear the memory"
-"[ CLEAR ALL CASHE ]"
-"install test libs"
-"Docker link"
-"Docker copy apt"
-"Docker link + copy apt"
-"README"
-"parrot.live"
-"Exit"
+    "Update script"
+    # "Process Stats"
+    "Memory space information"
+    "Clear the memory"
+    "[ CLEAR ALL CASHE ]"
+    "install test libs"
+    "Docker link"
+    "Docker copy apt"
+    "Docker link + copy apt"
+    "README"
+    "parrot.live"
+    "Exit"
 )
 
 # menu=(
@@ -45,14 +45,14 @@ TAG=$(cat ~/.school_resources_for_peer/.zshrc | grep TAG=)
 UPDATE=$(cat ~/.school_resources_for_peer/date.txt)
 # ASCII Art generated: https://patorjk.com/software/taag/#p=display&f=Ivrit&t=Console%20-%20Menu
 logo=(
-"                                                                       $UPDATE"
-"                                                                       $TAG"
-"   ____                      _                __  __                   "
-"  / ___|___  _ __  ___  ___ | | ___          |  \/  | ___ _ __  _   _  "
-" | |   / _ \| '_ \/ __|/ _ \| |/ _ \  _____  | |\/| |/ _ \ '_ \| | | | "
-" | |__| (_) | | | \__ \ (_) | |  __/ |_____| | |  | |  __/ | | | |_| | "
-"  \____\___/|_| |_|___/\___/|_|\___|         |_|  |_|\___|_| |_|\__,_| "
-"                                                                       "
+    "                                                                       $UPDATE"
+    "                                                                       $TAG"
+    "   ____                      _                __  __                   "
+    "  / ___|___  _ __  ___  ___ | | ___          |  \/  | ___ _ __  _   _  "
+    " | |   / _ \| '_ \/ __|/ _ \| |/ _ \  _____  | |\/| |/ _ \ '_ \| | | | "
+    " | |__| (_) | | | \__ \ (_) | |  __/ |_____| | |  | |  __/ | | | |_| | "
+    "  \____\___/|_| |_|___/\___/|_|\___|         |_|  |_|\___|_| |_|\__,_| "
+    "                                                                       "
 )
 
 # Off and on cursor
@@ -119,7 +119,7 @@ function docker_copy_apt {
 }
 
 function clear_mem {
-echo $RED"----- CLEARING THE SPACE -----"$RESET
+    echo $RED"----- CLEARING THE SPACE -----"$RESET
     sleep 1
     # Avoid boring prefix in du/df/etc
     cd $HOME
@@ -236,7 +236,7 @@ echo $RED"----- CLEARING THE SPACE -----"$RESET
     df -h | grep Users | awk '{print $2 " = " $3 " + "  $4}'
     #df -h | awk 'NR == 8{print $2 " = " $3 " + "  $4}'
     echo '----------------------'
-    
+
     echo "${blue}Current space:\n${reset}${initial_df}${reset}"
     echo "${blue}\nHome folder:${reset}"
     du -hd1 . 2>/dev/null | sort -h | grep --color=always "[0-9]*\.*[0-9]*M\t\|[0-9]*\.*[0-9]*G\t\|$"
@@ -245,7 +245,7 @@ echo $RED"----- CLEARING THE SPACE -----"$RESET
     echo '----------------------'
     echo 'Size    Used    Avail'
     echo '----------------------'
-    
+
     clear
     echo $RED"----- CLEARING THE SPACE -----"$RESET
     sleep 1
@@ -258,8 +258,8 @@ echo $RED"----- CLEARING THE SPACE -----"$RESET
 function clear_cashe {
     echo $RED"----- CLEARING CASHE -----"$RESET
     echo $RED"------ DESTROY  ALL ------"$RESET
-    find ~/ -name ".DS_Store" -print -delete 2> /dev/null
-    find ~/ -name "**.42_cache_bak**" -print -delete 2> /dev/null
+    find ~/ -name ".DS_Store" -print -delete 2>/dev/null
+    find ~/ -name "**.42_cache_bak**" -print -delete 2>/dev/null
     rm -rf ~/.zcompdump*
     rm -rf .Trash/*
     rm -rf ~/Library/Application\ Support/Slack/Service\ Worker/CacheStorage/
@@ -289,7 +289,7 @@ function clear_cashe {
     rm -rf ~/Library/Application\ Support/Code/CachedExtensionVSIXs/
     rm -rf ~/Library/Application\ Support/Code/Code\ Cache/
     rm -rf ~/Library/Application\ Support/Google/Chrome/Default/Service\ Worker/CacheStorage/
-    rm -rf  ~/Library/Application\ Support/Google/Chrome/Default/Service\ Worker/ScriptCache/
+    rm -rf ~/Library/Application\ Support/Google/Chrome/Default/Service\ Worker/ScriptCache/
     rm -rf ~/Library/Application\ Support/Google/Chrome/ShaderCache/GPUCache/
     rm -rf ~/Library/Application\ Support/Code/CachedExtensions/
     rm -rf ~/Library/Application\ Support/Code/logs/
@@ -302,118 +302,109 @@ function clear_cashe {
 }
 
 function brew_install() {
-	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
-	restart && reset
-	osascript -e 'tell app "Terminal" to do script "brew install check && brew install lcov && brew install gcovr && brew install googletest && brew install cppcheck && killall iTerm2 && killall Terminal"'
-	# osascript -e 'tell app "iTerm2" to do script "brew install check && brew install lcov && brew install gcovr && brew install googletest && killall Terminal && killall iTerm2"'
-	# brew install check
-	# brew install lcov
-	# brew install gcovr
-	# brew install googletest
+    curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
+    restart && reset
+    osascript -e 'tell app "Terminal" to do script "brew install check && brew install lcov && brew install gcovr && brew install googletest && brew install cppcheck && killall iTerm2 && killall Terminal"'
+    # osascript -e 'tell app "iTerm2" to do script "brew install check && brew install lcov && brew install gcovr && brew install googletest && killall Terminal && killall iTerm2"'
+    # brew install check
+    # brew install lcov
+    # brew install gcovr
+    # brew install googletest
     # echo $TERM
 
-    # killall Terminal 
+    # killall Terminal
     # killall iTerm2
     # pkill -a -f Terminal
     # pkill -a -f iTerm2
     # killall Terminal && killall iTerm2
-	# ps -o 'ppid=' -p $$
-	# ps -p $$ -o comm=
-	# w -h | grep $(whoami) | awk '{ print $1 " at " $2 " from " $3; }'
-	# sleep 1
-	# kill -9 $(echo $$)
-	# reset
+    # ps -o 'ppid=' -p $$
+    # ps -p $$ -o comm=
+    # w -h | grep $(whoami) | awk '{ print $1 " at " $2 " from " $3; }'
+    # sleep 1
+    # kill -9 $(echo $$)
+    # reset
 }
 
 function die() {
-	echo $RED----------------- DIE -----------------$RESET
-	rm -rf ~/.zshrc
-	rm -rf ~/.school_resources_for_peer
+    echo $RED----------------- DIE -----------------$RESET
+    rm -rf ~/.zshrc
+    rm -rf ~/.school_resources_for_peer
 }
 
 function helpme {
-	cat ~/.school_resources_for_peer/helpme.md
+    cat ~/.school_resources_for_peer/helpme.md
 }
 
 while true; do
     show-menu
     read -rsn1 key
     case $key in
-        "")
-            clear
-            if [[ $selected -eq $(( ${#menu[@]} - 1 )) ]]; then # Exit
-                tput cnorm
+    "")
+        clear
+        if [[ $selected -eq $((${#menu[@]} - 1)) ]]; then # Exit
+            tput cnorm
+            break
+        else
+            line=${menu[$selected]}
+            # Main Code
+            if [ "$line" == "Update script" ]; then
+                die
+                echo $RED----------------- AND -----------------$RESET
+                curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc >~/.zshrc
+                source ~/.zshrc
+                init_setup
                 break
-            else
-                line=${menu[$selected]}
-                # Main Code
-                if [ "$line" == "Update script" ]
-                    then
-                    die
-                	echo $RED----------------- AND -----------------$RESET
-	                curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.zshrc ; source ~/.zshrc ;  init_setup
-                    break
-                # elif [ "$line" == "Process Stats" ]
-                #     then
-                #     ps=$(ps -Ao comm,user,cputime,pcpu,pmem,sz,rss,vsz,nlwp,psr,pri,ni)
-                #     printf "%s\n" "${ps[@]}" | head -n 1
-                #     printf "%s\n" "${ps[@]}" | sort -r -nk4 | head -n 20
-                elif [ "$line" == "Memory space information" ]
-                    then
-                    echo $GREEN"----- MEMORY STATS -----"$RESET
-                    sleep 1
-                    echo "Available now:"
-                    df -h ~
-                elif [ "$line" == "Clear the memory" ]
-                    then
-                    clear_mem
-                elif [ "$line" == "[ CLEAR ALL CASHE ]" ]
-                    then
-                    clear_cashe
-				elif [ "$line" == "install test libs" ]
-                    then
-                    brew_install
-					break
-                elif [ "$line" == "Docker link" ]
-                    then
-                    docker_link
-                elif [ "$line" == "Docker copy apt" ]
-                    then
-                    docker_copy_apt
-                elif [ "$line" == "Docker link + copy apt" ]
-                    then
-                    docker_link
-                    docker_copy_apt
-				elif [ "$line" == "README" ]
-                    then
-                    cat ~/.school_resources_for_peer/helpme.md
-                elif [ "$line" == "parrot.live" ]
-                    then
-                    echo $YELLOW"----- PREPARE FOR THE SHOW -----"$RESET
-                    sleep 1
-                    curl parrot.live
-                fi
-                read -p "Press Enter to continue..."
+            # elif [ "$line" == "Process Stats" ]
+            #     then
+            #     ps=$(ps -Ao comm,user,cputime,pcpu,pmem,sz,rss,vsz,nlwp,psr,pri,ni)
+            #     printf "%s\n" "${ps[@]}" | head -n 1
+            #     printf "%s\n" "${ps[@]}" | sort -r -nk4 | head -n 20
+            elif [ "$line" == "Memory space information" ]; then
+                echo $GREEN"----- MEMORY STATS -----"$RESET
+                sleep 1
+                echo "Available now:"
+                df -h ~
+            elif [ "$line" == "Clear the memory" ]; then
+                clear_mem
+            elif [ "$line" == "[ CLEAR ALL CASHE ]" ]; then
+                clear_cashe
+            elif [ "$line" == "install test libs" ]; then
+                brew_install
+                break
+            elif [ "$line" == "Docker link" ]; then
+                docker_link
+            elif [ "$line" == "Docker copy apt" ]; then
+                docker_copy_apt
+            elif [ "$line" == "Docker link + copy apt" ]; then
+                docker_link
+                docker_copy_apt
+            elif [ "$line" == "README" ]; then
+                cat ~/.school_resources_for_peer/helpme.md
+            elif [ "$line" == "parrot.live" ]; then
+                echo $YELLOW"----- PREPARE FOR THE SHOW -----"$RESET
+                sleep 1
+                curl parrot.live
             fi
-            clear
+            read -p "Press Enter to continue..."
+        fi
+        clear
         ;;
-        # up
-        "A"|"a")
-            if [[ $selected -gt 0 ]]; then
-                selected=$((selected-1))
-            fi
+    # up
+    "A" | "a")
+        if [[ $selected -gt 0 ]]; then
+            selected=$((selected - 1))
+        fi
         ;;
-        "B"|"b")
-         # down
-            if [[ $selected -lt $(( ${#menu[@]} - 1 )) ]]; then
-                selected=$((selected+1))
-            fi
+    "B" | "b")
+        # down
+        if [[ $selected -lt $((${#menu[@]} - 1)) ]]; then
+            selected=$((selected + 1))
+        fi
         ;;
-        "Q"|"q")
-         # exit
-            reset
-            exit
+    "Q" | "q")
+        # exit
+        reset
+        exit
         ;;
     esac
 done
-

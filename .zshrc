@@ -35,8 +35,8 @@ RESET=$'\033[0;m'
 # -------------------------------------------------------------------------- autoupdate
 
 # {
-# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt > ~/.school_resources_for_peer/update.txt 
-# diff -q ~/.school_resources_for_peer/date.txt ~/.school_resources_for_peer/update.txt 
+# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt > ~/.school_resources_for_peer/update.txt
+# diff -q ~/.school_resources_for_peer/date.txt ~/.school_resources_for_peer/update.txt
 # } &> /dev/null
 # NEW=$(echo $?)
 # # reset
@@ -53,84 +53,85 @@ RESET=$'\033[0;m'
 #     clear
 #     sleep 0.2
 #     if [ $((i % 2)) -eq 0 ]; then
-#         echo "${RED}[ NEW VERSION AVAILABLE! ENTER COMMAND ${GREEN}NR${RED} TO UPDATE! ] DATE: $UPDATE${RESET}" 
+#         echo "${RED}[ NEW VERSION AVAILABLE! ENTER COMMAND ${GREEN}NR${RED} TO UPDATE! ] DATE: $UPDATE${RESET}"
 #         sleep 0.4
 #     fi
 #     i=$((i+1))  # Арифметическое выражение для инкремента переменной i
 # done
 # reset
-# echo "$RED [ NEW VERSION AVAILABLE! ENTER COMMAND$GREEN NR$RED TO UPDATE! ] DATE: $UPDATE$RESET" 
-# rm -rf ~/.school_resources_for_peer/update.txt 
+# echo "$RED [ NEW VERSION AVAILABLE! ENTER COMMAND$GREEN NR$RED TO UPDATE! ] DATE: $UPDATE$RESET"
+# rm -rf ~/.school_resources_for_peer/update.txt
 # fi
 
 {
-curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt > ~/.school_resources_for_peer/update.txt 
-diff -q ~/.school_resources_for_peer/date.txt ~/.school_resources_for_peer/update.txt 
-} &> /dev/null
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt >~/.school_resources_for_peer/update.txt
+	diff -q ~/.school_resources_for_peer/date.txt ~/.school_resources_for_peer/update.txt
+} &>/dev/null
 NEW=$(echo $?)
 # reset
 if [ $NEW -eq 1 ]; then
-# printf $NEW'\n'
-i=0
-RED=$(tput setaf 1)
-GREEN=$(tput setaf 2)
-RESET=$(tput sgr0)
+	# printf $NEW'\n'
+	i=0
+	RED=$(tput setaf 1)
+	GREEN=$(tput setaf 2)
+	RESET=$(tput sgr0)
 
-UPDATE=$(cat ~/.school_resources_for_peer/update.txt)
-while [ $i -ne 6 ]
-do
-    clear
-    sleep 0.2
-    if [ $((i % 2)) -eq 0 ]; then
-        echo "${RED}[ NEW VERSION AVAILABLE! DATE: ${GREEN}$UPDATE${RED} TO UPDATE! ] ${RESET}"
-        sleep 0.4
-    fi
-    i=$((i+1))
-done
-reset
-echo "${RED}[ NEW VERSION AVAILABLE! DATE: ${GREEN}$UPDATE${RED} TO UPDATE! ] ${RESET}"
-rm -rf ~/.school_resources_for_peer/update.txt 
-echo "Пропустить текущее обновление "ESC""
-echo "Обновить скрипт до новой версии [ y / n ]: "
-# if [ $RUN ]
-# echo $RUN
-while true; do
-	zle -R 
-	read -k1 key
-	# read key
-    # read -rsn1 key
-    case $key in
-        "Y"|"y"|"YES"|"yes"|"YEs"|"yES"|"YeS"|"yeS"|"yEs")
-        # yes
-        # echo $key
-		# break
-		die
-		echo $RED----------------- AND -----------------$RESET
-		curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt > ~/.school_resources_for_peer/date.txt
-		curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.zshrc ; source ~/.zshrc ;  init_setup
-		reset
-		break
-		restart
-        ;;
-        "N"|"n"|"NO"|"no"|"No"|"nO")
-        # no
-        # echo $key
-		break
-        ;;
-        $'\e') # Обработка клавиши Escape
-        echo $key
-		curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt > ~/.school_resources_for_peer/date.txt
-		reset
-		break
-		restart
-        ;;
-		# $'\r') # Обработка клавиши Enter
-        # echo $key
-		# # curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt > ~/.school_resources_for_peer/date.txt
-		# break
-        # ;;
-    esac
-done	
+	UPDATE=$(cat ~/.school_resources_for_peer/update.txt)
+	while [ $i -ne 6 ]; do
+		clear
+		sleep 0.2
+		if [ $((i % 2)) -eq 0 ]; then
+			echo "${RED}[ NEW VERSION AVAILABLE! DATE: ${GREEN}$UPDATE${RED} TO UPDATE! ] ${RESET}"
+			sleep 0.4
+		fi
+		i=$((i + 1))
+	done
+	reset
+	echo "${RED}[ NEW VERSION AVAILABLE! DATE: ${GREEN}$UPDATE${RED} TO UPDATE! ] ${RESET}"
+	rm -rf ~/.school_resources_for_peer/update.txt
+	echo "Пропустить текущее обновление "ESC""
+	echo "Обновить скрипт до новой версии [ y / n ]: "
+	# if [ $RUN ]
+	# echo $RUN
+	while true; do
+		zle -R
+		read -k1 key
+		# read key
+		# read -rsn1 key
+		case $key in
+		"Y" | "y" | "YES" | "yes" | "YEs" | "yES" | "YeS" | "yeS" | "yEs")
+			# yes
+			# echo $key
+			# break
+			die
+			echo $RED----------------- AND -----------------$RESET
+			curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt >~/.school_resources_for_peer/date.txt
+			curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc >~/.zshrc
+			source ~/.zshrc
+			init_setup
+			reset
+			break
+			restart
+			;;
+		"N" | "n" | "NO" | "no" | "No" | "nO")
+			# no
+			# echo $key
+			break
+			;;
+		$'\e') # Обработка клавиши Escape
+			echo $key
+			curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt >~/.school_resources_for_peer/date.txt
+			reset
+			break
+			restart
+			;;
+			# $'\r') # Обработка клавиши Enter
+			# echo $key
+			# # curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt > ~/.school_resources_for_peer/date.txt
+			# break
+			# ;;
+		esac
+	done
 fi
 
 # -------------------------------------------------------------------------- parse branch
@@ -143,7 +144,7 @@ setopt PROMPT_SUBST
 export PROMPT='${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}${NEWLINE}%% '
 
 parse_git_branch() {
-	git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
+	git branch 2>/dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
 }
 
 # function comp() {
@@ -154,35 +155,34 @@ parse_git_branch() {
 # -------------------------------------------------------------------------- init setup
 
 function init_setup() {
- 	echo $RED---------------- ARISE ----------------$RESET
-	if [ ! -d "~/.school_resources_for_peer" ]
-	then
+	echo $RED---------------- ARISE ----------------$RESET
+	if [ ! -d "~/.school_resources_for_peer" ]; then
 		mkdir ~/.school_resources_for_peer
 		mkdir ~/.school_resources_for_peer/.vscode
 		# mkdir ~/.school_resources_for_peer/Valgrind
 	fi
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.school_resources_for_peer/.zshrc
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt > ~/.school_resources_for_peer/date.txt
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/main.sh > ~/.school_resources_for_peer/main.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc >~/.school_resources_for_peer/.zshrc
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt >~/.school_resources_for_peer/date.txt
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/main.sh >~/.school_resources_for_peer/main.sh
 	chmod +x ~/.school_resources_for_peer/main.sh
-	
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clang-format > ~/.school_resources_for_peer/.clang-format
 
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/clean.sh > ~/.school_resources_for_peer/clean.sh
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/clear.sh > ~/.school_resources_for_peer/clear.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clang-format >~/.school_resources_for_peer/.clang-format
 
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.vscode/launch.json > ~/.school_resources_for_peer/.vscode/launch.json
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.vscode/tasks.json > ~/.school_resources_for_peer/.vscode/tasks.json
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/clean.sh >~/.school_resources_for_peer/clean.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/clear.sh >~/.school_resources_for_peer/clear.sh
+
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.vscode/launch.json >~/.school_resources_for_peer/.vscode/launch.json
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.vscode/tasks.json >~/.school_resources_for_peer/.vscode/tasks.json
 
 	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/Valgrind/Dockerfile > ~/.school_resources_for_peer/Valgrind/Dockerfile
 	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/Valgrind/run.sh > ~/.school_resources_for_peer/Valgrind/run.sh
 	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/Valgrind/start.sh > ~/.school_resources_for_peer/Valgrind/start.sh
 	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/linkdoc.sh > ~/.school_resources_for_peer/linkdoc.sh
 	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/aptdoc.sh > ~/.school_resources_for_peer/aptdoc.sh
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/aptdoc.txt > ~/.school_resources_for_peer/aptdoc.txt
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/aptdoc.txt >~/.school_resources_for_peer/aptdoc.txt
 
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/helpme.md > ~/.school_resources_for_peer/helpme.md
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/README.md > ~/.school_resources_for_peer/README.md
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/helpme.md >~/.school_resources_for_peer/helpme.md
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/README.md >~/.school_resources_for_peer/README.md
 	sleep 1
 	echo $GREEN"Install complete! Enjoy!"$RESET
 	reset
@@ -196,7 +196,7 @@ function menu() {
 
 # -------------------------------------------------------------------------- format google
 
-	# cppcheck --enable=all --suppress=missingIncludeSystem ./*.c *.h ./test_s21/*.c ./test_s21/*.h
+# cppcheck --enable=all --suppress=missingIncludeSystem ./*.c *.h ./test_s21/*.c ./test_s21/*.h
 function fixformat() {
 	# files_array=($(find . -type f \( -name "*.c" -o -name "*.h" \)))
 	files_array=($(find . -type f \( -name "*.c" -o -name "*.h" -o -name "*.cpp" \)))
@@ -208,8 +208,8 @@ function fixformat() {
 
 	# Обходим каждый элемент в files_array, обрабатываем и добавляем в processed_files
 	for file in "${files_array[@]}"; do
-		processed_file="${file/$dir_to_remove/}"  # Удаляем часть директории из пути
-		processed_files+=("$processed_file")  # Добавляем обработанный файл в массив
+		processed_file="${file/$dir_to_remove/}" # Удаляем часть директории из пути
+		processed_files+=("$processed_file")     # Добавляем обработанный файл в массив
 	done
 
 	# # Выводим список обработанных файлов
@@ -225,7 +225,7 @@ function fixformat() {
 	#	 # Здесь можно проводить дополнительные действия с каждым обработанным файлом
 	# 	fi
 	# done
-	
+
 	if [ ${#processed_files[@]} -ne 0 ]; then
 		# printf '%s\n' "${processed_files[@]}"
 		echo ---------------- CHECK ----------------
@@ -296,20 +296,19 @@ function vdb() {
 	# printf $(git rev-parse --show-toplevel)
 	# echo $(git -c alias.root='!pwd' root)
 	# echo $(git rev-parse --show-cdup)
-	if [ ! -d "$workdir.vscode" ]
-	then
-	echo "Путь к исполняемому файлу: $workdir"src/"$GREEN"a.out""$RESET
-	echo "Введи имя своего исполняемого файла: "
-	zle -R 
-	read file
-	mkdir $workdir.vscode
-	cat ~/.school_resources_for_peer/.vscode/launch.json | sed $(echo 's|a.out|'"$file"'|') > $workdir.vscode/launch.json 
-	# cp ~/.school_resources_for_peer/.vscode/launch.json $workdir.vscode/launch.json
-	cp ~/.school_resources_for_peer/.vscode/tasks.json $workdir.vscode/tasks.json
-	echo "Путь к исполняемому файлу: $workdir"src/"$GREEN$file"$RESET
+	if [ ! -d "$workdir.vscode" ]; then
+		echo "Путь к исполняемому файлу: $workdir"src/"$GREEN"a.out""$RESET
+		echo "Введи имя своего исполняемого файла: "
+		zle -R
+		read file
+		mkdir $workdir.vscode
+		cat ~/.school_resources_for_peer/.vscode/launch.json | sed $(echo 's|a.out|'"$file"'|') >$workdir.vscode/launch.json
+		# cp ~/.school_resources_for_peer/.vscode/launch.json $workdir.vscode/launch.json
+		cp ~/.school_resources_for_peer/.vscode/tasks.json $workdir.vscode/tasks.json
+		echo "Путь к исполняемому файлу: $workdir"src/"$GREEN$file"$RESET
 	else
-	prog=$(echo $GREEN vdb!)
-	printf $RED"File exists! Use command: $prog "$RESET
+		prog=$(echo $GREEN vdb!)
+		printf $RED"File exists! Use command: $prog "$RESET
 	fi
 }
 
@@ -332,10 +331,10 @@ function vdb!() {
 	rm -rf $workdir.vscode
 	echo "Путь к исполняемому файлу: $workdir"src/"$GREEN"a.out""$RESET
 	echo "Введи имя своего исполняемого файла: "
-	zle -R 
+	zle -R
 	read file
 	mkdir $workdir.vscode
-	cat ~/.school_resources_for_peer/.vscode/launch.json | sed $(echo 's|a.out|'"$file"'|') > $workdir.vscode/launch.json 
+	cat ~/.school_resources_for_peer/.vscode/launch.json | sed $(echo 's|a.out|'"$file"'|') >$workdir.vscode/launch.json
 	# cp ~/.school_resources_for_peer/.vscode/launch.json $workdir.vscode/launch.json
 	cp ~/.school_resources_for_peer/.vscode/tasks.json $workdir.vscode/tasks.json
 	echo "Путь к исполняемому файлу: $workdir"src/"$GREEN$file"$RESET
@@ -354,77 +353,76 @@ function grind() {
 
 function sql() {
 
-dir=$(echo $(git rev-parse --show-toplevel))
-# sql=$(echo $dir | grep -io sql)
-# if [[ $sql =~ ^[Ss][Qq][Ll]$ ]]; then
-# if [$dir]; then
-sql=$(echo $dir | grep -ic sql_)
-if [[ $sql -eq 1 ]]; then
-echo $GREEN"Find SQL project: $dir"$RESET '\n'
-# Пример исполнения скрипта: sql 5 12
-# 5 - day / день
-# 12 - exercise / количество заданий
-echo "Введи номер дня: "
-zle -R 
-read 1
-echo "Введи количество заданий: "
-zle -R
-read 2
-# echo $1
-# echo $2
-if [ ! -d "$dir/src" ]; then
-	mkdir $dir/src
-fi
-cd $dir/src
+	dir=$(echo $(git rev-parse --show-toplevel))
+	# sql=$(echo $dir | grep -io sql)
+	# if [[ $sql =~ ^[Ss][Qq][Ll]$ ]]; then
+	# if [$dir]; then
+	sql=$(echo $dir | grep -ic sql_)
+	if [[ $sql -eq 1 ]]; then
+		echo $GREEN"Find SQL project: $dir"$RESET '\n'
+		# Пример исполнения скрипта: sql 5 12
+		# 5 - day / день
+		# 12 - exercise / количество заданий
+		echo "Введи номер дня: "
+		zle -R
+		read 1
+		echo "Введи количество заданий: "
+		zle -R
+		read 2
+		# echo $1
+		# echo $2
+		if [ ! -d "$dir/src" ]; then
+			mkdir $dir/src
+		fi
+		cd $dir/src
 
-# if [ ! -d "$dir/src/ex" ]; then
-i=0
-while [ $i -le $2 ]
-do
-	if [[ $1 -lt 10 ]]; then
-		null=$(echo 0)
-	else
-		null=""
-	fi
-	# echo $null
+		# if [ ! -d "$dir/src/ex" ]; then
+		i=0
+		while [ $i -le $2 ]; do
+			if [[ $1 -lt 10 ]]; then
+				null=$(echo 0)
+			else
+				null=""
+			fi
+			# echo $null
 
-  if [[ $i -lt 10 ]]; then
-	# echo ex0$i
-	if [ ! -d "ex0$i" ]; then
-		mkdir ex0$i
-		echo $GREEN"Directory ex0$i create!"$RESET
+			if [[ $i -lt 10 ]]; then
+				# echo ex0$i
+				if [ ! -d "ex0$i" ]; then
+					mkdir ex0$i
+					echo $GREEN"Directory ex0$i create!"$RESET
+				else
+					echo $RED"Directory ex0$i exists!"$RESET
+				fi
+				if [ ! -f "ex0$i/day$null$1_ex0$i.sql" ]; then
+					touch ex0$i/day$null$1_ex0$i.sql
+					echo $GREEN"File ex0$i/day$null$1_ex0$i.sql create!"$RESET
+				else
+					echo $RED"File ex0$i/day$null$1_ex0$i.sql exists!"$RESET
+				fi
+			else
+				# echo ex$i
+				if [ ! -d "ex$i" ]; then
+					mkdir ex$i
+					echo $GREEN"Directory ex$i create!"$RESET
+				else
+					echo $RED"Directory ex$i exists!"$RESET
+				fi
+				if [ ! -f "ex$i/day$null$1_ex$i.sql" ]; then
+					touch ex$i/day$null$1_ex$i.sql
+					echo $GREEN"File ex$i/day$null$1_ex$i.sql create!"$RESET
+				else
+					echo $RED"File ex$i/day$null$1_ex$i.sql exists!"$RESET
+				fi
+			fi
+			((i++))
+		done
+		echo '\n'
+		echo $GREEN"Create dir and file: src/ex[0-$2]/day$null$1_ex[0-$2].sql"$RESET
+	# fi
 	else
-		echo $RED"Directory ex0$i exists!"$RESET
+		echo $RED"No SQL project"$RESET
 	fi
-	if [ ! -f "ex0$i/day$null$1_ex0$i.sql" ]; then
-		touch ex0$i/day$null$1_ex0$i.sql
-		echo $GREEN"File ex0$i/day$null$1_ex0$i.sql create!"$RESET
-	else
-		echo $RED"File ex0$i/day$null$1_ex0$i.sql exists!"$RESET
-	fi
-  else
-	# echo ex$i
-	if [ ! -d "ex$i" ]; then
-		mkdir ex$i
-		echo $GREEN"Directory ex$i create!"$RESET
-	else
-		echo $RED"Directory ex$i exists!"$RESET
-	fi
-	if [ ! -f "ex$i/day$null$1_ex$i.sql" ]; then
-		touch ex$i/day$null$1_ex$i.sql
-		echo $GREEN"File ex$i/day$null$1_ex$i.sql create!"$RESET
-	else
-		echo $RED"File ex$i/day$null$1_ex$i.sql exists!"$RESET
-	fi
-  fi
-  ((i++))
-done
-echo '\n'
-echo $GREEN"Create dir and file: src/ex[0-$2]/day$null$1_ex[0-$2].sql"$RESET
-# fi
-else
-	echo $RED"No SQL project"$RESET
-fi
 }
 
 # -------------------------------------------------------------------------- git clone
@@ -446,7 +444,7 @@ function peer() {
 	fi
 	cd ~/Desktop/peer_review_dir
 	git clone -b develop $1
-	# git clone $1 
+	# git clone $1
 	project_name=$(echo "$1" | sed 's/^.*\///; s/\.git$//')
 	# printf $project_name
 	# printf '\n'
@@ -462,7 +460,7 @@ function peer() {
 # -------------------------------------------------------------------------- mem
 
 function mem() {
-	  sh ~/.school_resources_for_peer/clean.sh
+	sh ~/.school_resources_for_peer/clean.sh
 }
 
 # -------------------------------------------------------------------------- brew \ libs
@@ -477,7 +475,7 @@ function brewinstall() {
 	# brew install googletest
 	# echo $TERM
 
-	# killall Terminal 
+	# killall Terminal
 	# killall iTerm2
 	# pkill -a -f Terminal
 	# pkill -a -f iTerm2
@@ -496,7 +494,9 @@ function brewinstall() {
 function NR() {
 	die
 	echo $RED----------------- AND -----------------$RESET
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.zshrc ; source ~/.zshrc ;  init_setup
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc >~/.zshrc
+	source ~/.zshrc
+	init_setup
 	restart
 }
 
