@@ -9,6 +9,7 @@ sudo apt install clang-format -y
 sudo apt install check -y
 sudo apt install lcov -y
 sudo apt install gcovr -y
+sudo apt install lldb -y
 sudo apt install googletest -y
 sudo apt install libgtest-dev -y
 sudo apt install pkg-config -y
