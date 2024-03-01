@@ -307,8 +307,28 @@ function vdb() {
 		cp ~/.school_resources_for_peer/.vscode/tasks.json $workdir.vscode/tasks.json
 		echo "Путь к исполняемому файлу: $workdir"src/"$GREEN$file"$RESET
 	else
-		prog=$(echo $GREEN vdb!)
-		printf $RED"File exists! Use command: $prog "$RESET
+		# prog=$(echo $GREEN vdb!)
+		# printf $RED"File exists! Use command: $prog "$RESET
+		echo "Файлы существуют, заменить? [ y / n ]: "
+		while true; do
+			zle -R
+			read -k1 key
+			# read key
+			# read -rsn1 key
+			case $key in
+			"Y" | "y" | "YES" | "yes" | "YEs" | "yES" | "YeS" | "yeS" | "yEs")
+				clear
+				vdb!
+				break
+				;;
+			"N" | "n" | "NO" | "no" | "No" | "nO")
+				break
+				;;
+			$'\e') # Обработка клавиши Escape
+				break
+				;;
+			esac
+		done
 	fi
 }
 
@@ -468,7 +488,8 @@ function mem() {
 function brewinstall() {
 	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
 	# restart && reset
-	osascript -e 'tell app "Terminal" to do script "brew install check && brew install lcov && brew install gcovr && brew install googletest && brew install cppcheck && killall iTerm2 Terminal"'
+	osascript -e 'tell app "Terminal" to do script "brew install llvm &&  && brew install lmdb && brew install lcov && brew install gcovr && brew install googletest && brew install cppcheck && killall iTerm2 Terminal"'
+	# osascript -e 'tell app "Terminal" to do script "brew install check && brew install lcov && brew install gcovr && brew install googletest && brew install cppcheck && killall iTerm2 Terminal"'
 	# brew install check
 	# brew install lcov
 	# brew install gcovr
