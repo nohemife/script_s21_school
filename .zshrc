@@ -8,6 +8,8 @@ alias dir="ls -la"
 alias /="cd .."
 alias //="cd -"
 alias ff="fixformat"
+alias cc="cpp_check"
+alias m="menu"
 alias rmh="rm -rf ~/.zsh_history"
 alias rc="nano ~/.zshrc && source ~/.zshrc"
 alias rcm="nano ~/.school_resources_for_peer/main.sh"
@@ -196,7 +198,7 @@ function menu() {
 
 # -------------------------------------------------------------------------- cppcheck
 
-function cc() {
+function cpp_check() {
 	files_array=($(find . -type f \( -name "*.c" -o -name "*.h" -o -name "*.cpp" \)))
 	processed_files=()
 	dir_to_remove="./"
