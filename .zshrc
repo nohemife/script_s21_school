@@ -194,9 +194,27 @@ function menu() {
 	bash ~/.school_resources_for_peer/main.sh
 }
 
+# -------------------------------------------------------------------------- cppcheck
+
+function cc() {
+	files_array=($(find . -type f \( -name "*.c" -o -name "*.h" -o -name "*.cpp" \)))
+	processed_files=()
+	dir_to_remove="./"
+	for file in "${files_array[@]}"; do
+		processed_file="${file/$dir_to_remove/}" # Удаляем часть директории из пути
+		processed_files+=("$processed_file")     # Добавляем обработанный файл в массив
+	done
+	if [ ${#processed_files[@]} -ne 0 ]; then
+		# printf '%s\n' "${processed_files[@]}"
+		echo -------------- CPP CHECK --------------
+		# printf '\n'
+		cppcheck --enable=all --suppress=missingIncludeSystem ${processed_files[@]}
+		echo ----------------- END -----------------
+	fi
+}
+
 # -------------------------------------------------------------------------- format google
 
-# cppcheck --enable=all --suppress=missingIncludeSystem ./*.c *.h ./test_s21/*.c ./test_s21/*.h
 function fixformat() {
 	# files_array=($(find . -type f \( -name "*.c" -o -name "*.h" \)))
 	files_array=($(find . -type f \( -name "*.c" -o -name "*.h" -o -name "*.cpp" \)))
