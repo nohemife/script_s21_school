@@ -16,3 +16,8 @@ git: backup update
 	git add .
 	git commit -m "$(DATE)"
 	git push origin main
+
+gitw: backup
+	git add .
+	git commit -m "$(DATE)"
+	git push origin main
