@@ -9,6 +9,7 @@ alias /="cd .."
 alias //="cd -"
 alias ff="fixformat"
 alias cc="cpp_check"
+alias fs="find_sql"
 alias m="menu"
 alias rmh="rm -rf ~/.zsh_history"
 alias rc="nano ~/.zshrc && source ~/.zshrc"
@@ -465,6 +466,35 @@ function sql() {
 	fi
 }
 
+function find_sql() {
+	dir=$(echo $(git rev-parse --show-toplevel))
+	sql=$(echo $dir | grep -ic sql_)
+	if [[ $sql -eq 1 ]]; then
+	cd $dir/src
+	if [ -f "All_Exercise.sql" ]; then
+	rm -rf All_Exercise.sql
+	fi
+	files_array=($(find . -type f \( -name "*.sql" \)))
+	processed_files=()
+	dir_to_remove="./"
+
+	echo -------------- FIND FILE -------------- > All_Exercise.sql
+	printf '%s\n' "${files_array[@]}" >> All_Exercise.sql
+	echo ---------------- START ---------------- >> All_Exercise.sql
+
+	for file in "${files_array[@]}"; do
+		processed_file="${file/$dir_to_remove/}" 
+		printf '------------------------------------------ %s\n' "$processed_file" >> All_Exercise.sql
+		cat $processed_file >> All_Exercise.sql
+		echo '\n' >> All_Exercise.sql
+	done
+	# echo '\n' >> All_Exercise.sql
+	echo ----------------- END ----------------- >> All_Exercise.sql
+	else
+		echo $RED"No SQL project"$RESET
+	fi
+}
+
 # -------------------------------------------------------------------------- git clone
 
 function gclone() {
@@ -608,5 +638,32 @@ source $HOME/.brewconfig.zsh
 # 		# printf '\n'
 # 		s21lint ${processed_files[@]}
 # 		echo ----------------- END -----------------
+# 	fi
+# }
+
+# function killmem() {
+# 	dir=$(echo $(git rev-parse --show-toplevel))
+# 	# sql=$(echo $dir | grep -io sql)
+# 	# if [[ $sql =~ ^[Ss][Qq][Ll]$ ]]; then
+# 	# if [$dir]; then
+# 	sql=$(echo $dir | grep -ic sql_)
+# 	if [[ $sql -eq 1 ]]; then
+# 	cd $dir/src
+# 	files_array=($(find . -type f \( -name "*.sql" \)))
+# 	processed_files=()
+# 	dir_to_remove="./"
+# 	for file in "${files_array[@]}"; do
+# 		processed_file="${file/$dir_to_remove/}" # Удаляем часть директории из пути
+# 		processed_files+=("$processed_file")     # Добавляем обработанный файл в массив
+# 		cat ${processed_files[@]} >> All_Exercise.sql
+# 	done
+# 	# if [ ${#processed_files[@]} -ne 0 ]; then
+# 	# 	printf '%s\n' "${processed_files[@]} \n"  >> All_Exercise.sql
+# 	# 	# printf '\n'
+# 	# 	# echo ----------------- END -----------------
+# 	# fi
+
+# 	else
+# 		echo $RED"No SQL project"$RESET
 # 	fi
 # }
