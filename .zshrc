@@ -128,6 +128,9 @@ if [ $NEW -eq 1 ]; then
 			break
 			restart
 			;;
+		*)
+			break
+			;;
 			# $'\r') # Обработка клавиши Enter
 			# echo $key
 			# # curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt > ~/.school_resources_for_peer/date.txt
@@ -470,26 +473,26 @@ function find_sql() {
 	dir=$(echo $(git rev-parse --show-toplevel))
 	sql=$(echo $dir | grep -ic sql_)
 	if [[ $sql -eq 1 ]]; then
-	cd $dir/src
-	if [ -f "All_Exercise.sql" ]; then
-	rm -rf All_Exercise.sql
-	fi
-	files_array=($(find . -type f \( -name "*.sql" \)))
-	processed_files=()
-	dir_to_remove="./"
+		cd $dir/src
+		if [ -f "All_Exercise.sql" ]; then
+			rm -rf All_Exercise.sql
+		fi
+		files_array=($(find . -type f \( -name "*.sql" \)))
+		processed_files=()
+		dir_to_remove="./"
 
-	echo -------------- FIND FILE -------------- > All_Exercise.sql
-	printf '%s\n' "${files_array[@]}" >> All_Exercise.sql
-	echo ---------------- START ---------------- >> All_Exercise.sql
+		echo -------------- FIND FILE -------------- >All_Exercise.sql
+		printf '%s\n' "${files_array[@]}" >>All_Exercise.sql
+		echo ---------------- START ---------------- >>All_Exercise.sql
 
-	for file in "${files_array[@]}"; do
-		processed_file="${file/$dir_to_remove/}" 
-		printf '------------------------------------------ %s\n' "$processed_file" >> All_Exercise.sql
-		cat $processed_file >> All_Exercise.sql
-		echo '\n' >> All_Exercise.sql
-	done
-	# echo '\n' >> All_Exercise.sql
-	echo ----------------- END ----------------- >> All_Exercise.sql
+		for file in "${files_array[@]}"; do
+			processed_file="${file/$dir_to_remove/}"
+			printf '------------------------------------------ %s\n' "$processed_file" >>All_Exercise.sql
+			cat $processed_file >>All_Exercise.sql
+			echo '\n' >>All_Exercise.sql
+		done
+		# echo '\n' >> All_Exercise.sql
+		echo ----------------- END ----------------- >>All_Exercise.sql
 	else
 		echo $RED"No SQL project"$RESET
 	fi
@@ -618,7 +621,6 @@ source $HOME/.brewconfig.zsh
 # export PATH="$BUN_INSTALL/bin:$PATH"
 
 # -------------------------------------------------------------------------- END
-
 
 # curl -fsSL https://bun.sh/install | bash
 # restart
