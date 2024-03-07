@@ -14,12 +14,12 @@ alias m="menu"
 alias rmh="rm -rf ~/.zsh_history"
 alias rc="nano ~/.zshrc && source ~/.zshrc"
 alias rcm="nano ~/.school_resources_for_peer/main.sh"
-# alias work="cd echo $(git rev-parse --show-toplevel)"
+alias work="work_dir"
 alias vsc="open . -a 'Visual studio code'"
 alias pushd="git push origin develop"
-alias pushn="git push origin nohemife"
+alias pushn="git push origin $(whoami)"
 alias gsd="git switch develop"
-alias gsn="git switch nohemife"
+alias gsn="git switch $(whoami)"
 
 # -------------------------------------------------------------------------- TAG version
 
@@ -153,10 +153,10 @@ parse_git_branch() {
 	git branch 2>/dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
 }
 
-# function comp() {
-# 	gcc -Wall -Wextra -Werror "$1.c" -o "$1.o"
-# 	./"$1.o"
-# }
+function comp() {
+	gcc -Wall -Wextra -Werror "$1.c" -o "$1.o"
+	./"$1.o"
+}
 
 # -------------------------------------------------------------------------- init setup
 
@@ -528,6 +528,12 @@ function peer() {
 	# printf $new_file_name
 	cd $new_file_name
 	open . -a 'Visual studio code'
+}
+
+# -------------------------------------------------------------------------- mem
+
+function work_dir() {
+	cd echo $(git rev-parse --show-toplevel)
 }
 
 # -------------------------------------------------------------------------- mem
