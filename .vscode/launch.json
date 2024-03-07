@@ -22,7 +22,7 @@
         "name": "(gdb) Launch",
         "type": "cppdbg",
         "request": "launch",
-        "program": "${workspaceRoot}/a.out",
+        "program": "${workspaceRoot}/src/a.out",
         "args": ["4", "3", "2", "1"],
         "stopAtEntry": false,
         "cwd": "${workspaceRoot}",
