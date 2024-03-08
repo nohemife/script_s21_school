@@ -629,15 +629,17 @@ source $HOME/.brewconfig.zsh
 # # bun completions
 # [ -s "/Users/nohemife/.bun/_bun" ] && source "/Users/nohemife/.bun/_bun"
 
-# # bun
-# export BUN_INSTALL="$HOME/.bun"
-# export PATH="$BUN_INSTALL/bin:$PATH"
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 # ------------------------------------FF-------------------------------------- END
 
-# curl -fsSL https://bun.sh/install | bash
-# restart
-# bun add --global github:s21toolkit/s21lint
+function lint() {
+	curl -fsSL https://bun.sh/install | bash
+	restart
+	bun add --global github:s21toolkit/s21lint
+}
 
 function s21() {
 	files_array=($(find . -type f \( -name "*.c" -o -name "*.h" -o -name "*.cpp" \)))
