@@ -531,6 +531,31 @@ function peer() {
 	open . -a 'Visual studio code'
 }
 
+# -------------------------------------------------------------------------- s21_lint
+
+function lint() {
+	curl -fsSL https://bun.sh/install | bash
+	restart
+	bun add --global github:s21toolkit/s21lint
+}
+
+function s21() {
+	files_array=($(find . -type f \( -name "*.c" -o -name "*.h" -o -name "*.cpp" \)))
+	processed_files=()
+	dir_to_remove="./"
+	for file in "${files_array[@]}"; do
+		processed_file="${file/$dir_to_remove/}" # Удаляем часть директории из пути
+		processed_files+=("$processed_file")     # Добавляем обработанный файл в массив
+	done
+	if [ ${#processed_files[@]} -ne 0 ]; then
+		# printf '%s\n' "${processed_files[@]}"
+		echo -------------- s21lint --------------
+		# printf '\n'
+		s21lint ${processed_files[@]}
+		echo ----------------- END -----------------
+	fi
+}
+
 # -------------------------------------------------------------------------- mem
 
 function work_dir() {
@@ -633,30 +658,7 @@ source $HOME/.brewconfig.zsh
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# ------------------------------------FF-------------------------------------- END
-
-function lint() {
-	curl -fsSL https://bun.sh/install | bash
-	restart
-	bun add --global github:s21toolkit/s21lint
-}
-
-function s21() {
-	files_array=($(find . -type f \( -name "*.c" -o -name "*.h" -o -name "*.cpp" \)))
-	processed_files=()
-	dir_to_remove="./"
-	for file in "${files_array[@]}"; do
-		processed_file="${file/$dir_to_remove/}" # Удаляем часть директории из пути
-		processed_files+=("$processed_file")     # Добавляем обработанный файл в массив
-	done
-	if [ ${#processed_files[@]} -ne 0 ]; then
-		# printf '%s\n' "${processed_files[@]}"
-		echo -------------- s21lint --------------
-		# printf '\n'
-		s21lint ${processed_files[@]}
-		echo ----------------- END -----------------
-	fi
-}
+# -------------------------------------------------------------------------- END
 
 # function killmem() {
 # 	dir=$(echo $(git rev-parse --show-toplevel))
