@@ -187,6 +187,7 @@ function init_setup() {
 	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/aptdoc.sh > ~/.school_resources_for_peer/aptdoc.sh
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/aptdoc.txt >~/.school_resources_for_peer/aptdoc.txt
 
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/new.txt >~/.school_resources_for_peer/new.txt
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/helpme.md >~/.school_resources_for_peer/helpme.md
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/README.md >~/.school_resources_for_peer/README.md
 	sleep 1
@@ -604,6 +605,12 @@ function helpme() {
 
 function readme() {
 	open "https://github.com/nohemife/script_s21_school/tree/main"
+}
+
+# -------------------------------------------------------------------------- new
+
+function new() {
+	cat ~/.school_resources_for_peer/new.txt
 }
 
 # -------------------------------------------------------------------------- die

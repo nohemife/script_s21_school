@@ -23,7 +23,7 @@
         "type": "cppdbg",
         "request": "launch",
         "program": "${workspaceRoot}/src/a.out",
-        "args": ["4", "3", "2", "1"],
+        "args": [/*"4", "3", "2", "1"*/],
         "stopAtEntry": false,
         "cwd": "${workspaceRoot}",
         "environment": [],
