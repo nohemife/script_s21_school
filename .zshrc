@@ -227,21 +227,43 @@ fi
 
 # -------------------------------------------------------------------------- parse branch
 
-COLOR_DEF='%f'
-COLOR_DIR='%F{197}'
-COLOR_GIT='%F{39}'
-NEWLINE=$'\n'
-setopt PROMPT_SUBST
-export PROMPT='${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}${NEWLINE}%% '
+IFS="= " read name theme <<< $(echo $(cat ~/.school_resources_for_peer/zsh.conf | grep "THEME ="))
+# echo $theme
+# theme=$(echo $theme)
 
-parse_git_branch() {
-	git branch 2>/dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
-}
+if [ $theme -eq 0 ]; then
+	echo "old style " $theme
+fi
 
-function comp() {
-	gcc -Wall -Wextra -Werror "$1.c" -o "$1.o"
-	./"$1.o"
-}
+if [ $theme -eq 1 ]; then
+	echo "new style " $theme
+	COLOR_DEF='%f'
+	COLOR_DIR='%F{197}'
+	COLOR_GIT='%F{39}'
+	NEWLINE=$'\n'
+	setopt PROMPT_SUBST
+	export PROMPT='${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}${NEWLINE}%% '
+
+	parse_git_branch() {
+		git branch 2>/dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
+	}
+fi
+
+# COLOR_DEF='%f'
+# COLOR_DIR='%F{197}'
+# COLOR_GIT='%F{39}'
+# NEWLINE=$'\n'
+# setopt PROMPT_SUBST
+# export PROMPT='${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}${NEWLINE}%% '
+
+# parse_git_branch() {
+# 	git branch 2>/dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
+# }
+
+# function comp() {
+# 	gcc -Wall -Wextra -Werror "$1.c" -o "$1.o"
+# 	./"$1.o"
+# }
 
 # -------------------------------------------------------------------------- init setup
 
@@ -256,6 +278,9 @@ function init_setup() {
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zcompdump >~/.school_resources_for_peer/.zcompdump
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt >~/.school_resources_for_peer/date.txt
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/main.sh >~/.school_resources_for_peer/main.sh
+	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/theme.sh >~/.school_resources_for_peer/theme.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/zsh.conf >~/.school_resources_for_peer/zsh.conf
+	# chmod +x ~/.school_resources_for_peer/theme.sh
 	chmod +x ~/.school_resources_for_peer/main.sh
 
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clang-format >~/.school_resources_for_peer/.clang-format
@@ -285,6 +310,80 @@ function init_setup() {
 
 function menu() {
 	bash ~/.school_resources_for_peer/main.sh
+}
+
+
+# -------------------------------------------------------------------------- theme
+
+function theme() {
+	# bash ~/.school_resources_for_peer/theme.sh
+
+show_menu(){
+    normal=`echo "\033[m"`
+    menu=`echo "\033[36m"` #Blue
+    number=`echo "\033[33m"` #yellow
+    bgred=`echo "\033[41m"`
+    fgred=`echo "\033[31m"`
+    printf "\n${menu}*********************************************${normal}\n"
+    printf "${menu}**${number} 0)${menu} theme 0 ${normal}\n"
+    printf "${menu}**${number} 1)${menu} theme 1 ${normal}\n"
+    printf "${menu}**${number} 2)${menu} theme 2 ${normal}\n"
+    printf "${menu}**${number} 3)${menu} theme 3 ${normal}\n"
+    # printf "${menu}**${number} 5)${menu} theme 4 ${normal}\n"
+    printf "${menu}*********************************************${normal}\n"
+    printf "Please enter a menu option and enter or ${fgred}x to exit. ${normal}"
+    read opt
+}
+
+option_picked(){
+    msgcolor=`echo "\033[01;31m"` # bold red
+    normal=`echo "\033[00;00m"` # normal white
+    message=${@:-"${normal}Error: No message passed"}
+    printf "${msgcolor}${message}${normal}\n"
+}
+
+clear
+show_menu
+while [ $opt != '' ]
+    do
+    if [ $opt = '' ]; then
+      exit;
+    else
+      case $opt in
+        0) clear;
+            option_picked "Option 0 Picked";
+            sed -i 's/THEME = [0-9]*/THEME = 0/' ~/.school_resources_for_peer/zsh.conf
+			exit;
+            # break;
+        ;;
+        1) clear;
+            option_picked "Option 1 Picked";
+            sed -i 's/THEME = [0-9]*/THEME = 1/' ~/.school_resources_for_peer/zsh.conf
+			exit;
+            # break;
+        ;;
+        2) clear;
+            option_picked "Option 2 Picked";
+            sed -i 's/THEME = [0-9]*/THEME = 2/' ~/.school_resources_for_peer/zsh.conf
+            exit;
+            # break;
+        ;;
+        3) clear;
+            option_picked "Option 3 Picked";
+            sed -i 's/THEME = [0-9]*/THEME = 3/' ~/.school_resources_for_peer/zsh.conf
+            # show_menu;
+            # bash | restart
+            break;
+        ;;
+        x)exit;
+        ;;
+        *)clear;
+            option_picked "Pick an option from the menu";
+            show_menu;
+        ;;
+      esac
+    fi
+done
 }
 
 # -------------------------------------------------------------------------- cppcheck
@@ -488,7 +587,16 @@ function sql() {
 	# sql=$(echo $dir | grep -io sql)
 	# if [[ $sql =~ ^[Ss][Qq][Ll]$ ]]; then
 	# if [$dir]; then
-	sql=$(echo $dir | grep -ic sql_)
+	sql=$(echo $dir | grep -ic SQL_beginner)
+	day=$(echo $dir | grep -ic day)
+	# team=$(echo $dir | grep -iс team)
+	echo $dir
+	echo $day
+	if [ $day -ne 0 ]; then
+		day=$(echo day)
+	else
+		day=$(echo team)
+	fi
 	if [[ $sql -eq 1 ]]; then
 		echo $GREEN"Find SQL project: $dir"$RESET '\n'
 		# Пример исполнения скрипта: sql 5 12
@@ -501,7 +609,12 @@ function sql() {
 		zle -R
 		read 2
 		# echo $1
+		if [ $1 -ne 0 ]; then
+		echo ops
+			1=$(echo $1 | awk '$0*=1') # удаление нулей у дня
+		fi
 		# echo $2
+		2=$(echo $2 | awk '$0*=1') # удаление нулей у заданий
 		if [ ! -d "$dir/src" ]; then
 			mkdir $dir/src
 		fi
@@ -525,11 +638,11 @@ function sql() {
 				else
 					echo $RED"Directory ex0$i exists!"$RESET
 				fi
-				if [ ! -f "ex0$i/day$null$1_ex0$i.sql" ]; then
-					touch ex0$i/day$null$1_ex0$i.sql
-					echo $GREEN"File ex0$i/day$null$1_ex0$i.sql create!"$RESET
+				if [ ! -f "ex0$i/$day$null$1_ex0$i.sql" ]; then
+					touch ex0$i/$day$null$1_ex0$i.sql
+					echo $GREEN"File ex0$i/$day$null$1_ex0$i.sql create!"$RESET
 				else
-					echo $RED"File ex0$i/day$null$1_ex0$i.sql exists!"$RESET
+					echo $RED"File ex0$i/$day$null$1_ex0$i.sql exists!"$RESET
 				fi
 			else
 				# echo ex$i
@@ -541,15 +654,15 @@ function sql() {
 				fi
 				if [ ! -f "ex$i/day$null$1_ex$i.sql" ]; then
 					touch ex$i/day$null$1_ex$i.sql
-					echo $GREEN"File ex$i/day$null$1_ex$i.sql create!"$RESET
+					echo $GREEN"File ex$i/$day$null$1_ex$i.sql create!"$RESET
 				else
-					echo $RED"File ex$i/day$null$1_ex$i.sql exists!"$RESET
+					echo $RED"File ex$i/$day$null$1_ex$i.sql exists!"$RESET
 				fi
 			fi
 			((i++))
 		done
 		echo '\n'
-		echo $GREEN"Create dir and file: src/ex[0-$2]/day$null$1_ex[0-$2].sql"$RESET
+		echo $GREEN"Create dir and file: src/ex[0-$2]/$day$null$1_ex[0-$2].sql"$RESET
 	# fi
 	else
 		echo $RED"No SQL project"$RESET
@@ -558,7 +671,7 @@ function sql() {
 
 function find_sql() {
 	dir=$(echo $(git rev-parse --show-toplevel))
-	sql=$(echo $dir | grep -ic sql_)
+	sql=$(echo $dir | grep -ic SQL_beginner)
 	if [[ $sql -eq 1 ]]; then
 		cd $dir/src
 		if [ -f "All_Exercise.sql" ]; then
@@ -619,13 +732,36 @@ function peer() {
 
 # -------------------------------------------------------------------------- s21_lint
 
-function lint() {
+# function lint() {
+# 	curl -fsSL https://bun.sh/install | bash
+# 	restart
+# 	bun add --global github:s21toolkit/s21lint
+# }
+
+# function s21() {
+# 	files_array=($(find . -type f \( -name "*.c" -o -name "*.h" -o -name "*.cpp" \)))
+# 	processed_files=()
+# 	dir_to_remove="./"
+# 	for file in "${files_array[@]}"; do
+# 		processed_file="${file/$dir_to_remove/}" # Удаляем часть директории из пути
+# 		processed_files+=("$processed_file")     # Добавляем обработанный файл в массив
+# 	done
+# 	if [ ${#processed_files[@]} -ne 0 ]; then
+# 		# printf '%s\n' "${processed_files[@]}"
+# 		echo -------------- s21lint --------------
+# 		# printf '\n'
+# 		s21lint ${processed_files[@]}
+# 		echo ----------------- END -----------------
+# 	fi
+# }
+
+function install_bun_lint() {
 	curl -fsSL https://bun.sh/install | bash
 	restart
 	bun add --global github:s21toolkit/s21lint
 }
 
-function s21() {
+function s21_lint() {
 	files_array=($(find . -type f \( -name "*.c" -o -name "*.h" -o -name "*.cpp" \)))
 	processed_files=()
 	dir_to_remove="./"
@@ -642,10 +778,21 @@ function s21() {
 	fi
 }
 
+function lint() {
+  buna=$(echo bash | bun -v)
+  if [ $buna ];then
+#   echo $buna 
+	s21_lint
+  else
+#   echo "no bun"
+	install_bun_lint
+  fi
+}
+
 # -------------------------------------------------------------------------- mem
 
 function work_dir() {
-	cd echo $(git rev-parse --show-toplevel)
+	cd $(echo $(git rev-parse --show-toplevel))
 }
 
 # -------------------------------------------------------------------------- mem
@@ -681,6 +828,13 @@ function brewinstall() {
 	sleep 3
 	exit
 	# reset
+}
+
+# -------------------------------------------------------------------------- compilation
+
+function comp() {
+	gcc -Wall -Wextra -Werror "$1.c" -o "$1.o"
+	./"$1.o"
 }
 
 # -------------------------------------------------------------------------- NEW RELISE
@@ -746,30 +900,40 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # -------------------------------------------------------------------------- END
 
-# function killmem() {
-# 	dir=$(echo $(git rev-parse --show-toplevel))
-# 	# sql=$(echo $dir | grep -io sql)
-# 	# if [[ $sql =~ ^[Ss][Qq][Ll]$ ]]; then
-# 	# if [$dir]; then
-# 	sql=$(echo $dir | grep -ic sql_)
-# 	if [[ $sql -eq 1 ]]; then
-# 	cd $dir/src
-# 	files_array=($(find . -type f \( -name "*.sql" \)))
-# 	processed_files=()
-# 	dir_to_remove="./"
-# 	for file in "${files_array[@]}"; do
-# 		processed_file="${file/$dir_to_remove/}" # Удаляем часть директории из пути
-# 		processed_files+=("$processed_file")     # Добавляем обработанный файл в массив
-# 		cat ${processed_files[@]} >> All_Exercise.sql
-# 	done
-# 	# if [ ${#processed_files[@]} -ne 0 ]; then
-# 	# 	printf '%s\n' "${processed_files[@]} \n"  >> All_Exercise.sql
-# 	# 	# printf '\n'
-# 	# 	# echo ----------------- END -----------------
-# 	# fi
+function up() {
+# IFS="= " read name value <<< $(echo $(cat ~/.school_resources_for_peer/zsh.conf | grep "DATE ="))
+value=$(echo $(cat ~/.school_resources_for_peer/zsh.conf | grep -c "DATE_BUILD = 20"))
+# echo $value
+os=$(uname -s) # Получаем имя операционной системы
+os=$(echo "$os" | tr '[:upper:]' '[:lower:]') # Преобразуем в нижний регистр
+# echo $os
+while [ $value -ne 0 ]; do
+    # if [ $value -eq 1 ]; then
+        if [[ "$os" == "linux" ]]; then
+            sed -i -e '$ d' ~/.school_resources_for_peer/zsh.conf
+        fi
+        if [[ "$os" == "darwin" ]]; then
+            sed -i '' -e '$ d' ~/.school_resources_for_peer/zsh.conf
+        fi
+    # fi
+    ((value--))
+done
+}
 
-# 	else
-# 		echo $RED"No SQL project"$RESET
-# 	fi
-# }
+function add() {
+	date=$(cat ~/.school_resources_for_peer/date.txt)
+	echo "DATE_BUILD = $date" >> ~/.school_resources_for_peer/zsh.conf
+	# rm -rf ~/.school_resources_for_peer/date.txt
+}
 
+function co() {
+IFS="= " read name date <<< $(echo $(cat ~/.school_resources_for_peer/zsh.conf | grep "DATE_BUILD = "))
+update=$(cat ~/.school_resources_for_peer/date.txt)
+echo $date
+echo $update
+if [ "$date" != "$update" ]; then
+    echo "Даты различаются"
+else
+    echo "Даты равны"
+fi
+}
