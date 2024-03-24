@@ -274,12 +274,12 @@ function init_setup() {
 		mkdir ~/.school_resources_for_peer/.vscode
 		# mkdir ~/.school_resources_for_peer/Valgrind
 	fi
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/zsh.conf >~/.school_resources_for_peer/zsh.conf
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc >~/.school_resources_for_peer/.zshrc
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zcompdump >~/.school_resources_for_peer/.zcompdump
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt >~/.school_resources_for_peer/date.txt
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/main.sh >~/.school_resources_for_peer/main.sh
 	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/theme.sh >~/.school_resources_for_peer/theme.sh
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/zsh.conf >~/.school_resources_for_peer/zsh.conf
 	# chmod +x ~/.school_resources_for_peer/theme.sh
 	chmod +x ~/.school_resources_for_peer/main.sh
 
