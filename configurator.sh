@@ -2,6 +2,11 @@
 
 CONFIG_FILE="$HOME/.zsh.conf"
 
+OS=$(echo $(uname -s) | tr '[:upper:]' '[:lower:]') 
+if [ "$OS" = "darwin" ];then
+	MAC=$(echo "''")
+fi
+
 read_config() {
     if [[ -f $CONFIG_FILE ]]; then
         while IFS='= ' read -r key value; do
