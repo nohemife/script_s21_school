@@ -235,7 +235,7 @@ fi
 
 # -------------------------------------------------------------------------- parse branch
 
-IFS="= " read name theme <<< $(echo $(cat ~/.school_resources_for_peer/.zsh.conf | grep "THEME ="))
+IFS="= " read name theme <<< $(echo $(cat ~/.zsh.conf | grep "THEME ="))
 # echo $theme
 # theme=$(echo $theme)
 
