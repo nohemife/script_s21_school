@@ -7,6 +7,7 @@ alias gdb="gcc -g"
 alias dir="ls -la"
 alias /="cd .."
 alias //="cd -"
+alias ce="configedit"
 alias ff="fixformat"
 alias cc="cpp_check"
 alias fs="find_sql"
@@ -20,6 +21,13 @@ alias pushd="git push origin develop"
 alias pushn="git push origin $(whoami)"
 alias gsd="git switch develop"
 alias gsn="git switch $(whoami)"
+
+# -------------------------------------------------------------------------- OS
+
+OS=$(echo $(uname -s) | tr '[:upper:]' '[:lower:]') 
+if [ "$OS" = "darwin" ];then
+	MAC=$(echo "''")
+fi
 
 # -------------------------------------------------------------------------- TAG version
 
@@ -227,16 +235,18 @@ fi
 
 # -------------------------------------------------------------------------- parse branch
 
-IFS="= " read name theme <<< $(echo $(cat ~/.school_resources_for_peer/zsh.conf | grep "THEME ="))
+IFS="= " read name theme <<< $(echo $(cat ~/.school_resources_for_peer/.zsh.conf | grep "THEME ="))
 # echo $theme
 # theme=$(echo $theme)
 
 if [ $theme -eq 0 ]; then
 	echo "old style " $theme
+	clear
 fi
 
 if [ $theme -eq 1 ]; then
 	echo "new style " $theme
+	clear
 	COLOR_DEF='%f'
 	COLOR_DIR='%F{197}'
 	COLOR_GIT='%F{39}'
@@ -274,13 +284,14 @@ function init_setup() {
 		mkdir ~/.school_resources_for_peer/.vscode
 		# mkdir ~/.school_resources_for_peer/Valgrind
 	fi
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/zsh.conf >~/.school_resources_for_peer/zsh.conf
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.school_resources_for_peer/.zsh.conf.bak
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.zsh.conf
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc >~/.school_resources_for_peer/.zshrc
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zcompdump >~/.school_resources_for_peer/.zcompdump
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt >~/.school_resources_for_peer/date.txt
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/main.sh >~/.school_resources_for_peer/main.sh
-	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/theme.sh >~/.school_resources_for_peer/theme.sh
-	# chmod +x ~/.school_resources_for_peer/theme.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/configurator.sh >~/.school_resources_for_peer/configurator.sh
+	chmod +x ~/.school_resources_for_peer/configurator.sh
 	chmod +x ~/.school_resources_for_peer/main.sh
 
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clang-format >~/.school_resources_for_peer/.clang-format
@@ -311,7 +322,6 @@ function init_setup() {
 function menu() {
 	bash ~/.school_resources_for_peer/main.sh
 }
-
 
 # -------------------------------------------------------------------------- theme
 
@@ -352,25 +362,25 @@ while [ $opt != '' ]
       case $opt in
         0) clear;
             option_picked "Option 0 Picked";
-            sed -i 's/THEME = [0-9]*/THEME = 0/' ~/.school_resources_for_peer/zsh.conf
+            sed -i $MAC 's/THEME = [0-9]*/THEME = 0/' ~/.school_resources_for_peer/.zsh.conf
 			exit;
             # break;
         ;;
         1) clear;
             option_picked "Option 1 Picked";
-            sed -i 's/THEME = [0-9]*/THEME = 1/' ~/.school_resources_for_peer/zsh.conf
+            sed -i $MAC 's/THEME = [0-9]*/THEME = 1/' ~/.school_resources_for_peer/.zsh.conf
 			exit;
             # break;
         ;;
         2) clear;
             option_picked "Option 2 Picked";
-            sed -i 's/THEME = [0-9]*/THEME = 2/' ~/.school_resources_for_peer/zsh.conf
+            sed -i $MAC 's/THEME = [0-9]*/THEME = 2/' ~/.school_resources_for_peer/.zsh.conf
             exit;
             # break;
         ;;
         3) clear;
             option_picked "Option 3 Picked";
-            sed -i 's/THEME = [0-9]*/THEME = 3/' ~/.school_resources_for_peer/zsh.conf
+            sed -i $MAC 's/THEME = [0-9]*/THEME = 3/' ~/.school_resources_for_peer/.zsh.conf
             # show_menu;
             # bash | restart
             break;
@@ -901,33 +911,35 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # -------------------------------------------------------------------------- END
 
 function up() {
-# IFS="= " read name value <<< $(echo $(cat ~/.school_resources_for_peer/zsh.conf | grep "DATE ="))
-value=$(echo $(cat ~/.school_resources_for_peer/zsh.conf | grep -c "DATE_BUILD = 20"))
-# echo $value
-os=$(uname -s) # Получаем имя операционной системы
-os=$(echo "$os" | tr '[:upper:]' '[:lower:]') # Преобразуем в нижний регистр
-# echo $os
-while [ $value -ne 0 ]; do
-    # if [ $value -eq 1 ]; then
-        if [[ "$os" == "linux" ]]; then
-            sed -i -e '$ d' ~/.school_resources_for_peer/zsh.conf
-        fi
-        if [[ "$os" == "darwin" ]]; then
-            sed -i '' -e '$ d' ~/.school_resources_for_peer/zsh.conf
-        fi
-    # fi
-    ((value--))
-done
+	sed -i $MAC '/^DATE_BUILD/d' ~/.school_resources_for_peer/.zsh.conf
+
+# # IFS="= " read name value <<< $(echo $(cat ~/.school_resources_for_peer/.zsh.conf | grep "DATE ="))
+# value=$(echo $(cat ~/.school_resources_for_peer/.zsh.conf | grep -c "DATE_BUILD = 20"))
+# # echo $value
+# os=$(uname -s) # Получаем имя операционной системы
+# os=$(echo "$os" | tr '[:upper:]' '[:lower:]') # Преобразуем в нижний регистр
+# # echo $os
+# while [ $value -ne 0 ]; do
+#     # if [ $value -eq 1 ]; then
+#         if [[ "$os" == "linux" ]]; then
+#             sed -i -e '$ d' ~/.school_resources_for_peer/.zsh.conf
+#         fi
+#         if [[ "$os" == "darwin" ]]; then
+#             sed -i '' -e '$ d' ~/.school_resources_for_peer/.zsh.conf
+#         fi
+#     # fi
+#     ((value--))
+# done
 }
 
 function add() {
 	date=$(cat ~/.school_resources_for_peer/date.txt)
-	echo "DATE_BUILD = $date" >> ~/.school_resources_for_peer/zsh.conf
+	echo "DATE_BUILD = $date" >> ~/.school_resources_for_peer/.zsh.conf
 	# rm -rf ~/.school_resources_for_peer/date.txt
 }
 
 function co() {
-IFS="= " read name date <<< $(echo $(cat ~/.school_resources_for_peer/zsh.conf | grep "DATE_BUILD = "))
+IFS="= " read name date <<< $(echo $(cat ~/.school_resources_for_peer/.zsh.conf | grep "DATE_BUILD = "))
 update=$(cat ~/.school_resources_for_peer/date.txt)
 echo $date
 echo $update
@@ -936,4 +948,10 @@ if [ "$date" != "$update" ]; then
 else
     echo "Даты равны"
 fi
+}
+
+
+function configedit() {
+	chmod +x ~/.school_resources_for_peer/configurator.sh
+	bash ~/.school_resources_for_peer/configurator.sh
 }
