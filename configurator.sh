@@ -25,11 +25,13 @@ read_config() {
 }
 
 save_config() {
-    sed -i $MAC 's/AUTOUPDATE = [0-9]*/AUTOUPDATE = '$AUTOUPDATE'/' $CONFIG_FILE
-    sed -i $MAC 's/THEME = [0-9]*/THEME = '$THEME'/' $CONFIG_FILE
-    sed -i $MAC 's/update = [0-9]*/update = '$update'/' $CONFIG_FILE
-    sed -i $MAC 's/date = [0-9]*/date = '$date'/' $CONFIG_FILE
+
+    sed -i "$MAC" "s/AUTOUPDATE = [0-9]*/AUTOUPDATE = $AUTOUPDATE/" "$CONFIG_FILE"
+    sed -i "$MAC" "s/THEME = [0-9]*/THEME = $THEME/" "$CONFIG_FILE"
+    sed -i "$MAC" "s/update = [0-9]*/update = $update/" "$CONFIG_FILE"
+    sed -i "$MAC" "s/date = [0-9]*/date = $date/" "$CONFIG_FILE"
     echo "Конфигурация сохранена."
+    rm -rf "$CONFIG_FILE''"
 }
 
 display_menu() {

@@ -29,6 +29,10 @@ if [ "$OS" = "darwin" ];then
 	MAC=$(echo "''")
 fi
 
+# -------------------------------------------------------------------------- config
+
+CONFIG_FILE="$HOME/.zsh.conf"
+
 # -------------------------------------------------------------------------- TAG version
 
 TAG=1.0.0
@@ -362,25 +366,29 @@ while [ $opt != '' ]
       case $opt in
         0) clear;
             option_picked "Option 0 Picked";
-            sed -i $MAC 's/THEME = [0-9]*/THEME = 0/' ~/.school_resources_for_peer/.zsh.conf
+            sed -i $MAC 's/THEME = [0-9]*/THEME = 0/' "$CONFIG_FILE"
+			rm -rf "$CONFIG_FILE''"
 			exit;
             # break;
         ;;
         1) clear;
             option_picked "Option 1 Picked";
-            sed -i $MAC 's/THEME = [0-9]*/THEME = 1/' ~/.school_resources_for_peer/.zsh.conf
+            sed -i $MAC 's/THEME = [0-9]*/THEME = 1/' "$CONFIG_FILE"
+			rm -rf "$CONFIG_FILE''"
 			exit;
             # break;
         ;;
         2) clear;
             option_picked "Option 2 Picked";
-            sed -i $MAC 's/THEME = [0-9]*/THEME = 2/' ~/.school_resources_for_peer/.zsh.conf
+            sed -i $MAC 's/THEME = [0-9]*/THEME = 2/' "$CONFIG_FILE"
+			rm -rf "$CONFIG_FILE''"
             exit;
             # break;
         ;;
         3) clear;
             option_picked "Option 3 Picked";
-            sed -i $MAC 's/THEME = [0-9]*/THEME = 3/' ~/.school_resources_for_peer/.zsh.conf
+            sed -i $MAC 's/THEME = [0-9]*/THEME = 3/' "$CONFIG_FILE"
+			rm -rf "$CONFIG_FILE''"
             # show_menu;
             # bash | restart
             break;
