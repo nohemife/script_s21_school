@@ -963,3 +963,16 @@ function configedit() {
 	chmod +x ~/.school_resources_for_peer/configurator.sh
 	bash ~/.school_resources_for_peer/configurator.sh
 }
+
+function id() {
+DIALOG=$(echo $(dialog --version)) 
+if [ ! "$DIALOG" ];then
+	if [ "$OS" = "darwin" ];then
+		curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
+		osascript -e 'tell app "Terminal" to do script "brew install dialog && killall iTerm2 Terminal"'
+	else
+		sudo apt update -y
+		sudo apt install dialog -y
+	fi
+fi
+}
