@@ -64,3 +64,20 @@ function aptdoc() {
 }
 
 # -------------------------------------------------------------------------- 
+function fm() {
+    ((du -s * | sort -nr | cut -f 2-) && (du -s .* | sort -nr | cut -f 2-)) |\
+    while read a; do
+        du -hs "$a"
+    done
+}
+
+function fm0() {
+	du -s *|sort -nr|cut -f 2-|while read a;do du -hs $a;done
+}
+function fm1() {
+	du -s .*|sort -nr|cut -f 2-|while read a;do du -hs $a;done
+}
+function fm2() {
+	du -s * .*|sort -nr|cut -f 2-|while read a;do du -hs $a;done
+}
+# -------------------------------------------------------------------------- 
