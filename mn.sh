@@ -168,32 +168,65 @@
 # save_config
 # clear
 
-submenu1() {
+# ----- VARIABLES ----- #
+RED=$'\033[0;31m'
+GREEN=$'\033[0;32m'
+YELLOW=$'\033[0;33m'
+BLUE=$'\033[0;34m'
+MAGENTA=$'\033[0;35m'
+RESET=$'\033[0;m'
 
-items=(1 "SubMenu1 Item 1" 2 "SubMenu1 Item 2" 3 "SubMenu1 Item 3" 4 "SubMenu1 Item 4")
+Memory() {
 
+items=(0 "Memory space information"
+       1 "Clear the memory"
+       2 "[ CLEAR ALL CASHE ]"
+       3 "Exit"
+)
 while item=$(dialog --title "$TITLE" \
-                 --menu "SubMenu1 Please select" 20 40 10 "${items[@]}" \
+                 --menu "Memory:" 20 40 10 "${items[@]}" \
                  2>&1 >/dev/tty)
     do
     case "$item" in
         "${items[0]}") 
-            exit 
-            # echo "Selected $item, item #1"
-            ;;
-        "${items[1]}") 
-            exit 
-            # echo "Selected $item, item #2"
+            # chmod -x ~/script_s21_school/menu/mem_info.sh
+            # sh ~/script_s21_school/menu/mem_info.sh
+            echo "${items[1]}"
+            sleep 3
             ;;
         "${items[2]}") 
-            exit 
+            # chmod -x ~/script_s21_school/menu/clear_mem.sh
+            # sh ~/script_s21_school/menu/clear_mem.sh
+            # sh ~/script_s21_school/menu/mem_info.sh
+            # echo "1"
+            echo "${items[3]}"
+            sleep 3
+            # exit 0
+            # echo "Selected $item, item #2"
+            ;;
+        "${items[4]}") 
+            echo "${items[5]}"
+            sleep 3
+            # exit 
             # echo "Selected $item, item #3"
             ;;
-        "${items[3]}") 
+        "${items[6]}") 
+            echo "${items[7]}"
+            sleep 3
             exit 
             # echo "Selected $item, item #4"
             ;;
-        *) echo "Ooops! Invalid option.";;
+        # "${items[8]}") 
+        #     # echo "4"
+        #     echo "${items[9]}"
+        #     sleep 3
+        #     # exit 
+        #     # echo "Selected $item, item #4"
+        #     ;;
+        *) echo "Ooops! Invalid option."
+            echo "${items[*]}"
+            sleep 2
+            ;;
     esac
 done
 clear # clear after user pressed Cancel
@@ -293,7 +326,8 @@ clear # clear after user pressed Cancel
 }
 
 menu() {
-items=(1 "Item 1" 2 "Item 2" 3 "Item 3")
+items=(1 "Memory" 2 "Install libs" 3 "Docker" 4 "Docker" 5 "exit")
+# items=(1 "Item 1" 2 "Item 2" 3 "Item 3")
 
 while item=$(dialog --title "$TITLE" \
                  --menu "Please select" 20 40 10 "${items[@]}" \
@@ -302,7 +336,7 @@ while item=$(dialog --title "$TITLE" \
     case "$item" in
         # "${items[0]}") 
         1)
-            submenu1
+            Memory
             exit 
             # echo "Selected $item, item #1"
             ;;
@@ -317,6 +351,14 @@ while item=$(dialog --title "$TITLE" \
             submenu3
             # echo "Selected $item, item #3"
             ;;
+        4)
+            submenu3
+            # echo "Selected $item, item #3"
+            ;;
+        5)
+            exit
+            # echo "Selected $item, item #3"
+            ;;            
         *) 
             # submenu4
             # echo "Ooops! Invalid option."
@@ -369,7 +411,7 @@ done
 
 menu
 menu2
-submenu1
+Memory
 submenu2
 submenu3
 submenu4
