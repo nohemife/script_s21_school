@@ -168,6 +168,21 @@
 # save_config
 # clear
 
+function install_dialog() {
+# function id() {
+DIALOG=$(echo $(dialog --version)) 
+if [ ! "$DIALOG" ];then
+	if [ "$OS" = "darwin" ];then
+		curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
+		osascript -e 'tell app "Terminal" to do script "brew install dialog && killall iTerm2 Terminal"'
+	else
+		sudo apt update -y
+		sudo apt install dialog -y
+	fi
+fi
+restart && reset
+}
+
 # ----- VARIABLES ----- #
 RED=$'\033[0;31m'
 GREEN=$'\033[0;32m'
@@ -182,7 +197,8 @@ items=(0 "Memory space information"
        1 "Clear the memory"
        2 "[ CLEAR ALL CASHE ]"
        3 "Exit"
-)
+       )
+
 while item=$(dialog --title "$TITLE" \
                  --menu "Memory:" 20 40 10 "${items[@]}" \
                  2>&1 >/dev/tty)
@@ -193,6 +209,7 @@ while item=$(dialog --title "$TITLE" \
             # sh ~/script_s21_school/menu/mem_info.sh
             echo "${items[1]}"
             sleep 3
+            # exit
             ;;
         "${items[2]}") 
             # chmod -x ~/script_s21_school/menu/clear_mem.sh
@@ -201,61 +218,72 @@ while item=$(dialog --title "$TITLE" \
             # echo "1"
             echo "${items[3]}"
             sleep 3
-            # exit 0
-            # echo "Selected $item, item #2"
+            # exit
             ;;
         "${items[4]}") 
             echo "${items[5]}"
             sleep 3
             # exit 
-            # echo "Selected $item, item #3"
             ;;
         "${items[6]}") 
             echo "${items[7]}"
             sleep 3
-            exit 
-            # echo "Selected $item, item #4"
+            # exit 
             ;;
-        # "${items[8]}") 
-        #     # echo "4"
-        #     echo "${items[9]}"
-        #     sleep 3
-        #     # exit 
-        #     # echo "Selected $item, item #4"
-        #     ;;
         *) echo "Ooops! Invalid option."
             echo "${items[*]}"
             sleep 2
+            exit
             ;;
     esac
 done
 clear # clear after user pressed Cancel
 }
 
-submenu2() {
+Install_libs() {
 
-items=(1 "SubMenu2 Item 1" 2 "SubMenu2 Item 2" 3 "SubMenu2 Item 3" 4 "SubMenu2 Item 4")
+items=(1 "install brew and all test libs"
+       2 "install only brew"
+       3 "install only test libs"
+       4 "SubMenu2 Item 3"
+       )
 
 while item=$(dialog --title "$TITLE" \
-                 --menu "SubMenu2 Please select" 20 40 10 "${items[@]}" \
+                 --menu "Install libs:" 20 40 10 "${items[@]}" \
                  2>&1 >/dev/tty)
     do
     case "$item" in
         "${items[0]}") 
-            exit 
-            # echo "Selected $item, item #1"
-            ;;
-        "${items[1]}") 
-            exit 
-            # echo "Selected $item, item #2"
+            echo "${items[1]}"
+            sleep 3
+            
+            # curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
+            # restart && reset
+            # osascript -e 'tell app "Terminal" to do script "brew install pkg-config && brew install lmdb && brew install lcov && brew install gcovr && brew install googletest && brew install cppcheck && killall iTerm2 Terminal"'
+
+            exit
             ;;
         "${items[2]}") 
-            exit 
-            # echo "Selected $item, item #3"
+            echo "${items[3]}"
+            sleep 3
+
+            # curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
+            # restart && reset
+
+            exit
             ;;
-        "${items[3]}") 
-            exit 
-            # echo "Selected $item, item #4"
+        "${items[4]}") 
+            echo "${items[5]}"
+            sleep 3
+
+            # osascript -e 'tell app "Terminal" to do script "brew install pkg-config && brew install lmdb && brew install lcov && brew install gcovr && brew install googletest && brew install cppcheck && killall iTerm2 Terminal"'
+
+            exit
+            ;;
+        "${items[6]}") 
+            echo "${items[7]}"
+            sleep 3
+            exit
             ;;
         *) echo "Ooops! Invalid option.";;
     esac
@@ -263,30 +291,38 @@ done
 clear # clear after user pressed Cancel
 }
 
-submenu3() {
+Docker() {
 
-items=(1 "SubMenu3 Item 1" 2 "SubMenu3 Item 2" 3 "SubMenu3 Item 3" 4 "SubMenu3 Item 4")
+items=(1 "Docker link + copy apt"
+       2 "Docker link"
+       3 "Docker copy apt"
+       4 "Exit"
+       )
 
 while item=$(dialog --title "$TITLE" \
-                 --menu "SubMenu3 Please select" 20 40 10 "${items[@]}" \
+                 --menu "Docker:" 20 40 10 "${items[@]}" \
                  2>&1 >/dev/tty)
     do
     case "$item" in
         "${items[0]}") 
+            # bash ~/.school_resources_for_peer/menu/docker_link.sh
+            # bash ~/.school_resources_for_peer/menu/docker_copy_apt.sh
+            bash ~/script_s21_school/menu/docker_link.sh
+            bash ~/script_s21_school/menu/docker_copy_apt.sh
             exit 
-            # echo "Selected $item, item #1"
             ;;
-        "${items[1]}") 
+        "${items[2]}")  
+            # bash ~/.school_resources_for_peer/menu/docker_link.sh
+            bash ~/script_s21_school/menu/docker_link.sh
             exit 
-            # echo "Selected $item, item #2"
             ;;
-        "${items[2]}") 
+        "${items[4]}")  
+            # bash ~/.school_resources_for_peer/menu/docker_copy_apt.sh
+            bash ~/script_s21_school/menu/docker_copy_apt.sh
             exit 
-            # echo "Selected $item, item #3"
             ;;
-        "${items[3]}") 
+        "${items[6]}") 
             exit 
-            # echo "Selected $item, item #4"
             ;;
         *) echo "Ooops! Invalid option.";;
     esac
@@ -296,7 +332,11 @@ clear # clear after user pressed Cancel
 
 submenu4() {
 
-items=(1 "SubMenu4 Item 1" 2 "SubMenu4 Item 2" 3 "SubMenu4 Item 3" 4 "SubMenu4 Item 4")
+items=(1 "SubMenu4 Item 1"
+       2 "SubMenu4 Item 2"
+       3 "SubMenu4 Item 3"
+       4 "SubMenu4 Item 4"
+       )
 
 while item=$(dialog --title "$TITLE" \
                  --menu "SubMenu4 Please select" 20 40 10 "${items[@]}" \
@@ -326,7 +366,12 @@ clear # clear after user pressed Cancel
 }
 
 menu() {
-items=(1 "Memory" 2 "Install libs" 3 "Docker" 4 "Docker" 5 "exit")
+items=(1 "Memory"
+       2 "Install libs"
+       3 "Docker"
+       4 "submenu4"
+       5 "exit"
+       )
 # items=(1 "Item 1" 2 "Item 2" 3 "Item 3")
 
 while item=$(dialog --title "$TITLE" \
@@ -342,17 +387,19 @@ while item=$(dialog --title "$TITLE" \
             ;;
         # "${items[1]}") 
         2)
-            submenu2
+            Install_libs
             exit 
             # echo "Selected $item, item #2"
             ;;
         # "${items[2]}") 
         3)
-            submenu3
+            Docker
+            exit
             # echo "Selected $item, item #3"
             ;;
         4)
-            submenu3
+            submenu4
+            exit
             # echo "Selected $item, item #3"
             ;;
         5)
@@ -383,35 +430,36 @@ clear # clear after user pressed Cancel
 # done
 # clear # clear after user pressed Cancel
 
-menu2() {
-cmd=(dialog --keep-tite --menu "Select options:" 22 76 16)
-options=(1 "Option 1"
-         2 "Option 2"
-         3 "Option 3"
-         4 "Option 4")
-choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-for choice in $choices
-do
-    case $choice in
-        1)
-            echo "First Option"
-            ;;
-        2)
-            echo "Second Option"
-            ;;
-        3)
-            echo "Third Option"
-            ;;
-        4)
-            echo "Fourth Option"
-            ;;
-    esac
-done
-}
+# menu2() {
+# cmd=(dialog --keep-tite --menu "Select options:" 22 76 16)
+# options=(1 "Option 1"
+#          2 "Option 2"
+#          3 "Option 3"
+#          4 "Option 4")
+# choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+# for choice in $choices
+# do
+#     case $choice in
+#         1)
+#             echo "First Option"
+#             ;;
+#         2)
+#             echo "Second Option"
+#             ;;
+#         3)
+#             echo "Third Option"
+#             ;;
+#         4)
+#             echo "Fourth Option"
+#             ;;
+#     esac
+# done
+# }
 
 menu
-menu2
-Memory
-submenu2
-submenu3
-submenu4
+# # menu2
+
+# Memory
+# Install_libs
+# Docker
+# submenu4

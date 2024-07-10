@@ -36,9 +36,12 @@ source ~/.school_resources_for_peer/plugins/init_setup.sh
 # -------------------------------------------------------------------------- console menu
 
 function menu() {
+	install_dialog
+	bash ~/.school_resources_for_peer/menu/menu.sh
+}
+function main() {
 	bash ~/.school_resources_for_peer/main.sh
 }
-
 # -------------------------------------------------------------------------- theme
 
 source ~/.school_resources_for_peer/plugins/theme.sh

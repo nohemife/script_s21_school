@@ -1,7 +1,7 @@
 #!/bin/bash
 # #!/bin/zsh
 
-function docker_link {
+# function docker_link {
     echo Ooops...
     #!/bin/bash
     echo del com.docker.docker
@@ -16,4 +16,4 @@ function docker_link {
     reset
     echo $GREEN"Link Success"$RESET
 
-}
+# }
