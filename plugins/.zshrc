@@ -79,13 +79,13 @@ source ~/.school_resources_for_peer/plugins/VS_debug.sh
 
 # -------------------------------------------------------------------------- old valgrind
 
-function grind() {
+# function grind() {
 	# mkdir Valgrind
 	# cp ~/.school_resources_for_peer/Valgrind/Dockerfile Valgrind/Dockerfile
 	# cp ~/.school_resources_for_peer/Valgrind/run.sh Valgrind/run.sh
 	# cp ~/.school_resources_for_peer/Valgrind/start.sh Valgrind/start.sh
 
-}
+# }
 
 # -------------------------------------------------------------------------- sql
 
