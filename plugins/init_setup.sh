@@ -15,15 +15,14 @@ function init_setup() {
 
 	# menu
 
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.school_resources_for_peer/.zsh.conf.bak
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.school_resources_for_peer/.zsh.conf.bak
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.school_resources_for_peer/.zsh.conf.bak
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.school_resources_for_peer/.zsh.conf.bak
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.school_resources_for_peer/.zsh.conf.bak
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.school_resources_for_peer/.zsh.conf.bak
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.school_resources_for_peer/.zsh.conf.bak
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.school_resources_for_peer/.zsh.conf.bak
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.school_resources_for_peer/.zsh.conf.bak
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/brewinstall_libs.sh >~/.school_resources_for_peer/menu/
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/brewinstall.sh >~/.school_resources_for_peer/menu/
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/ >~/.school_resources_for_peer/menu/
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/ >~/.school_resources_for_peer/menu/
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/ >~/.school_resources_for_peer/menu/
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/ >~/.school_resources_for_peer/menu/
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/ >~/.school_resources_for_peer/menu/
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/ >~/.school_resources_for_peer/menu/
 
 
 
