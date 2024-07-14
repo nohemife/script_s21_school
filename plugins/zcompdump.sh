@@ -1,3 +1,6 @@
+#!/bin/bash
+#!/bin/zsh
+
 # -------------------------------------------------------------------------- omz
 
 autoload -U compaudit compinit zrecompile

@@ -35,6 +35,25 @@ source ~/.school_resources_for_peer/plugins/init_setup.sh
 
 # -------------------------------------------------------------------------- console menu
 
+function install_dialog() {
+# function id() {
+BRW=$(echo $(brew --version)) 
+
+DIALOG=$(echo $(dialog --version)) 
+if [ ! "$DIALOG" ];then
+	if [ "$OS" = "darwin" ];then
+		if [ ! "$BRW" ];then
+			curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
+		fi
+		osascript -e 'tell app "Terminal" to do script "brew install dialog && killall iTerm2 Terminal"'
+	else
+		sudo apt update -y
+		sudo apt install dialog -y
+	fi
+fi
+restart && reset
+}
+
 function menu() {
 	install_dialog
 	bash ~/.school_resources_for_peer/menu/menu.sh
