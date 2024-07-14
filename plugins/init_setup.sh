@@ -13,21 +13,41 @@ function init_setup() {
 		# mkdir ~/.school_resources_for_peer/Valgrind
 	fi
 
+	if [ ! -f "~/.zsh.conf" ]; then
+		curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf > ~/.zsh.conf
+	fi
+
 	# menu
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/brewinstall_libs.sh >~/.school_resources_for_peer/menu/brewinstall_libs.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/brewinstall.sh >~/.school_resources_for_peer/menu/brewinstall.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/clear_cashe.sh >~/.school_resources_for_peer/menu/clear_cashe.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/clear_mem.sh >~/.school_resources_for_peer/menu/clear_mem.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/docker_copy_apt.sh >~/.school_resources_for_peer/menu/docker_copy_apt.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/docker_link.sh >~/.school_resources_for_peer/menu/docker_link.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/mem_info.sh >~/.school_resources_for_peer/menu/mem_info.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/menu.sh >~/.school_resources_for_peer/menu/menu.sh
 
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/brewinstall_libs.sh >~/.school_resources_for_peer/menu/
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/brewinstall.sh >~/.school_resources_for_peer/menu/
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/ >~/.school_resources_for_peer/menu/
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/ >~/.school_resources_for_peer/menu/
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/ >~/.school_resources_for_peer/menu/
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/ >~/.school_resources_for_peer/menu/
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/ >~/.school_resources_for_peer/menu/
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/ >~/.school_resources_for_peer/menu/
 
+	# plugins
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/.zshrc >~/.school_resources_for_peer/plugins/.zshrc
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/alias.sh >~/.school_resources_for_peer/plugins/alias.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/autoupdate.sh >~/.school_resources_for_peer/plugins/autoupdate.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/brew_libs.sh >~/.school_resources_for_peer/plugins/brew_libs.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/cppcheck.sh >~/.school_resources_for_peer/plugins/cppcheck.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/format_style.sh >~/.school_resources_for_peer/plugins/format_style.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/git.sh >~/.school_resources_for_peer/plugins/git.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/init_setup.sh >~/.school_resources_for_peer/plugins/init_setup.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/other.sh >~/.school_resources_for_peer/plugins/other.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/parse_branch.sh >~/.school_resources_for_peer/plugins/parse_branch.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/s21_lint.sh >~/.school_resources_for_peer/plugins/s21_lint.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/sql.sh >~/.school_resources_for_peer/plugins/sql.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/theme.sh >~/.school_resources_for_peer/plugins/theme.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/VS_debug.sh >~/.school_resources_for_peer/plugins/VS_debug.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/zcompdump.sh >~/.school_resources_for_peer/plugins/zcompdump.sh
 
 
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.school_resources_for_peer/.zsh.conf.bak
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.zsh.conf
+	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.zsh.conf
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc >~/.school_resources_for_peer/.zshrc
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zcompdump >~/.school_resources_for_peer/.zcompdump
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt >~/.school_resources_for_peer/date.txt
@@ -41,6 +61,7 @@ function init_setup() {
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/clean.sh >~/.school_resources_for_peer/clean.sh
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/clear.sh >~/.school_resources_for_peer/clear.sh
 
+	# VScode debug
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.vscode/launch.json >~/.school_resources_for_peer/.vscode/launch.json
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.vscode/tasks.json >~/.school_resources_for_peer/.vscode/tasks.json
 
