@@ -1,19 +1,28 @@
 #!/bin/bash
 #!/bin/zsh
 
+# ----- VARIABLES ----- #
+RED=$'\033[0;31m'
+GREEN=$'\033[0;32m'
+YELLOW=$'\033[0;33m'
+BLUE=$'\033[0;34m'
+MAGENTA=$'\033[0;35m'
+RESET=$'\033[0;m'
+# --------------------- #
+
 # -------------------------------------------------------------------------- init setup
 
 function init_setup() {
 	echo $RED---------------- ARISE ----------------$RESET
 	if [ ! -d "~/.school_resources_for_peer" ]; then
-		mkdir ~/.school_resources_for_peer
+		mkdir -p ~/.school_resources_for_peer
 		mkdir -p ~/.school_resources_for_peer/.vscode
 		mkdir -p ~/.school_resources_for_peer/menu
 		mkdir -p ~/.school_resources_for_peer/plugins
 		# mkdir ~/.school_resources_for_peer/Valgrind
 	fi
 
-	if [ ! -f "~/.zsh.conf" ]; then
+	if [ -f "~/.zsh.conf" ]; then
 		curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf > ~/.zsh.conf
 	fi
 
