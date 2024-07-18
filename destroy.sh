@@ -1,0 +1,1 @@
+# rm -rf ~/.Trash/find ~/ -name “.DS_Store” -print -delete 2> /dev/null -y

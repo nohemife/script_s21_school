@@ -44,7 +44,7 @@
 # }
 
 function install_npm_lint() {
-	brewinstall
+	install_brew
 	brew install npm
 	restart
 	npm install --global @s21toolkit/lint
