@@ -139,3 +139,8 @@ source $HOME/.brewconfig.zsh
 source ~/.school_resources_for_peer/plugins/other.sh
 
 # -------------------------------------------------------------------------- 
+
+# python3 -m venv /Users/nohemife/.venv 
+# source /Users/nohemife/.venv/bin/activate
+# cd .gcovr-6.0
+# pip install .
