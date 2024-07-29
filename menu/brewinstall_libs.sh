@@ -13,6 +13,7 @@ osascript -e 'tell app "Terminal" to do script "brew install pkg-config && \
 
 
 # ln -s /Users/nohemife/goinfre/.brew/Cellar/gcc /Users/nohemife/.brew/Cellar/gcc
+# ln -s /Users/nohemife/goinfre/.brew/Cellar/gcc@10 /Users/nohemife/.brew/Cellar/gcc@10
 
 # ln -s /Users/nohemife/goinfre/.brew/Cellar/llvm@12 /Users/nohemife/.brew/Cellar/llvm@12
 # ln -s /Users/nohemife/goinfre/.brew/Cellar/llvm@13 /Users/nohemife/.brew/Cellar/llvm@13
@@ -51,3 +52,9 @@ osascript -e 'tell app "Terminal" to do script "brew install pkg-config && \
 # For compilers to find llvm you may need to set:
 #   export LDFLAGS="-L/Users/nohemife/.brew/opt/llvm/lib"
 #   export CPPFLAGS="-I/Users/nohemife/.brew/opt/llvm/include"
+
+# python3 -m ~/.venv
+# python3 -m /Users/nohemife/.venv
+# python3 -m venv /Users/nohemife/.venv
+# source /Users/nohemife/.venv/bin/activate
+# pip install --upgrade pip
