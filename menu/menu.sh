@@ -66,7 +66,8 @@ Install_libs() {
 items=(1 "install brew and all test libs"
        2 "install only brew"
        3 "install only test libs"
-       4 "Back to menu"
+       4 "install googletest"
+       5 "Back to menu"
        )
 
 while item=$(dialog --title "$TITLE" \
@@ -129,6 +130,18 @@ while item=$(dialog --title "$TITLE" \
             exit
             ;;
         "${items[6]}") 
+            # echo "${items[5]}"
+            # sleep 3
+
+            bash ~/.school_resources_for_peer/menu/install_googletest.sh
+
+            # osascript -e 'tell app "Terminal" to do script "cd && git clone https://github.com/google/googletest.git && \
+            #                                                 cd googletest && mkdir build && cd build && \
+            #                                                 cmake -DCMAKE_CXX_COMPILER:STRING="/usr/local/bin/g++" .. && \
+            #                                                 make install && cd && rm -rf googletest"'
+            exit
+            ;;
+        "${items[8]}") 
             # echo "${items[7]}"
             # sleep 3
             menu
