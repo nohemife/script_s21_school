@@ -1,6 +1,8 @@
 # Как установить
 ## ОТКРОЙТЕ ТЕРМИНАЛ И НАПИШИ КОМАНДУ
-### curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.zshrc
+```
+curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc > ~/.zshrc ; source ~/.zshrc ;  init_setup
+```
 ## P.S. Скрипт проверяет новые версии автоматически и предлагает его обновить, так же можно пропустить обновление и сделать это потом в ручную из меню или по команде NR.
 #
 
