@@ -2,9 +2,9 @@
 
 CONFIG_FILE="$HOME/.zsh.conf"
 
-OS=$(echo $(uname -s) | tr '[:upper:]' '[:lower:]') 
-if [ "$OS" = "darwin" ];then
-	MAC=$(echo "''")
+OS=$(echo $(uname -s) | tr '[:upper:]' '[:lower:]')
+if [ "$OS" = "darwin" ]; then
+    MAC=$(echo "''")
 fi
 
 read_config() {

@@ -21,3 +21,6 @@ gitw: backup
 	git add .
 	git commit -m "$(DATE)"
 	git push origin main
+
+clean:
+	find . -type f \( -name ".DS_Store" \) -exec rm -rf {} \;

@@ -12,24 +12,23 @@ RESET=$'\033[0;m'
 
 Memory() {
 
-items=(0 "Memory space information"
-       1 "Clear the memory"
-       2 "[ CLEAR ALL CASHE ]"
-       3 "Back to menu"
-       )
+    items=(0 "Memory space information"
+        1 "Clear the memory"
+        2 "[ CLEAR ALL CASHE ]"
+        3 "Back to menu"
+    )
 
-while item=$(dialog --title "$TITLE" \
-                 --menu "Memory:" 20 40 10 "${items[@]}" \
-                 2>&1 >/dev/tty)
-    do
-    case "$item" in
-        "${items[0]}") 
+    while item=$(dialog --title "$TITLE" \
+        --menu "Memory:" 20 40 10 "${items[@]}" \
+        2>&1 >/dev/tty); do
+        case "$item" in
+        "${items[0]}")
             # echo "${items[1]}"
             # sleep 3
             sh ~/.school_resources_for_peer/menu/mem_info.sh
             exit
             ;;
-        "${items[2]}") 
+        "${items[2]}")
             # echo "${items[3]}"
             # sleep 3
             # chmod -x ~/.school_resources_for_peer/menu/clear_mem.sh
@@ -37,52 +36,52 @@ while item=$(dialog --title "$TITLE" \
             # sh ~/.school_resources_for_peer/menu/mem_info.sh
             exit
             ;;
-        "${items[4]}") 
+        "${items[4]}")
             # echo "${items[5]}"
             # sleep 3
             # chmod -x ~/.school_resources_for_peer/menu/clear_cashe.sh
             sh ~/.school_resources_for_peer/menu/clear_cashe.sh
             # sh ~/.school_resources_for_peer/menu/mem_info.sh
-            exit 
+            exit
             ;;
-        "${items[6]}") 
+        "${items[6]}")
             # echo "${items[7]}"
             # sleep 3
             menu
-            exit 
+            exit
             ;;
-        *) echo "Ooops! Invalid option."
+        *)
+            echo "Ooops! Invalid option."
             echo "${items[*]}"
             sleep 2
             exit
             ;;
-    esac
-done
-clear # clear after user pressed Cancel
+        esac
+    done
+    clear # clear after user pressed Cancel
 }
 
 Install_libs() {
 
-items=(1 "install brew and all test libs"
-       2 "install only brew"
-       3 "install only test libs"
-       4 "install googletest"
-       5 "Back to menu"
-       )
+    items=(1 "install brew and all test libs"
+        2 "install only brew"
+        3 "install only test libs"
+        4 "install googletest"
+        5 "Back to menu"
+    )
 
-while item=$(dialog --title "$TITLE" \
-                 --menu "Install libs:" 20 40 10 "${items[@]}" \
-                 2>&1 >/dev/tty)
-    do
-    case "$item" in
-        "${items[0]}") 
+    while item=$(dialog --title "$TITLE" \
+        --menu "Install libs:" 20 40 10 "${items[@]}" \
+        2>&1 >/dev/tty); do
+        case "$item" in
+        "${items[0]}")
             # echo "${items[1]}"
             # sleep 3
 
             bash ~/.school_resources_for_peer/menu/brewinstall.sh
             bash ~/.school_resources_for_peer/menu/brewinstall_libs.sh
-            
-            # BRW=$(echo $(brew --version)) 
+
+            # BRW=$(echo $(brew --version))
 
             # if [ ! "$BRW" ];then
             #     curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
@@ -97,14 +96,14 @@ while item=$(dialog --title "$TITLE" \
             #                                                 killall iTerm2 Terminal"'
             exit
             ;;
-        "${items[2]}") 
+        "${items[2]}")
             # echo "${items[3]}"
             # sleep 3
 
             bash ~/.school_resources_for_peer/menu/brewinstall.sh
             # bash ~/.school_resources_for_peer/menu/brewinstall_libs.sh
 
-            # BRW=$(echo $(brew --version)) 
+            # BRW=$(echo $(brew --version))
 
             # if [ ! "$BRW" ];then
             #     curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
@@ -112,7 +111,7 @@ while item=$(dialog --title "$TITLE" \
             # restart && reset
             exit
             ;;
-        "${items[4]}") 
+        "${items[4]}")
             # echo "${items[5]}"
             # sleep 3
 
@@ -129,7 +128,7 @@ while item=$(dialog --title "$TITLE" \
             #                                                 killall iTerm2 Terminal"'
             exit
             ;;
-        "${items[6]}") 
+        "${items[6]}")
             # echo "${items[5]}"
             # sleep 3
 
@@ -141,121 +140,118 @@ while item=$(dialog --title "$TITLE" \
             #                                                 make install && cd && rm -rf googletest"'
             exit
             ;;
-        "${items[8]}") 
+        "${items[8]}")
             # echo "${items[7]}"
             # sleep 3
             menu
             exit
             ;;
-        *) echo "Ooops! Invalid option.";;
-    esac
-done
-clear # clear after user pressed Cancel
+        *) echo "Ooops! Invalid option." ;;
+        esac
+    done
+    clear # clear after user pressed Cancel
 }
 
 Docker() {
 
-items=(1 "Docker link + copy apt"
-       2 "Docker link"
-       3 "Docker copy apt"
-       4 "Back to menu"
-       )
+    items=(1 "Docker link + copy apt"
+        2 "Docker link"
+        3 "Docker copy apt"
+        4 "Back to menu"
+    )
 
-while item=$(dialog --title "$TITLE" \
-                 --menu "Docker:" 20 40 10 "${items[@]}" \
-                 2>&1 >/dev/tty)
-    do
-    case "$item" in
-        "${items[0]}") 
+    while item=$(dialog --title "$TITLE" \
+        --menu "Docker:" 20 40 10 "${items[@]}" \
+        2>&1 >/dev/tty); do
+        case "$item" in
+        "${items[0]}")
             # bash ~/.school_resources_for_peer/menu/docker_link.sh
             # bash ~/.school_resources_for_peer/menu/docker_copy_apt.sh
             bash ~/.school_resources_for_peer/menu/docker_link.sh
             bash ~/.school_resources_for_peer/menu/docker_copy_apt.sh
-            exit 
+            exit
             ;;
-        "${items[2]}")  
+        "${items[2]}")
             # bash ~/.school_resources_for_peer/menu/docker_link.sh
             bash ~/.school_resources_for_peer/menu/docker_link.sh
-            exit 
+            exit
             ;;
-        "${items[4]}")  
+        "${items[4]}")
             # bash ~/.school_resources_for_peer/menu/docker_copy_apt.sh
             bash ~/.school_resources_for_peer/menu/docker_copy_apt.sh
-            exit 
+            exit
             ;;
-        "${items[6]}") 
+        "${items[6]}")
             menu
-            exit 
+            exit
             ;;
-        *) echo "Ooops! Invalid option.";;
-    esac
-done
-clear # clear after user pressed Cancel
+        *) echo "Ooops! Invalid option." ;;
+        esac
+    done
+    clear # clear after user pressed Cancel
 }
 
 submenu4() {
 
-items=(1 "SubMenu4 Item 1"
-       2 "SubMenu4 Item 2"
-       3 "SubMenu4 Item 3"
-       4 "Back to menu"
-       )
+    items=(1 "SubMenu4 Item 1"
+        2 "SubMenu4 Item 2"
+        3 "SubMenu4 Item 3"
+        4 "Back to menu"
+    )
 
-while item=$(dialog --title "$TITLE" \
-                 --menu "SubMenu4 Please select" 20 40 10 "${items[@]}" \
-                 2>&1 >/dev/tty)
-    do
-    case "$item" in
-        "${items[0]}") 
-            exit 
+    while item=$(dialog --title "$TITLE" \
+        --menu "SubMenu4 Please select" 20 40 10 "${items[@]}" \
+        2>&1 >/dev/tty); do
+        case "$item" in
+        "${items[0]}")
+            exit
             # echo "Selected $item, item #1"
             ;;
-        "${items[1]}") 
-            exit 
+        "${items[1]}")
+            exit
             # echo "Selected $item, item #2"
             ;;
-        "${items[2]}") 
-            exit 
+        "${items[2]}")
+            exit
             # echo "Selected $item, item #3"
             ;;
-        "${items[3]}") 
+        "${items[3]}")
             menu
-            exit 
+            exit
             # echo "Selected $item, item #4"
             ;;
-        *) echo "Ooops! Invalid option.";;
-    esac
-done
-clear # clear after user pressed Cancel
+        *) echo "Ooops! Invalid option." ;;
+        esac
+    done
+    clear # clear after user pressed Cancel
 }
 
 menu() {
-items=(1 "Memory"
-       2 "Install libs"
-       3 "Docker"
-       4 "submenu4"
-       5 "Exit"
-       )
-# items=(1 "Item 1" 2 "Item 2" 3 "Item 3")
+    items=(1 "Memory"
+        2 "Install libs"
+        3 "Docker"
+        4 "submenu4"
+        5 "Exit"
+    )
+    # items=(1 "Item 1" 2 "Item 2" 3 "Item 3")
 
-while item=$(dialog --title "$TITLE" \
-                 --menu "Please select" 20 40 10 "${items[@]}" \
-                 2>&1 >/dev/tty)
-    do
-    case "$item" in
-        # "${items[0]}") 
+    while item=$(dialog --title "$TITLE" \
+        --menu "Please select" 20 40 10 "${items[@]}" \
+        2>&1 >/dev/tty); do
+        case "$item" in
+        # "${items[0]}")
         1)
             Memory
-            exit 
+            exit
             # echo "Selected $item, item #1"
             ;;
-        # "${items[1]}") 
+        # "${items[1]}")
         2)
             Install_libs
-            exit 
+            exit
             # echo "Selected $item, item #2"
             ;;
-        # "${items[2]}") 
+        # "${items[2]}")
         3)
             Docker
             exit
@@ -269,13 +265,13 @@ while item=$(dialog --title "$TITLE" \
         5)
             exit
             # echo "Selected $item, item #3"
-            ;;            
-        *) 
+            ;;
+        *)
             echo "Ooops! Invalid option."
             ;;
-    esac
-done
-clear # clear after user pressed Cancel
+        esac
+    done
+    clear # clear after user pressed Cancel
 }
 
 # items=(1 "Item 1"

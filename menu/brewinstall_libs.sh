@@ -9,4 +9,3 @@ osascript -e 'tell app "Terminal" to do script "brew install pkg-config && \
                                                 brew install cppcheck && \
                                                 brew install doxygen && \
                                                 killall iTerm2 Terminal"'
-

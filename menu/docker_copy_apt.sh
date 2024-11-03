@@ -1,7 +1,6 @@
 #!/bin/bash
 # #!/bin/zsh
 
-
 # ----- VARIABLES ----- #
 RED=$'\033[0;31m'
 GREEN=$'\033[0;32m'
@@ -13,8 +12,6 @@ RESET=$'\033[0;m'
 
 cat ~/.school_resources_for_peer/aptdoc.txt | pbcopy
 echo $GREEN"Copy Success"$RESET
-
-
 
 # Linux
 # sudo apt-get install -y xclip

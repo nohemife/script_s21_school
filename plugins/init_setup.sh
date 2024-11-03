@@ -21,7 +21,7 @@ function init_setup() {
 	fi
 
 	if [ -f "~/.zsh.conf" ]; then
-		curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf > ~/.zsh.conf
+		curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.zsh.conf
 	fi
 
 	rm -rf ~/.zshrc
@@ -37,7 +37,6 @@ function init_setup() {
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/install_googletest.sh >~/.school_resources_for_peer/menu/install_googletest.sh
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/mem_info.sh >~/.school_resources_for_peer/menu/mem_info.sh
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/menu.sh >~/.school_resources_for_peer/menu/menu.sh
-
 
 	# plugins
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/.zshrc >~/.school_resources_for_peer/plugins/.zshrc
@@ -55,7 +54,6 @@ function init_setup() {
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/theme.sh >~/.school_resources_for_peer/plugins/theme.sh
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/VS_debug.sh >~/.school_resources_for_peer/plugins/VS_debug.sh
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/zcompdump.sh >~/.school_resources_for_peer/plugins/zcompdump.sh
-
 
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.school_resources_for_peer/.zsh.conf.bak
 	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.zsh.conf
@@ -96,6 +94,4 @@ function init_setup() {
 # curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/.zshrc_install > ~/.zshrc ; source ~/.zshrc ;  init_setup ; source ~/.zshrc
 # curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/init_setup.sh > ~/.zshrc ; source ~/.zshrc ;  init_setup ; source ~/.zshrc
 
-# -------------------------------------------------------------------------- 
-
-
+# --------------------------------------------------------------------------

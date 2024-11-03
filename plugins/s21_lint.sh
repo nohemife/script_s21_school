@@ -35,7 +35,7 @@
 # function lint() {
 #   buna=$(echo bash | bun -v)
 #   if [ $buna ];then
-# #   echo $buna 
+# #   echo $buna
 # 	s21_lint
 #   else
 # #   echo "no bun"
@@ -68,14 +68,14 @@ function s21_lint() {
 }
 
 function lint() {
-  npm=$(echo bash | npm -v)
-  if [ $npm ];then
-#   echo $npm 
-	s21_lint
-  else
-#   echo "no bun"
-	install_npm_lint
-  fi
+	npm=$(echo bash | npm -v)
+	if [ $npm ]; then
+		#   echo $npm
+		s21_lint
+	else
+		#   echo "no bun"
+		install_npm_lint
+	fi
 }
 
-# -------------------------------------------------------------------------- 
+# --------------------------------------------------------------------------

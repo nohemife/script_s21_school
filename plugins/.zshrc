@@ -4,8 +4,8 @@ source ~/.school_resources_for_peer/plugins/alias.sh
 
 # -------------------------------------------------------------------------- OS
 
-OS=$(echo $(uname -s) | tr '[:upper:]' '[:lower:]') 
-if [ "$OS" = "darwin" ];then
+OS=$(echo $(uname -s) | tr '[:upper:]' '[:lower:]')
+if [ "$OS" = "darwin" ]; then
 	MAC=$(echo "''")
 fi
 
@@ -36,22 +36,22 @@ source ~/.school_resources_for_peer/plugins/init_setup.sh
 # -------------------------------------------------------------------------- console menu
 
 function install_dialog() {
-# function id() {
-BRW=$(echo $(brew --version)) 
+	# function id() {
+	BRW=$(echo $(brew --version))
 
-DIALOG=$(echo $(dialog --version)) 
-if [ ! "$DIALOG" ];then
-	if [ "$OS" = "darwin" ];then
-		if [ ! "$BRW" ];then
-			curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
+	DIALOG=$(echo $(dialog --version))
+	if [ ! "$DIALOG" ]; then
+		if [ "$OS" = "darwin" ]; then
+			if [ ! "$BRW" ]; then
+				curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
+			fi
+			osascript -e 'tell app "Terminal" to do script "brew install dialog && killall iTerm2 Terminal"'
+		else
+			sudo apt update -y
+			sudo apt install dialog -y
 		fi
-		osascript -e 'tell app "Terminal" to do script "brew install dialog && killall iTerm2 Terminal"'
-	else
-		sudo apt update -y
-		sudo apt install dialog -y
 	fi
-fi
-restart && reset
+	restart && reset
 }
 
 function menu() {
@@ -80,10 +80,10 @@ source ~/.school_resources_for_peer/plugins/VS_debug.sh
 # -------------------------------------------------------------------------- old valgrind
 
 # function grind() {
-	# mkdir Valgrind
-	# cp ~/.school_resources_for_peer/Valgrind/Dockerfile Valgrind/Dockerfile
-	# cp ~/.school_resources_for_peer/Valgrind/run.sh Valgrind/run.sh
-	# cp ~/.school_resources_for_peer/Valgrind/start.sh Valgrind/start.sh
+# mkdir Valgrind
+# cp ~/.school_resources_for_peer/Valgrind/Dockerfile Valgrind/Dockerfile
+# cp ~/.school_resources_for_peer/Valgrind/run.sh Valgrind/run.sh
+# cp ~/.school_resources_for_peer/Valgrind/start.sh Valgrind/start.sh
 
 # }
 
@@ -139,11 +139,9 @@ export PATH="/usr/local/Qt-6.6.2/bin:$PATH"
 
 source ~/.school_resources_for_peer/plugins/other.sh
 
-# -------------------------------------------------------------------------- 
+# --------------------------------------------------------------------------
 
-# python3 -m venv /Users/nohemife/.venv 
+# python3 -m venv /Users/nohemife/.venv
 # source /Users/nohemife/.venv/bin/activate
 # cd .gcovr-6.0
 # pip install .
-
-# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/.zshrc_install > ~/.zshrc ; source ~/.zshrc ;  init_setup ; source ~/.zshrc

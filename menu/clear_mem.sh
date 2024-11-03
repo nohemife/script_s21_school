@@ -71,7 +71,6 @@ rm -rf ~Library/Application\ Support/Code/Crashpad/completed
 rm -rf ~/Library/Application\ Support/Code/Service\ Worker/CacheStorage
 rm -rf ~/Library/Application\ Support/BraveSoftware/Brave-Browser/Default/Service\ Worker/CacheStorage/
 
-
 rm -rf ~/Desktop/Presentation.pdf
 # rm -rf ~/Documents/*
 # rm -rf ~/Downloads/*

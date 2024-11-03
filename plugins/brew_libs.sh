@@ -10,14 +10,13 @@ function brewinstall() {
 
 function install_brew() {
 
-    BRW=$(echo $(brew --version)) 
+	BRW=$(echo $(brew --version))
 
-    if [ ! "$BRW" ];then
+	if [ ! "$BRW" ]; then
 		osascript -e 'tell app "Terminal" to do script "curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh && killall iTerm2 Terminal"'
-    fi
-    restart && reset
+	fi
+	restart && reset
 	echo "Install libs a new terminal!"
-
 
 	# osascript -e 'tell app "Terminal" to do script "brew install pkg-config && brew install llvm && brew install lmdb && brew install lcov && brew install gcovr && brew install googletest && brew install cppcheck && killall iTerm2 Terminal"'
 
@@ -56,4 +55,4 @@ function install_libs() {
 
 }
 
-# -------------------------------------------------------------------------- 
+# --------------------------------------------------------------------------
