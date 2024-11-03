@@ -46,7 +46,7 @@ function run_setup() {
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/cppcheck.sh >~/.school_resources_for_peer/plugins/cppcheck.sh
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/format_style.sh >~/.school_resources_for_peer/plugins/format_style.sh
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/git.sh >~/.school_resources_for_peer/plugins/git.sh
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/init_setup.sh >~/.school_resources_for_peer/plugins/init_setup.sh
+	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/run_setup.sh >~/.school_resources_for_peer/plugins/run_setup.sh
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/other.sh >~/.school_resources_for_peer/plugins/other.sh
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/parse_branch.sh >~/.school_resources_for_peer/plugins/parse_branch.sh
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/s21_lint.sh >~/.school_resources_for_peer/plugins/s21_lint.sh

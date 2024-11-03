@@ -39,6 +39,7 @@ function init_setup() {
 		mkdir -p ~/.school_resources_for_peer/plugins
 	fi
 
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/.zshrc >~/.zshrc
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/run_setup.sh >~/.school_resources_for_peer/plugins/run_setup.sh
 	
 	run_setup
