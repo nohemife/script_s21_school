@@ -12,6 +12,9 @@ function init_setup() {
 	if [ -f "~/.zsh.conf" ]; then
 		curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf > ~/.zsh.conf
 	fi
+	
+	rm -rf ~/.zshrc
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/.zshrc >~/.zshrc
 
 	# menu
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/brewinstall_libs.sh >~/.school_resources_for_peer/menu/brewinstall_libs.sh
