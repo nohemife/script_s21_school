@@ -31,7 +31,18 @@ source ~/.school_resources_for_peer/plugins/parse_branch.sh
 
 # -------------------------------------------------------------------------- init setup
 
-source ~/.school_resources_for_peer/plugins/init_setup.sh
+source ~/.school_resources_for_peer/plugins/run_setup.sh
+
+function init_setup() {
+	if [ ! -d "~/.school_resources_for_peer" ]; then
+		mkdir -p ~/.school_resources_for_peer
+		mkdir -p ~/.school_resources_for_peer/plugins
+	fi
+
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/run_setup.sh >~/.school_resources_for_peer/plugins/run_setup.sh
+	
+	run_setup
+}
 
 # -------------------------------------------------------------------------- console menu
 
@@ -133,6 +144,7 @@ source $HOME/.brewconfig.zsh
 # bun
 # export BUN_INSTALL="$HOME/.bun"
 # export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/usr/local/Qt-6.6.2/bin:$PATH"
 
 # -------------------------------------------------------------------------- END
 

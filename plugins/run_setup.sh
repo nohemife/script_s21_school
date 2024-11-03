@@ -12,13 +12,13 @@ RESET=$'\033[0;m'
 
 # -------------------------------------------------------------------------- init setup
 
-function init_setup() {
+function run_setup() {
 	echo $RED---------------- ARISE ----------------$RESET
 	if [ ! -d "~/.school_resources_for_peer" ]; then
 		mkdir -p ~/.school_resources_for_peer
 		mkdir -p ~/.school_resources_for_peer/.vscode
 		mkdir -p ~/.school_resources_for_peer/menu
-		mkdir -p ~/.school_resources_for_peer/plugins
+		# mkdir -p ~/.school_resources_for_peer/plugins
 		# mkdir ~/.school_resources_for_peer/Valgrind
 	fi
 
@@ -33,6 +33,7 @@ function init_setup() {
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/clear_mem.sh >~/.school_resources_for_peer/menu/clear_mem.sh
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/docker_copy_apt.sh >~/.school_resources_for_peer/menu/docker_copy_apt.sh
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/docker_link.sh >~/.school_resources_for_peer/menu/docker_link.sh
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/install_googletest.sh >~/.school_resources_for_peer/menu/install_googletest.sh
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/mem_info.sh >~/.school_resources_for_peer/menu/mem_info.sh
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/menu.sh >~/.school_resources_for_peer/menu/menu.sh
 
@@ -91,3 +92,5 @@ function init_setup() {
 }
 
 # -------------------------------------------------------------------------- 
+
+

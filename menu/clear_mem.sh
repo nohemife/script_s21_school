@@ -10,22 +10,24 @@ MAGENTA=$'\033[0;35m'
 RESET=$'\033[0;m'
 # --------------------- #
 
-echo $RED"----- CLEARING THE SPACE -----"$RESET
+echo $GREEN"\n----- CLEARING THE SPACE -----\n"$RESET
 sleep 1
-# Avoid boring prefix in du/df/etc
 cd $HOME
-initial_used_space=$(df -h $HOME | grep -v 'Filesystem' | awk '{ printf("%f", $3) }')
-# Show current used space
-initial_df=$(df -h . | grep --color=always -E "Size|Used|Avail|Capacity|[0-9]*\.*[0-9]*Mi|[0-9]*\.*[0-9]*Gi|[0-9]+\.*[0-9]+% |$")
-before=$(df -h . | grep --color=always -E "Size|Used|Avail|Capacity|[0-9]*\.*[0-9]*Mi|[0-9]*\.*[0-9]*Gi|[0-9]+\.*[0-9]+% |$")
-echo $RED"Current space:\n"$RESET${initial_df}$RESET
-echo $RED"\nHome folder:"$RESET
 
-echo ""
+echo $GREEN"Current space:"$RESET
+# df -h . | grep --color=always -E "Size|Used|Avail|Capacity|[0-9]*\.*[0-9]*Mi|[0-9]*\.*[0-9]*Gi|[0-9]+\.*[0-9]+% |$"
+df -h . | awk '{print $1,$2,$3,$4,$5,$9}' | column -t -s ' ' | grep --color=always -E "Size|Used|Avail|Capacity|[0-9]*\.*[0-9]*Mi|[0-9]*\.*[0-9]*Gi|[0-9]+\.*[0-9]+% |$"
+
+echo $YELLOW"\nHome folder:"$RESET
+du -hd1 . 2>/dev/null | sort -h | grep --color=always "[0-9]*\.*[0-9]*M\t\|[0-9]*\.*[0-9]*G\t\|$"
+
+echo $RED"----------- CLEAR -----------"$RESET
+sleep 1
 echo '----------------------'
-echo 'Size    Used    Avail'
+echo '\033[37;1;41mSize    Used    Avail\033[0m'
 echo '----------------------'
 df -h | grep Users | awk '{print $2 " = " $3 " + "  $4}'
+
 # rm -rf ~/Library/ApplicationSupport/CrashReporter/*
 # rm -rf ~/Library/Application\ Support/Code/*
 # rm -rf ~/Library/Group\ Containers/*
@@ -52,9 +54,9 @@ rm -rf ~/Library/Caches/com.apple.tiswitcher.cache
 rm -rf ~/Library/Caches/com.apple.preferencepanes.usercache
 rm -rf ~/Library/Caches/com.apple.preferencepanes.searchindexcache
 rm -rf ~/Library/Caches/com.apple.parsecd
-rm -rf ~/Library/Caches/
+rm -rf ~/Library/Caches/*
 rm -rf ~/.Trash/*
-rm -rf ~/.kube/cache/*
+# rm -rf ~/.kube/cache/*
 rm -rf ~/Library/Containers/com.docker.docker/Data/vms/*
 rm -rf ~/Library/Application\ Support/Firefox/Profiles/hdsrd79k.default-release/storage
 rm -rf ~/Library/Application\ Support/Code/User/workspaceStorage
@@ -68,9 +70,7 @@ rm -rf ~/Library/Application\ Support/Code/CacheData
 rm -rf ~Library/Application\ Support/Code/Crashpad/completed
 rm -rf ~/Library/Application\ Support/Code/Service\ Worker/CacheStorage
 rm -rf ~/Library/Application\ Support/BraveSoftware/Brave-Browser/Default/Service\ Worker/CacheStorage/
-df -h | grep Users | awk '{print $2 " = " $3 " + "  $4}'
-echo '----------------------'
-echo $GREEN"Clean Success"$RESET
+
 
 rm -rf ~/Desktop/Presentation.pdf
 # rm -rf ~/Documents/*
@@ -79,9 +79,8 @@ rm -rf ~/Movies/*
 rm -rf ~/Music/*
 rm -rf ~/Pictures/*
 rm -rf ~/.Trash/*
-cp ~/Library/Icon? ~/.Trash
-​
-#!/bin/bash
+# cp ~/Library/Icon? ~/.Trash
+
 rm -rfv ~/Library/Caches/*
 rm -rfv ~/Library/Application\ Support/Slack/Cache/*
 rm -rfv ~/Library/Application\ Support/Slack/Service\ Worker/CacheStorage/*
@@ -97,18 +96,7 @@ rm -rfv ~/Library/Application\ Support/Slack/Cache
 rm -rfv ~/Library/Application\ Support/Slack/Code\ Cache
 rm -rfv ~/Library/Application\ Support/Slack/Service\ Worker/CacheStorage
 rm -rfv ~/Library/Application\ Support/Code/User/workspaceStorage
-echo -en "\033[31mSpace for the space!\n\033[0m"
-free_space=$(df -h | grep 'lallison' | awk '{print $4}')
-echo -en "\033[32m${free_space} are available now\n\033[0m"
-free_space=$(df -h | grep 'agidget' | awk '{print $4}')
-echo -en "\033[32m${free_space} are available now\n\033[0m"
-df -h ~
-​
-echo '----------------------'
-echo '\033[37;1;41mSize    Used    Avail\033[0m'
-echo '----------------------'
-df -h | grep Users | awk '{print $2 " = " $3 " + "  $4}'
-#df -h | awk 'NR == 8{print $2 " = " $3 " + "  $4}'
+
 rm -rf ~/Library/Application\ Support/Slack/Code\ Cache/* -y
 rm -rf ~/Library/Application\ Support/Slack/Cache/* -y
 rm -rf ~/Library/Application\ Support/Slack/Service\ Worker/CacheStorage/* -y
@@ -124,33 +112,40 @@ rm -rf ~/Library/Application\ Support/Code/User/workspaceStoratge/* -y
 rm -rf ~/Library/Containers/com.docker.docker/Data/vms/* -y
 rm -rf ~/Library/Containers/com.apple.Safari/Data/Library/Caches/* -y
 rm -rf ~/Library/Containers/org.telegram.desktop/Data/Library/Application\ Support/Telegram\ Desktop/tdata/emoji/* -y
-df -h | grep Users | awk '{print $2 " = " $3 " + "  $4}'
-#df -h | awk 'NR == 8{print $2 " = " $3 " + "  $4}'
-echo '----------------------'
 
-echo "${blue}Current space:\n${reset}${initial_df}${reset}"
-echo "${blue}\nHome folder:${reset}"
-du -hd1 . 2>/dev/null | sort -h | grep --color=always "[0-9]*\.*[0-9]*M\t\|[0-9]*\.*[0-9]*G\t\|$"
-echo ""
-​
+df -h | grep Users | awk '{print $2 " = " $3 " + "  $4}'
 echo '----------------------'
-echo 'Size    Used    Avail'
-echo '----------------------'
+echo $GREEN"Clean Success"$RESET
+sleep 1
 
 clear
-echo $RED"----- CLEARING THE SPACE -----"$RESET
-sleep 1
-echo $RED"before:\n"$RESET${before}$RESET
+echo "${GREEN}\nCurrent space:${RESET}"
+# df -h . | grep --color=always -E "Size|Used|Avail|Capacity|[0-9]*\.*[0-9]*Mi|[0-9]*\.*[0-9]*Gi|[0-9]+\.*[0-9]+% |$"
+df -h . | awk '{print $1,$2,$3,$4,$5,$9}' | column -t -s ' ' | grep --color=always -E "Size|Used|Avail|Capacity|[0-9]*\.*[0-9]*Mi|[0-9]*\.*[0-9]*Gi|[0-9]+\.*[0-9]+% |$"
+
+echo "${YELLOW}\nHome folder:${RESET}"
+du -hd1 . 2>/dev/null | sort -h | grep --color=always "[0-9]*\.*[0-9]*M\t\|[0-9]*\.*[0-9]*G\t\|$"
+
+echo '----------------------'
+echo '\033[37;1;41mSize    Used    Avail\033[0m'
+# echo 'Size    Used    Avail'
+echo '----------------------'
 df -h | grep Users | awk '{print $2 " = " $3 " + "  $4}'
-sleep 1
-echo $GREEN DONE $RESET
+echo '----------------------'
+
+# clear
+# echo $GREEN"----- CLEARING THE SPACE -----"$RESET
+# echo $RED"Current space:"$RESET
+# df -h . | awk '{print $1,$2,$3,$4,$5,$9}' | column -t -s ' ' | grep --color=always -E "Size|Used|Avail|Capacity|[0-9]*\.*[0-9]*Mi|[0-9]*\.*[0-9]*Gi|[0-9]+\.*[0-9]+% |$"
+# # df -h . | grep --color=always -E "Size|Used|Avail|Capacity|[0-9]*\.*[0-9]*Mi|[0-9]*\.*[0-9]*Gi|[0-9]+\.*[0-9]+% |$"
+# echo $GREEN"------------ DONE ------------"$RESET
 
 # read -p "Press Enter to continue..."
 # read -n 1 -s
 
 # Ожидание нажатия клавиши с использованием dd
-echo -n "Press any key to continue... "
-stty raw -echo
-dd bs=1 count=1 2>/dev/null
-stty -raw echo
-echo    # Перевод строки для визуальной ясности
+# echo -n "Press any key to continue... "
+# stty raw -echo
+# dd bs=1 count=1 2>/dev/null
+# stty -raw echo
+# echo    # Перевод строки для визуальной ясности
