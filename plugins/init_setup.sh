@@ -55,43 +55,36 @@ function init_setup() {
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/VS_debug.sh >~/.school_resources_for_peer/plugins/VS_debug.sh
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/zcompdump.sh >~/.school_resources_for_peer/plugins/zcompdump.sh
 
+	# del
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/main.sh >~/.school_resources_for_peer/main.sh
+
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.school_resources_for_peer/.zsh.conf.bak
 	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.zsh.conf
-	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc >~/.school_resources_for_peer/.zshrc
-	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/.zshrc >~/.zshrc
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clang-format >~/.school_resources_for_peer/.clang-format
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zcompdump >~/.school_resources_for_peer/.zcompdump
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt >~/.school_resources_for_peer/date.txt
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/main.sh >~/.school_resources_for_peer/main.sh
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/configurator.sh >~/.school_resources_for_peer/configurator.sh
 	chmod +x ~/.school_resources_for_peer/configurator.sh
 	chmod +x ~/.school_resources_for_peer/main.sh
 	chmod +x ~/.school_resources_for_peer/menu/menu.sh
 
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clang-format >~/.school_resources_for_peer/.clang-format
-
-	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/clean.sh >~/.school_resources_for_peer/clean.sh
-	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/clear.sh >~/.school_resources_for_peer/clear.sh
-
 	# VScode debug
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.vscode/launch.json >~/.school_resources_for_peer/.vscode/launch.json
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.vscode/tasks.json >~/.school_resources_for_peer/.vscode/tasks.json
 
-	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/Valgrind/Dockerfile > ~/.school_resources_for_peer/Valgrind/Dockerfile
-	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/Valgrind/run.sh > ~/.school_resources_for_peer/Valgrind/run.sh
-	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/Valgrind/start.sh > ~/.school_resources_for_peer/Valgrind/start.sh
-	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/linkdoc.sh > ~/.school_resources_for_peer/linkdoc.sh
-	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/aptdoc.sh > ~/.school_resources_for_peer/aptdoc.sh
+	# APPs Docker
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/aptdoc.txt >~/.school_resources_for_peer/aptdoc.txt
 
+	# README
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/new.txt >~/.school_resources_for_peer/new.txt
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/helpme.md >~/.school_resources_for_peer/helpme.md
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/README.md >~/.school_resources_for_peer/README.md
+
 	sleep 1
 	echo $GREEN"Install complete! Enjoy!"$RESET
 	reset
 }
 
-# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/.zshrc_install > ~/.zshrc ; source ~/.zshrc ;  init_setup ; source ~/.zshrc
 # curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/init_setup.sh > ~/.zshrc ; source ~/.zshrc ;  init_setup ; source ~/.zshrc
 
 # --------------------------------------------------------------------------
