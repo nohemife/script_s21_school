@@ -10,21 +10,22 @@ MAGENTA=$'\033[0;35m'
 RESET=$'\033[0;m'
 # --------------------- #
 
-# -------------------------------------------------------------------------- init setup
-
 function init_setup() {
 	echo $RED---------------- ARISE ----------------$RESET
 	if [ ! -d "~/.school_resources_for_peer" ]; then
 		mkdir -p ~/.school_resources_for_peer
 		mkdir -p ~/.school_resources_for_peer/.vscode
 		mkdir -p ~/.school_resources_for_peer/menu
-		# mkdir -p ~/.school_resources_for_peer/plugins
+		mkdir -p ~/.school_resources_for_peer/plugins
 		# mkdir ~/.school_resources_for_peer/Valgrind
 	fi
 
 	if [ -f "~/.zsh.conf" ]; then
 		curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf > ~/.zsh.conf
 	fi
+
+	rm -rf ~/.zshrc
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/.zshrc >~/.zshrc
 
 	# menu
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/menu/brewinstall_libs.sh >~/.school_resources_for_peer/menu/brewinstall_libs.sh
@@ -58,7 +59,8 @@ function init_setup() {
 
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.school_resources_for_peer/.zsh.conf.bak
 	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.zsh.conf
-	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc >~/.school_resources_for_peer/.zshrc
+	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zshrc >~/.school_resources_for_peer/.zshrc
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/.zshrc >~/.zshrc
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zcompdump >~/.school_resources_for_peer/.zcompdump
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt >~/.school_resources_for_peer/date.txt
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/main.sh >~/.school_resources_for_peer/main.sh
@@ -90,6 +92,9 @@ function init_setup() {
 	echo $GREEN"Install complete! Enjoy!"$RESET
 	reset
 }
+
+# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/.zshrc_install > ~/.zshrc ; source ~/.zshrc ;  init_setup ; source ~/.zshrc
+# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/init_setup.sh > ~/.zshrc ; source ~/.zshrc ;  init_setup ; source ~/.zshrc
 
 # -------------------------------------------------------------------------- 
 

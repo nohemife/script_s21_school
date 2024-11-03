@@ -1,3 +1,14 @@
+#!/bin/bash
+#!/bin/zsh
+
+# ----- VARIABLES ----- #
+RED=$'\033[0;31m'
+GREEN=$'\033[0;32m'
+YELLOW=$'\033[0;33m'
+BLUE=$'\033[0;34m'
+MAGENTA=$'\033[0;35m'
+RESET=$'\033[0;m'
+# --------------------- #
 
 function init_setup() {
 	echo $RED---------------- ARISE ----------------$RESET
@@ -12,7 +23,7 @@ function init_setup() {
 	if [ -f "~/.zsh.conf" ]; then
 		curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf > ~/.zsh.conf
 	fi
-	
+
 	rm -rf ~/.zshrc
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/.zshrc >~/.zshrc
 
@@ -81,3 +92,6 @@ function init_setup() {
 	echo $GREEN"Install complete! Enjoy!"$RESET
 	reset
 }
+
+# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/.zshrc_install > ~/.zshrc ; source ~/.zshrc ;  init_setup ; source ~/.zshrc
+# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/plugins/init_setup.sh > ~/.zshrc ; source ~/.zshrc ;  init_setup ; source ~/.zshrc
