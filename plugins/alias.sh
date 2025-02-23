@@ -25,6 +25,12 @@ alias pushn="git status; git add .; git status; git commit -m 'autocommit'; git 
 alias gsd="git switch develop"
 alias gsn="git switch $(whoami)"
 
+USERNAME=whoami
+if [ $USERNAME = "nohemife" ]; then
+# echo $USERNAME
+alias docker="/Applications/Docker.app/Contents/Resources/bin/docker"
+fi
+
 # -------------------------------------------------------------------------- color
 
 # ----- VARIABLES ----- #

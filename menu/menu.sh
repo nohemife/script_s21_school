@@ -157,7 +157,8 @@ Docker() {
     items=(1 "Docker link + copy apt"
         2 "Docker link"
         3 "Docker copy apt"
-        4 "Back to menu"
+        4 "Docker copy lint"
+        5 "Back to menu"
     )
 
     while item=$(dialog --title "$TITLE" \
@@ -182,6 +183,11 @@ Docker() {
             exit
             ;;
         "${items[6]}")
+            # bash ~/.school_resources_for_peer/menu/docker_copy_apt.sh
+            bash ~/.school_resources_for_peer/menu/docker_copy_lint.sh
+            exit
+            ;;
+        "${items[8]}")
             menu
             exit
             ;;
