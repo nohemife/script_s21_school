@@ -141,6 +141,13 @@ source ~/.school_resources_for_peer/plugins/other.sh
 
 # --------------------------------------------------------------------------
 
+if [[ -z "$ZSH_IS_LOGIN" ]]; then
+    # Запуск только в не-логин сессии
+    if ! pgrep -f "autoclean" > /dev/null; then
+        (./.autoclean > /dev/null 2>&1) &
+    fi
+fi
+
 # python3 -m venv /Users/nohemife/.venv
 # source /Users/nohemife/.venv/bin/activate
 # cd .gcovr-6.0
