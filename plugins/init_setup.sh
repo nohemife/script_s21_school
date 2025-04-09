@@ -17,7 +17,6 @@ function init_setup() {
 		mkdir -p ~/.school_resources_for_peer/.vscode
 		mkdir -p ~/.school_resources_for_peer/menu
 		mkdir -p ~/.school_resources_for_peer/plugins
-		# mkdir ~/.school_resources_for_peer/Valgrind
 	fi
 
 	if [ -f "~/.zsh.conf" ]; then
@@ -59,7 +58,7 @@ function init_setup() {
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/main.sh >~/.school_resources_for_peer/main.sh
 
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.school_resources_for_peer/.zsh.conf.bak
-	# curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.zsh.conf
+	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zsh.conf >~/.zsh.conf
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.clang-format >~/.school_resources_for_peer/.clang-format
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/.zcompdump >~/.school_resources_for_peer/.zcompdump
 	curl -l https://raw.githubusercontent.com/nohemife/script_s21_school/main/date.txt >~/.school_resources_for_peer/date.txt

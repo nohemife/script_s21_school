@@ -4,24 +4,38 @@
 # -------------------------------------------------------------------------- alias
 
 alias restart="source ~/.zshrc"
+
 alias gw="gcc -Wall -Wextra -Werror"
+alias gw+="g++ -Wall -Wextra -Werror"
+
 alias gwd="gcc -Wall -Wextra -Werror -g"
+alias gwd+="g++ -Wall -Wextra -Werror -g"
+
 alias gdb="gcc -g"
+alias gdb+="g++ -g"
+
 alias dir="ls -la"
 alias /="cd .."
 alias //="cd -"
+
 alias ce="configedit"
 alias ff="fixformat"
 alias cc="cpp_check"
 alias fs="find_sql"
+
 alias m="menu"
+
 alias rmh="rm -rf ~/.zsh_history"
+
 alias rc="nano ~/.zshrc && source ~/.zshrc"
 alias rcm="nano ~/.school_resources_for_peer/main.sh"
+
 alias work="work_dir"
 alias vsc="open . -a 'Visual studio code'"
-alias pushd="git status; git add .; git status; git commit -m 'autocommit'; git push origin develop"
-alias pushn="git status; git add .; git status; git commit -m 'autocommit'; git push origin $(whoami)"
+
+alias pushd="git status; git add .; git status; git commit -m 'autocommit alias zshrc'; git push origin develop"
+alias pushn="git status; git add .; git status; git commit -m 'autocommit alias zshrc'; git push origin $(whoami)"
+
 alias gsd="git switch develop"
 alias gsn="git switch $(whoami)"
 
@@ -58,7 +72,7 @@ function comp() {
 # -------------------------------------------------------------------------- mem
 
 function mem() {
-	sh ~/.school_resources_for_peer/clean.sh
+	sh ~/.school_resources_for_peer/menu/clear_mem.sh
 }
 
 # -------------------------------------------------------------------------- link docker
