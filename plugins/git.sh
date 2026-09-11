@@ -42,3 +42,10 @@ function getkey() {
 }
 
 # -------------------------------------------------------------------------- ssh-key
+
+function rst() {
+	cd $(echo $(git rev-parse --show-toplevel))
+	rm -rf src
+	git checkout .
+	cd src
+}

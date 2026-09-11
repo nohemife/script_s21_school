@@ -11,7 +11,7 @@ alias fs="FixFormatIntensive"
 
 alias gsd="git switch develop"
 alias gsn="git switch $(whoami)"
-alias rst="git checkout ."
+# alias rst="git checkout ."
 
 alias info="system_libs_info"
 
