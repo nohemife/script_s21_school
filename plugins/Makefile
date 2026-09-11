@@ -8,7 +8,9 @@ STD=-std=c11
 MATH=-lm
 P=-pedantic
 DB=-g -O0
-ADD_FLAGS = 
+ADD_FLAGS= 
+CURSES=-lncurses
+ADD_CURSES=
 
 # ---------------------------------------------------------------- find src
 FIND_FILE=$(shell find . -type f \( -name "*.c" -o -name "*.h" \) -print0 | xargs -0 -n 1 | sed 's|./| |' | tr -d '\n')
@@ -67,7 +69,7 @@ add_db_flag:
 	$(eval FLAGS += $(DB))
 
 add_curses:
-	$(eval FLAGS += -lncurses)
+	$(eval ADD_CURSES += $(CURSES))
 
 # add_fsan:
 # 	$(eval ADD_FLAGS += -fsanitize=address)
@@ -78,12 +80,12 @@ pong: clean add_db_flag
 #	./run_pong
 
 pong_int: clean add_curses add_db_flag
-	$(CC) $(FLAGS) pong_interactive.c -o run_pong_int $(MATH) $(ADD_FLAGS)
+	$(CC) $(FLAGS) pong_interactive.c -o run_pong_int $(MATH) $(ADD_FLAGS) $(ADD_CURSES)
 	make mem
 #	./run_pong_int
 
 gol: clean add_curses add_db_flag
-	$(CC) $(FLAGS) game_of_life.c -o run_GoL $(MATH) $(ADD_FLAGS)
+	$(CC) $(FLAGS) game_of_life.c -o run_GoL $(MATH) $(ADD_FLAGS) $(ADD_CURSES)
 	make mem
 #	./run_GoL
 
@@ -138,7 +140,7 @@ reset:
 clear: clear_lint
 
 clear_lint: $(FIND_FILES)
-	s21_lint -c $(FIND_FILES)
+	$(shell s21_lint -c $(FIND_FILES))
 
 clear_bash: $(FIND_FILES)
 	mkdir -p original
